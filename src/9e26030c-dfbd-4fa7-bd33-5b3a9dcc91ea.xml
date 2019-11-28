@@ -1,0 +1,26 @@
+<annotation>
+    <folder>dataset_15_10_2019</folder>
+    <filename>9e26030c-dfbd-4fa7-bd33-5b3a9dcc91ea.png</filename>
+    <path>/Users/jonaskindler/Documents/psiori/second_labels_daniel/dataset_15_10_2019/9e26030c-dfbd-4fa7-bd33-5b3a9dcc91ea.png</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>648</width>
+        <height>1024</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>grapple</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>256</xmin>
+            <ymin>550</ymin>
+            <xmax>422</xmax>
+            <ymax>679</ymax>
+        </bndbox>
+    </object>
+</annotation>
