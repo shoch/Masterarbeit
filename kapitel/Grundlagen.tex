@@ -16,19 +16,19 @@
 	\label{sec:DataUnderstanding}
 	Anlehnend dem in Kapitel \ref{sec:Vorgehen} beschriebenen Vorgehen \todo{Vorgehen auch so beschreiben /  ansonsten Kapitel Einleitung anpassen} werden in diesem Kapitel die zur Verfügung stehenden Daten und deren Qualität beschrieben. Dabei ist das Kapitel entsprechend der Beschriftung der Daten in zwei Teilbereiche unterteilt.
 	
-	Im Rahmen des bestehenden Autocrane-Projektes \ref{sec:BestehendesSystem} \todo{Im Kapitel Bestehdens System erwähnen / diesen Teil in das andere Kapitel verschieben?} wurde eine Kamera an einem Kran angebracht. Mittels dieser Kamera werden neue unbeschriftete Bilder aufgenommen und bei PSIORI abgelegt. Zu Beginn dieser Arbeit standen mehr 385.000 nicht beschriftete Bilder zur Verfügung. Zum erreichen der Zielstellung werden zwei Datensätze benötigt.
+	Im Rahmen des bestehenden Autocrane-Projektes \ref{sec:BestehendesSystem} \todo{Im Kapitel Bestehdens System erwähnen / diesen Teil in das andere Kapitel verschieben?} wurde eine Kamera an einem Kran angebracht. Die Kamera ist so ausgerichtet, dass sich Aufhängung des Greifers am mittleren oberen Bildrand befindet. Die Auslenkung kann jeden Winkel in einem 360 Grad Radius um das Zentrum des Krans erreichen. Der Hintergrund der Bilder kann sich somit stark ändern. Mittels der Kamera werden kontinuirlich neue unbeschriftete Bilder aufgenommen und bei PSIORI abgelegt. Zu Beginn dieser Arbeit standen mehr 385.000 nicht beschriftete Bilder zur Verfügung. Die Bilder sind 1024 auf 648 Pixel groß und in Farbe. Sie sind in der Form (1024, 648, 3). Die einzelnen Pixel können dabei Werte zwischen 0 und 255 annehmen. 
+	Zum Erreichen der Zielstellung werden zwei Datensätze benötigt.
 	
-			\paragraph{Greifer Datensatz} Der Greifer Datensatz enthält Bilder in welchen der Greifer mittels einem Rahmen markiert ist. Abbildung \ref{img:Grapple} zeigt ein Beispielhaftes Bild mit markiertem Greifer.
-			\begin{figure}[h]
+		\paragraph{Greifer Datensatz} Der Greifer Datensatz enthält Bilder, in welchen der Greifer mittels Rahmen markiert ist. Abbildung \ref{img:Logs}  zeigt ein beispielhaftes Bild mit markiertem Greifer. Abbildung \ref{img:Grapple} zeigt ein beispielhaftes Bild mit markiertem Greifer.
+		\begin{figure}[h]
 				\centering
 				\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Grapple_8.png}
 				\caption[Bsp. Bild: Greifer mit Rahmen]{Greifer mit Rahmen}
 				\label{img:Grapple}
-			\end{figure}
-			Der Datensatz besteht aus zwei Sammlungen von unterschiedlich gut beschrifteten Bildern. Die eine Sammlung besteht aus einem bestehenden  Datensatz, welcher 4.684 durch Menschen annotierten Bildern enthält. Für den zweiten Teil der Sammlung, wurden mittels der \todo{siehe Bestehendes System} bestehenden Objekterkennung XXXX Bilder annotiert. \todo{Vorgehen + Metriken detailierter beschreiben} Das genaue Schema der Datenstrukturen kann in Anhang \ref{appendix:AutocraneDaten} nachgelesen werden
-		
-		
-		\paragraph{Baumstamm Datensatz} Der Baumstamm Datensatz enthält Bilder, welche die Annotation ob sich Baumstämme im Greifer befinden haben. Abbildung \ref{img:Logs} zeigt ein Bild, in welchem der Greifer Baumstämme greift. In Abbildung \ref{img:Grapple} befinden sich keine Baumstämme im Greifer.
+		\end{figure}
+		Der Datensatz besteht aus zwei Sammlungen von qualitativ unterschiedlich gut beschrifteten Bildern. Die eine Sammlung besteht aus einem bestehenden Datensatz, welcher 4.684 durch Menschen annotierten Bildern enthält. Für den zweiten Teil der Sammlung wurden mittels der \todo{siehe Bestehendes System} bestehenden Objekterkennung XXXX Bilder annotiert. \todo{Vorgehen + Metriken detailierter beschreiben} Das genaue Schema der Datenstrukturen kann in Anhang \ref{appendix:AutocraneDaten} nachgelesen werden.
+
+		\paragraph{Baumstamm Datensatz} Der Baumstamm Datensatz enthält Bilder, welche die Annotation, ob sich Baumstämme im Greifer befinden haben. Abbildung \ref{img:Logs} zeigt ein Bild, in welchem der Greifer Baumstämme greift. In Abbildung \ref{img:Grapple} befinden sich keine Baumstämme im Greifer.
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Logs_14.png}
