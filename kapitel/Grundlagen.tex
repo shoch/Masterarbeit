@@ -10,7 +10,31 @@
 		\todo{notwendige klassische Grundlagen definieren} 
 	\section{Bestehendes System}
 	\label{sec:BestehendesSystem}
-			(Object Detection - AutoCrane)
+	
+	Vision:
+	A fully automated crane unloading log trucks,
+	deciding where to put the logs and feeding the
+	chute.
+	The crane operator is an AI instead of human
+	operator.
+	Artificial Intelligence must:
+	- „see“ the logs, trucks, chute and environment
+	- have a strategy for unloading and storing
+	- make good decisions based on environmental
+	factors like whether, movement, people
+	Solution contains CMOS cameras, Laser Scanner,
+	Collision Avoidance Systems
+	
+			(Object Detection - AutoCrane)		
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
+		\caption[Kran]{Kran}
+		\label{img:Crane}
+	\end{figure}		
+
+
+	\paragraph{Greifer-Erkennung} Model erläutern 
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
@@ -74,16 +98,25 @@ Die Datenvorbereitung dient dazu, einen finalen Datensatz zu erstellen, der die 
 		\textbf{Greifer} 				 & 	X					&	X					& 4.684 				   & x 				\\
 		\textbf{Baumstämme T/F}	 	  &  X					 &	X					 &	X							& 18000		\\
 	\end{tabularx}
-
 	\caption{Datenaufteilung - Train Test Validation}
 	\label{table:DatenaufteilungTrainTestValidation}
  	\end{table}
  
 	\section{Bibliotheken und Werkzeuge}
 	\label{sec:BibliothekenundWerkzeuge}
+		\todo{TF + Keras nur per Ref}
 		\paragraph{Tensorflow}
 		\paragraph{Keras}
 		\paragraph{Psipy} ist ein Python-Framework für Maschinelles Lernen welches von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt und die Modelle aus scikit-learn können in das von PSIORI entwickelte Framework eingebunden werden. Das Framework ermöglicht außerdem das Einbinden von Modellen basierend auf TensorFlow.\grqq [PSIORI]
+		
+	\todo{Bild nur bestehendes System (Stacked Autoencoder + MixedHyperparam* )}
+			\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth, center]{bilder/Grundlagen/Klassen_CSCA.png}
+			\caption[Klassendiagramm ConvolutionalSecondCriterionAutoencoder]{Klassendiagramm ConvolutionalSecondCriterionAutoencoder}
+			\label{img:ConvolutionalSecondCriterionAutoencoder}
+		\end{figure}
+		
 		\paragraph{Cnvrg.io} \todo{Quelle cnvrg} ist eine "full-stack Data Science Platform" welche Werkzeuge  für die Erstellung, Verwaltung, Bereitstellung  und Automatisierung von maschinellem Lernen bereitstellt. \todo{mehr Text; was wurde genutzt (Datasets,...)}
 			
 	\section{Experimentumgebung}
