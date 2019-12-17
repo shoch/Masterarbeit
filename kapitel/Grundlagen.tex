@@ -8,39 +8,23 @@
 	\section{TODO GRUNDALGENDETAIL}
 	\label{sec:TODOGrundlagenDetail}
 		\todo{notwendige klassische Grundlagen definieren} 
-	\section{Bestehendes System}
+		
+	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
-	
-	Vision:
-	A fully automated crane unloading log trucks,
-	deciding where to put the logs and feeding the
-	chute.
-	The crane operator is an AI instead of human
-	operator.
-	Artificial Intelligence must:
-	- „see“ the logs, trucks, chute and environment
-	- have a strategy for unloading and storing
-	- make good decisions based on environmental
-	factors like whether, movement, people
-	Solution contains CMOS cameras, Laser Scanner,
-	Collision Avoidance Systems
-	
-			(Object Detection - AutoCrane)		
+	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekt von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Dieser Kran wird in einer holzverarbeitenden Anlage zum Befüllen eines Fülltrichters eingesetzt. Dabei sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln oder vom LKW aus befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr.	\todo{Quelle Doku PSIORI}
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
-		\caption[Kran]{Kran}
-		\label{img:Crane}
+		\caption[Rund-Kran]{Rundlaufkran (Foto: ANDRITZ)}
+		\label{img:CircularCrane}
 	\end{figure}		
-
-
 	\paragraph{Greifer-Erkennung} Model erläutern 
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
 	Anlehnend dem in Kapitel \ref{sec:Vorgehen} beschriebenen Vorgehen \todo{Vorgehen auch so beschreiben /  ansonsten Kapitel Einleitung anpassen} werden in diesem Kapitel die zur Verfügung stehenden Daten und deren Qualität beschrieben. Dabei ist das Kapitel entsprechend der Beschriftung der Daten in zwei Teilbereiche unterteilt.
 	
-	Im Rahmen des bestehenden Autocrane-Projektes \ref{sec:BestehendesSystem} \todo{Im Kapitel Bestehdens System erwähnen / diesen Teil in das andere Kapitel verschieben?} wurde eine Kamera an einem Kran angebracht. Die Kamera ist so ausgerichtet, dass sich Aufhängung des Greifers am mittleren oberen Bildrand befindet. Die Auslenkung kann jeden Winkel in einem 360 Grad Radius um das Zentrum des Krans erreichen. Der Hintergrund der Bilder kann sich somit stark ändern. Mittels der Kamera werden kontinuirlich neue unbeschriftete Bilder aufgenommen und bei PSIORI abgelegt. Zu Beginn dieser Arbeit standen mehr 385.000 nicht beschriftete Bilder zur Verfügung. Die Bilder sind 1024 auf 648 Pixel groß und in Farbe. Sie sind in der Form (1024, 648, 3). Die einzelnen Pixel können dabei Werte zwischen 0 und 255 annehmen. 
+	Im Rahmen des Autocrane-Projektes \ref{sec:BestehendesSystem} \todo{Im Kapitel Bestehdens System erwähnen / diesen Teil in das andere Kapitel verschieben?} wurde eine Kamera an einem Kran angebracht. Die Kamera ist so ausgerichtet, dass sich Aufhängung des Greifers am mittleren oberen Bildrand befindet. Die Auslenkung kann komplett um das Zentrum des Krans bewegen. Der Hintergrund der Bilder kann sich stark ändern. Mittels der Kamera werden kontinuirlich neue unbeschriftete Bilder aufgenommen und bei PSIORI abgelegt. Zu Beginn dieser Arbeit standen mehr 385.000 nicht beschriftete Bilder zur Verfügung. Die Bilder sind 1024 auf 648 Pixel groß und in Farbe. Sie sind in der Form (1024, 648, 3). Die einzelnen Pixel können dabei Werte zwischen 0 und 255 annehmen. 
 	Zum Erreichen der Zielstellung werden zwei Datensätze benötigt.
 	
 		\paragraph{Greifer Datensatz} Der Greifer Datensatz enthält Bilder, in welchen der Greifer mittels Rahmen markiert ist. Abbildung \ref{img:Logs}  zeigt ein beispielhaftes Bild mit markiertem Greifer. Abbildung \ref{img:Grapple} zeigt ein beispielhaftes Bild mit markiertem Greifer.
@@ -88,8 +72,12 @@ Die Datenvorbereitung dient dazu, einen finalen Datensatz zu erstellen, der die 
 			 zu sehen werden die Pixel der Bilder zwischen 0 und 1 Skaliert. Dei Skalierung erfolgt damit jedes Bild eine ähnliche Gewichtung
 			
 			Neural networks process inputs using small weight values, and inputs with large integer values can disrupt or slow down the learning process. As such it is good practice to normalize the pixel values so that each pixel value has a value between 0 and 1.
-	Die Bilddaten werden 		
+			
+			Die Bilddaten werden 		
+			
+			\todo{Pretrain erläutern}
 
+ 
 
 	\begin{table}[ht]
 	\centering
