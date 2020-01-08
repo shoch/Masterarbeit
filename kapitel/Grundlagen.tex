@@ -12,6 +12,7 @@
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
 	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Dieser Kran wird in einer holzverarbeitenden Anlage zum Befüllen eines Fülltrichters eingesetzt. Dabei sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln oder vom LKW aus befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. \cite{PSIORIGmbH.2019}
+
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
@@ -85,6 +86,15 @@ Die Datenvorbereitung dient dazu, einen finalen Datensatz zu erstellen, der die 
 		 & \textbf{Train} & \textbf{Test}  & \textbf{Validation} & \textbf{Summe} 								  \\
 		\textbf{Greifer} 				 & 	X					&	X					& 4.684 				   & x 				\\
 		\textbf{Baumstämme T/F}	 	  &  X					 &	X					 &	X							& 18000		\\
+		
+		
+		logs 5671
+		not loaded 6542 
+		 
+		train 9.771 l 4.537  nl 5.233 80
+		test 1.224 l  568 nl 655  10
+		val  1.225 l 568 nl 656  10
+		
 	\end{tabularx}
 	\caption{Datenaufteilung - Train Test Validation}
 	\label{table:DatenaufteilungTrainTestValidation}
