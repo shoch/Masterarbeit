@@ -1,4 +1,9 @@
 \listoftodos
+34\_40 Tonnen
+7m
+16 pro tag
+
+
 
 
 
@@ -12,14 +17,19 @@
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
 	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Dieser Kran wird in einer holzverarbeitenden Anlage zum Befüllen eines Fülltrichters eingesetzt. Dabei sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln oder vom LKW aus befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. \cite{PSIORIGmbH.2019}
-
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
 		\caption[Rund-Kran]{Rundlaufkran (Foto: ANDRITZ)}
 		\label{img:CircularCrane}
 	\end{figure}		
-	\paragraph{Greifer-Erkennung} Model erläutern 
+
+	\paragraph{Greifer-Erkennung} 
+Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet und eine Bewertung der Güte der Rahmen.
+		https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/
+		
+	\paragraph{Baumstamm-Klassifikation} 
+	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt ebenfalls als pb-Datei vor. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück.
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
