@@ -13,6 +13,23 @@
 	\section{TODO GRUNDALGENDETAIL}
 	\label{sec:TODOGrundlagenDetail}
 		\todo{notwendige klassische Grundlagen definieren} 
+	
+	\section{Bibliotheken und Werkzeuge}
+	\label{sec:BibliothekenundWerkzeuge}
+	Für den Praktischen Teil der Abschlussarbeit wurde als Entwicklungsumgebung Cnvrg[] genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure[] zugreifen. Für die Experimente wurde ein vorgefertiger Container mit 1 tesla-k80 [https://www.nvidia.com/de-de/data-center/tesla-k80/ ], 5 CPUs 	und 49 GB Arbeitspeicher genutztz.
+	
+	Für die Entwicklung wurden insbesondere Python[], Jupyter Notebooks[] und das Framework Tensorflow[]  genutzt. Die wichtigsten Bibliotheken für die Arbeit sind Keras[] , Numpy[] , Matplotlib[] , scikit-learn[] , ConfigSpace[] , Bayesian Optimization and Hyperband[] .  Zusätzlich wurde das  Framework  Psipy[]   von PSIORI genutzt und erweitert. 
+	
+	Psipy ist ein Python-Framework für Maschinelles Lernen welches von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt und die Modelle aus scikit-learn können in das von PSIORI entwickelte Framework eingebunden werden. Das Framework ermöglicht außerdem das Einbinden von Modellen basierend auf TensorFlow.
+	\todo{Quellen}		
+	In den nachfolgenden Abschnitten werden wichtige Module des Frameworks vorgestellt.	
+	\todo{Module beschreiben}
+	\paragraph{autoencoder.py} 
+	\paragraph{hyperparameter\_mixin.py}  
+	\paragraph{coverage\_entropy\_measure.py} 
+	\paragraph{BaseModel.py} 
+	\paragraph{call\_picky}
+	\paragraph{Saveable.py} 
 		
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
@@ -25,11 +42,10 @@
 	\end{figure}		
 
 	\paragraph{Greifer-Erkennung} 
-Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet und eine Bewertung der Güte der Rahmen.
-		https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/
+Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet 	[https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/]
 		
 	\paragraph{Baumstamm-Klassifikation} 
-	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt ebenfalls als pb-Datei vor. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück.
+	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt als meta\_graph vor. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück.
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
@@ -45,8 +61,8 @@ Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Position
 				\caption[Bsp. Bild: Greifer mit Rahmen]{Greifer mit Rahmen}
 				\label{img:Grapple}
 		\end{figure}
-		Der Datensatz besteht aus zwei Sammlungen von qualitativ unterschiedlich gut beschrifteten Bildern. Die eine Sammlung besteht aus einem bestehenden Datensatz, welcher 4.684 durch Menschen annotierten Bildern enthält. Für den zweiten Teil der Sammlung wurden mittels der \todo{siehe Bestehendes System} bestehenden Objekterkennung XXXX Bilder annotiert. \todo{Vorgehen + Metriken detaillierter beschreiben} Das genaue Schema der Datenstrukturen kann in Anhang \ref{appendix:AutocraneDaten} nachgelesen werden.
-
+		Der Datensatz besteht aus zwei Sammlungen von qualitativ unterschiedlich gut beschrifteten Bildern. Die eine Sammlung besteht aus einem bestehenden Datensatz, welcher 4.684 durch Menschen annotierten Bildern enthält. Für den zweiten Teil der Sammlung wurden mittels der bestehenden Objekterkennung 14.018 Bilder annotiert. 
+		
 		\paragraph{Baumstamm Datensatz} Der Baumstamm Datensatz enthält Bilder, welche die Annotation, ob sich Baumstämme im Greifer befinden haben. Abbildung \ref{img:Logs} zeigt ein Bild, in welchem der Greifer Baumstämme greift. In Abbildung \ref{img:Grapple} befinden sich keine Baumstämme im Greifer.
 		\begin{figure}[h]
 			\centering
@@ -54,22 +70,11 @@ Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Position
 			\caption[Bsp. Bild: Greifer mit Baumstämmen]{Greifer mit Baumstämmen}
 			\label{img:Logs}
 		\end{figure}
-		Der Datensatz wurde mittels Crowd
-			
-	%		\begin{figure}[h]
-	%		\centering
-	%		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/.png}
-	%		\caption[Bsp. Bild: Greifer mit Baumstämmen]{Greifer mit Baumstämmen}
-	%		\label{img:Helligkeit}
-	%		\end{figure}			
-		
+		Der Datensatz wurde im Zusammenarbeit mit quality-match[https://www.quality-match.com/imprint] und Crowdworkern erstellt.  
 
-				
-		 \todo{Brightness-Histogramm einfügen} 
-			
-				 Im Rahmen des Datenverständnisses wird versucht, sich einen ersten Überblick über die zur Verfügung stehenden Daten und deren Qualität zu verschaffen. Es erfolgt eine Analyse und Bewertung der Datenqualität. Probleme mit der Qualität der vorhandenen Daten in Bezug auf die in der vorherigen Phase festgelegten Aufgabenstellung sind zu benennen.
-			
-			todo? Datenqualität auf helle und dunkle bidler verweisen und somit zu Datenvorbereitung: skalierung 0-1 verweissen
+		\paragraph{Weiterer Datensatz}
+		Im laufe der Arbeit wurden in Zusammenarbeit mit quality-match ein weiterer Datensatz erstellt. Dieser Datensatz enthält \todo{finale Zahl setzen} 80.000 beschriftete Bilder. Es wurden sowohl die Beschriftung "Logs ja / nein" als auch die Beschriftung  Rahmen des Greifers erstellt. Zusätzlich wurden weitere Beschriftungen wie Hellichkeit, Winkel des Greifers , ... erstellt. Dieses weiteren Beschriftungen wurden in der Arbeit nicht genutzt.		\todo{stimmt das am Ende noch?}
+	
 		
 	\section{Datenvorbereitung}
 	\label{sec:DataPreparation}
@@ -110,58 +115,3 @@ Die Datenvorbereitung dient dazu, einen finalen Datensatz zu erstellen, der die 
 	\label{table:DatenaufteilungTrainTestValidation}
  	\end{table}
  
-	\section{Bibliotheken und Werkzeuge}
-	\label{sec:BibliothekenundWerkzeuge}
-		\todo{TF + Keras nur per Ref}
-		\paragraph{Tensorflow}
-		\paragraph{Keras}
-		
-		
-		\subsection{Psipy}
-		\label{subsec:Psipy}
-			Psipy ist ein Python-Framework für Maschinelles Lernen welches von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt und die Modelle aus scikit-learn können in das von PSIORI entwickelte Framework eingebunden werden. Das Framework ermöglicht außerdem das Einbinden von Modellen basierend auf TensorFlow.\grqq [PSIORI]
-			
-			PSIORI hat im Rahmen des Projektes ein Python-Framework für Maschinelles Lernen entwickelt, das von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn [1] angelehnt und das PSIORI Framework ist mit scikit-learn insofern kompatibel, dass Modelle aus scikit-learn eingebunden werden können. Das Framework ermöglicht außerdem das Einbinden von Modellen basierend auf TensorFlow. [2]
-			
-		\paragraph{autoencoder.py}
-			ConvolutionalAutoencoder 
-			StackedAutoencoder
-		\paragraph{call\_picky}
-		\paragraph{hyperparameter\_mixin.py} 
-			\cite{Lindauer.}
-		
-		Für den effektiven Umgang mit Hyperparametern wurde das Open-Source-Paket ConfigSpace 	\cite{Lindauer.} eingebunden. Mithilfe dieses Pakets spannen die n Hyperparameter des Modells einen n-dimensionalen Raum auf, aus dem Modell-Konfigurationen gezogen, auf das Model angewandt und bezüglich eines Gütemaßes evaluiert werden können. Die Hyperparameter können dabei kontinuierlich in einem Intervall, kategorisch oder auch konstant sein. Je nach Art des jeweiligen Hyperparameters ist der Raum in der zugehörigen Dimension entweder kontinuierlich oder diskret und hat feste Grenzen. ConfigSpace erlaubt zudem die Anwendung von bestimmten Bedingungen und Regeln bezüglich der Werte, die ein Hyperparameter - gegebenenfalls in Abhängigkeit von anderen Hyperparametern - annehmen kann. Der Hyperparameter-Raum eines Modells bildet die Grundlage für alle implementierten Optimierungsalgorithmen, die im Folgenden beschrieben werden.
-		
-		\paragraph{hyperparameter\_optimization.py} 
-Von den klassischen Suchverfahren zur Hyperparameteroptimierung wurden Algorithmen für Gittersuche und zufällige Suche implementiert, sodass sie insbesondere auf den Fully Connected Autoencoder angewendet werden können. Die gierige Suche wurde bisher nicht implementiert. Für die Gittersuche wird der von den Hyperparametern aufgespannte Raum entlang aller Dimensionen, d.h. Hyperparametern, diskretisiert, so das ein Gitter von gleichmäßig verteilten Hyperparameter-Kombinationen (Modell-Konfigurationen) entsteht. Die Gittersuche eignet sich vor allem bei einer kleinen Anzahl von Hyperparametern, da der Rechenaufwand mit der Zahl der Hyperparameter exponentiell ansteigt. Oft soll jedoch nur ein Teil der Hyperparameter optimiert werden, wodurch die Gittersuche sich als ein Standardverfahren in der Hyperparametersuche etabliert hat. [6]
-Bei der zufälligen Suche werden Konfigurationen aus dem Hyperparameter-Raum zufällig gezogen und evaluiert. Die zufällige Suche ist in der Regel effizienter als die Gittersuche [6], garantiert jedoch keine Abdeckung des gesamten Hyperparameter-Raums.
-Gitter- als auch zufällige Suche wurden für PsiPy als naive Standardverfahren sowie als mögliche Referenz für die Evaluation von neuen Algorithmen implementiert. Die gierige Suche wurde bisher nicht implementiert, da potentielle Anwendungsbereiche bereits von den anderen Suchverfahren hinreichend gedeckt sind.
-
-Das State-of-the-Art-Verfahren zur Hyperparameteroptimierung, “Bayesian Optimization + Hyperband” (BOHB) [7] wurde in das entwickelte Framework eingebunden und kann mit dem Fully Connected Autoencoder genutzt werden. BOHB verbindet die Methoden Hyperband und Bayessche Optimierung. Hyperband erlaubt es, schnell eine vergleichsweise gute Konfiguration zu finden - ein häufiges Ziel, wenn z.B. verschiedene Modelle verglichen werden sollen. Da hier der Aufwand für die Evaluation einer Konfiguration davon abhängt, wie vielversprechend eine Konfiguration zu sein scheint, kann mit BOHB eine wesentlich effizientere Suche durchgeführt werden. Die Methode liegt als Open-Source-Paket [8] vor und wurde daher nicht neu implementiert. Das Paket bietet zudem die Möglichkeit zur Parallelisierung des Optimierungsprozesses, welche für den Fully Connected Autoencoder jedoch bisher nicht implementiert ist.
-
-
-[6] Bergstra, James, and Yoshua Bengio. "Random search for hyper-parameter 
-optimization." Journal of Machine Learning Research 13.Feb (2012): 281-305.
-URL: http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf
-[7] Falkner, Stefan, Aaron Klein, and Frank Hutter. "BOHB: Robust and efficient 
-hyperparameter optimization at scale." arXiv preprint arXiv:1807.01774 (2018).
-URL: https://ml.informatik.uni-freiburg.de/papers/18-ICML-BOHB.pdf 
-[8] https://github.com/automl/HpBandSter
-
-		
-	\todo{Bild nur bestehendes System (Stacked Autoencoder + MixedHyperparam* )}
-			\begin{figure}[h]
-			\centering
-			\includegraphics[width=\textwidth, center]{bilder/Grundlagen/Klassen_CSCA.png}
-			\caption[Klassendiagramm ConvolutionalSecondCriterionAutoencoder]{Klassendiagramm ConvolutionalSecondCriterionAutoencoder}
-			\label{img:ConvolutionalSecondCriterionAutoencoder}
-		\end{figure}
-		
-		
-		\subsection{Cnvrg.io}
-		\label{subsec:Cnvrg.io}
-		Cnvrg.io  \todo{Quelle cnvrg} ist eine "full-stack Data Science Platform" welche Werkzeuge  für die Erstellung, Verwaltung, Bereitstellung  und Automatisierung von maschinellem Lernen bereitstellt. \todo{mehr Text; was wurde genutzt (Datasets,...)}
-			
-	\section{Experimentumgebung}
-	\label{sec:Experimentumgebung}
-		(Hardware + eingesetzte Software)
