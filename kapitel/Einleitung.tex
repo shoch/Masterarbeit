@@ -1,13 +1,10 @@
 \listoftodos
 
 Geheimhaltung: PSIpy-Code nicht zeigen Zeichnungen sind ok, Bilder rücksprache halten, Ansosnten offen.
- 
- 
-
- 
+  
 \chapter{Einleitung}
 \label{chap:Einleitung}
-	Das finden geeigneter Repäsentationen von Daten ist ein bekanntes Problem im Feld der DataScience. Dabei ist bekannt, dass Datenrepräsentation maßgeblich für die Leistungsfähigkeit von Maschinellem Lernen verantwortlich ist. Insbesondere Hochdimensionale Daten, wie Bilder, haben mit dem fluch der Dimensionalität[] zu kämpfen. Der Einsatz von Autoencoder[] erlaubt eskomprimierte Datenrepräsentationen für Bilder zu finden. Sind dabei ein unüberwachtes Lernverfahren, brauchen also keine beschrifteten Daten.
+	Das finden geeigneter Repäsentationen von Daten ist ein bekanntes Problem im Feld der DataScience. Dabei ist bekannt, dass Datenrepräsentation maßgeblich für die Leistungsfähigkeit von Maschinellem Lernen verantwortlich ist. Insbesondere Hochdimensionale Daten, wie Bilder, haben mit dem Fluch der Dimensionalität[] zu kämpfen. Der Einsatz von Autoencoder[] erlaubt es komprimierte Datenrepräsentationen für Bilder zu finden. Sind dabei ein unüberwachtes Lernverfahren, brauchen also keine beschrifteten Daten.
 	In vielen Anwendungsfällen ist es teuer oder schwierig beschriftete Daten für neue Anwendungsfälle zu beschaffen. Transferlernen adressiert diese Problematik. Es hat das Ziel, gute Modelle in einer neue Domäne basierend von Wissen in einer anderen Domäne zu erstellen.
 	
 	Die PSIORI GmbH[] ist ein Unternehmen, welches Projekte im Bereich der künstlichen Intelligenz für Kunden durchführt. PSIORI kann dabei auf einen mehrjärigen Erfahrungsschatz im Bereich des Maschinellem Lernen zurückgreifen und setzt dabei häufig Autoencoder und das Transferlernen zum Lösen von Aufgabenstellungen ein. Oft ist der Ansatz des Transferlernenes kostengünstiger um ein neues Modell in einer bestehenden Domäne zu erstellen. 
@@ -16,11 +13,26 @@ Geheimhaltung: PSIpy-Code nicht zeigen Zeichnungen sind ok, Bilder rücksprache 
 
 	\section{Zielsetzung}
 	\label{sec:Zielsetzung}
-	Ziel dieser Arbeit ist es, Werkzeuge zur Kombination der Ansatzes des Autoencoders und des Transferlernenes zu erstellen und zu evaluieren. Dabei wird die Schwäche,   
-
+	Ziel dieser Arbeit ist es, Werkzeuge zur Kombination der Ansatzes des Autoencoders und des Transferlernenes zu erstellen und an Hand von einem echten Datensatz zu evaluieren.
+	\paragraph{SecondCriterionAutoenocder} Der SecondCriterionAutoenocder (SCAE) ist ein Werkzeug welches beim Erstellen eines Autoencoder mit weiterer Verlustfunktion unterstützt.  
+    \paragraph{TransferSecondCriterionAutoenocder} Der TransferSecondCriterionAutoenocder (TSCAE) ersetzt die Verlustfunktion eines SCAE.
+ 	\paragraph{AutoTransferSecondCriterionAutoenocder} Der AutoTransferSecondCriterionAutoenocder (AutoTSCAE) erweitert den TSCAE um eine automatische Hyperparametersuche. 
+  		
 	\section{Vorgehen}
 	\label{sec:Vorgehen}
+	WErkezuge erstellen Mnsit + Emnist
+	 1.
+	 2.
+	 
+	Modelle Iterativ verbessern
+		1. fit
+		2. fitgenerator
+		3. 80.000	
+	3. AutoMl
+		
 	
+	
+	[MNIST] [EMNIST]
 	
 
 
