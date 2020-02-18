@@ -12,8 +12,17 @@
 
 	\section{TODO GRUNDALGENDETAIL}
 	\label{sec:TODOGrundlagenDetail}
-		\todo{notwendige klassische Grundlagen definieren} 
-	
+	\todo{notwendige klassische Grundlagen definieren} 
+		Stacked Convolutional Auto-Encoders Stacked Convolutional Auto-Encoders for
+		Hierarchical Feature Extraction
+		Jonathan Masci, Ueli Meier, Dan Ciresan, and Jurgen Schmidhuber
+		Istituto Dalle Molle di Studi sullIntelligenza Artificiale (IDSIA)
+		Lugano, Switzerland
+		{jonathan,ueli,dan,juergen}@idsia.ch
+		
+ 			- layerwise pretrain {Greedy Layer-Wise Training of Deep Networks}
+		- repraesentationen
+		- transferlearning
 	\section{Bibliotheken und Werkzeuge}
 	\label{sec:BibliothekenundWerkzeuge}
 	Für den Praktischen Teil der Abschlussarbeit wurde als Entwicklungsumgebung Cnvrg[] genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure[] zugreifen. Für die Experimente wurde ein vorgefertiger Container mit einer tesla-k80 [https://www.nvidia.com/de-de/data-center/tesla-k80/ ], fünf CPUs und 49 GB Arbeitspeicher genutzt. 
@@ -37,7 +46,7 @@
 	
 	 \paragraph{saveable.py} Das Modul Saveable bietet Kernfunktionalität zum Speichern und Laden von Klassen. Dabei werden verscheidene Arten von Modellen welche diverse Bibliotheken nutzen können auf eine einheitliche Art und Weise gespeichert. 
 
-	\paragraph{autoencoder.py} Das Modul Autoencoder enthält die drei Klassen StackedAutoencoder, FullyConnectedAutoencoder und ConvolutionalAutoencoder. Der StackedAutoencoder wird als Vaterklasse für die anderen beiden Klassen genutzt. Im Konstruktor werden Methoden aufgerufe,n welche in den Kindklassen ausprogrammiert sind. Dabei wird ein Keras-Modell für einen Encoder und Decoder enstprechend von Parametern  erstellt. Als weitere wichtigen Methoden gibt es die Methode pretrain und fit. Mittels pretrain werden die Schichten eines symmetrischer Autoencoder von aussen nach Innen vortrainiert. Die Auswahl der Schichten erfolgt wieder in den Kindklassen.
+	\paragraph{autoencoder.py} Das Modul Autoencoder enthält die drei Klassen StackedAutoencoder, FullyConnectedAutoencoder und ConvolutionalAutoencoder. Der StackedAutoencoder wird als Vaterklasse für die anderen beiden Klassen genutzt. Im Konstruktor werden Methoden aufgerufe,n welche in den Kindklassen ausprogrammiert sind. Dabei wird ein Keras-Modell für einen Encoder und Decoder enstprechend von Parametern  erstellt. Als weitere wichtigen Methoden gibt es die Methode pretrain und fit. Mittels pretrain werden die Schichten eines symmetrischer Autoencoder von aussen nach innen wie in 	\todo{Quelle Autoencoder pretrain} Greedy Layer-Wise Training of Deep Networks  vortrainiert. Die Auswahl der Schichten erfolgt wieder in den Kindklassen.
 	In der fit-Methode wird nach einigen Prüfungen die Methode fit() 	\todo{Quelle fit Keras}	[fit Keras] des Kerasmodells aufgerufen. In Abbildung \ref{img:KlassendiagrammConvolutionalAutoencoder} ist das Klassendiagramm mit den öffnetlichen Methoden des ConvolutionalAutoencoder dargestellt. 
 	\begin{figure}[h]
 		\centering
@@ -90,7 +99,7 @@ Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Position
 		Der Datensatz wurde im Zusammenarbeit mit quality-match[https://www.quality-match.com/imprint] und Crowdworkern erstellt.  
 
 		\paragraph{Weiterer Datensatz}
-		Im laufe der Arbeit wurden in Zusammenarbeit mit quality-match ein weiterer Datensatz erstellt. Dieser Datensatz enthält \todo{finale Zahl setzen} 80.000 beschriftete Bilder. Es wurden sowohl die Beschriftung "Logs ja / nein" als auch die Beschriftung  Rahmen des Greifers erstellt. Zusätzlich wurden weitere Beschriftungen wie Hellichkeit, Winkel des Greifers , ... erstellt. Dieses weiteren Beschriftungen wurden in der Arbeit nicht genutzt.		\todo{stimmt das am Ende noch?}
+		Im laufe der Arbeit wurden in Zusammenarbeit mit quality-match ein weiterer Datensatz erstellt. Dieser Datensatz enthält \todo{finale Zahl setzen} 80.000 beschriftete Bilder. Es wurden sowohl die Beschriftung "Logs ja / nein" als auch die Beschriftung  Rahmen des Greifers erstellt. Zusätzlich wurden weitere Beschriftungen wie Hellichkeit, Winkel des Greifers, ... erstellt. Dieses weiteren Beschriftungen wurden in der Arbeit nicht genutzt.		\todo{stimmt das am Ende noch?}
 	
 		
 	\section{Datenvorbereitung}
