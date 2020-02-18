@@ -16,21 +16,38 @@
 	
 	\section{Bibliotheken und Werkzeuge}
 	\label{sec:BibliothekenundWerkzeuge}
-	Für den Praktischen Teil der Abschlussarbeit wurde als Entwicklungsumgebung Cnvrg[] genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure[] zugreifen. Für die Experimente wurde ein vorgefertiger Container mit 1 tesla-k80 [https://www.nvidia.com/de-de/data-center/tesla-k80/ ], 5 CPUs 	und 49 GB Arbeitspeicher genutztz.
+	Für den Praktischen Teil der Abschlussarbeit wurde als Entwicklungsumgebung Cnvrg[] genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure[] zugreifen. Für die Experimente wurde ein vorgefertiger Container mit einer tesla-k80 [https://www.nvidia.com/de-de/data-center/tesla-k80/ ], fünf CPUs und 49 GB Arbeitspeicher genutzt. 
+
+	Für die Entwicklung wurden insbesondere Python[], Jupyter Notebooks[] und das Framework Tensorflow[]  genutzt. Die wichtigsten Bibliotheken für die Arbeit sind Keras[] , Numpy[] , Matplotlib[] , scikit-learn[] , ConfigSpace[] , Bayesian Optimization and Hyperband[] . 
 	
-	Für die Entwicklung wurden insbesondere Python[], Jupyter Notebooks[] und das Framework Tensorflow[]  genutzt. Die wichtigsten Bibliotheken für die Arbeit sind Keras[] , Numpy[] , Matplotlib[] , scikit-learn[] , ConfigSpace[] , Bayesian Optimization and Hyperband[] .  Zusätzlich wurde das  Framework  Psipy[]   von PSIORI genutzt und erweitert. 
+	Insbesondere für die Visualisierung von Embeddings wurde das Werkzeug PSIORI Visualizer erweitert und eingesetzt. Der Visualizer erlaubt es Daten in 3D darzustellen, von verschiedenen Blickwinkel und Zoomstufen zu betrachten, zu Filtern und mit zusätzlichen Informationen zu versehen. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\textwidth, center]{bilder/Grundlagen/Example_Visualizer.png}
+		\caption[Beispiel PSIORI Visualizer]{Beispiel PSIORI Visualizer}
+		\label{img:ExampleVisualizer}
+	\end{figure}  
+	Die Abbildung \ref{img:ExampleVisualizer} zeigt einen Screenshot einer Visualisierung eines  Embeddings. Als zusätzliche Information sind die Datenpunkte entsprechend einer Klassifikation in True-Positiv, True-Negativ, False-Negativ und False-Positiv eingefärbt. Über einen Datenpunkt kann mit der Maus geschwebt werde,n um ein Bild anzuzeigen. Diese Funktion wurde insbesondere zum Anzeigen eines Orginalbildes und ihrer Rekonstruktion mittels Autoencoder genutzt. 
 	
-	Psipy ist ein Python-Framework für Maschinelles Lernen welches von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt und die Modelle aus scikit-learn können in das von PSIORI entwickelte Framework eingebunden werden. Das Framework ermöglicht außerdem das Einbinden von Modellen basierend auf TensorFlow.
+	Kern des praktischen Teils der Arbeit ist das Framework  Psipy[] .	
+	Psipy ist ein Python-Framework für Maschinelles Lernen welches von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt und die Modelle aus scikit-learn können in das von Framework eingebunden werden. Das Framework ermöglicht außerdem das Einbinden von Modellen basierend auf TensorFlow.
 	\todo{Quellen}		
-	In den nachfolgenden Abschnitten werden wichtige Module des Frameworks vorgestellt.	
-	\todo{Module beschreiben}
-	\paragraph{autoencoder.py} 
-	\paragraph{hyperparameter\_mixin.py}  
-	\paragraph{coverage\_entropy\_measure.py} 
-	\paragraph{BaseModel.py} 
-	\paragraph{call\_picky}
-	\paragraph{Saveable.py} 
-		
+	
+	In den nachfolgenden Abschnitten werden die wichtigsten Module des Frameworks vorgestellt. Diese Module wurden beim erstellen der neuen Module genutzt.
+	
+	 \paragraph{saveable.py} Das Modul Saveable bietet Kernfunktionalität zum Speichern und Laden von Klassen. Dabei werden verscheidene Arten von Modellen welche diverse Bibliotheken nutzen können auf eine einheitliche Art und Weise gespeichert. 
+
+	\paragraph{autoencoder.py} Das Modul Autoencoder enthält die drei Klassen StackedAutoencoder, FullyConnectedAutoencoder und ConvolutionalAutoencoder. Der StackedAutoencoder wird als Vaterklasse für die anderen beiden Klassen genutzt. Im Konstruktor werden Methoden aufgerufe,n welche in den Kindklassen ausprogrammiert sind. Dabei wird ein Keras-Modell für einen Encoder und Decoder enstprechend von Parametern  erstellt. Als weitere wichtigen Methoden gibt es die Methode pretrain und fit. Mittels pretrain werden die Schichten eines symmetrischer Autoencoder von aussen nach Innen vortrainiert. Die Auswahl der Schichten erfolgt wieder in den Kindklassen.
+	In der fit-Methode wird nach einigen Prüfungen die Methode fit() 	\todo{Quelle fit Keras}	[fit Keras] des Kerasmodells aufgerufen. In Abbildung \ref{img:KlassendiagrammConvolutionalAutoencoder} ist das Klassendiagramm mit den öffnetlichen Methoden des ConvolutionalAutoencoder dargestellt. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/klassendiagramm_public_cae.png}
+		\caption[Klassendiagramm ConvolutionalAutoencoder]{Klassendiagramm ConvolutionalAutoencoder}
+		\label{img:KlassendiagrammConvolutionalAutoencoder}
+	\end{figure}  
+	
+	\paragraph{hyperparameter\_mixin.py}  Hyperparameter\_mixin wird zum Standardisierten ablegen von Hyperparametern für AutoML Klassen genutzt. Auf die Hyperaparameter kann anschließend einheitlich zugegriffen werden.
+	
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
 	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Dieser Kran wird in einer holzverarbeitenden Anlage zum Befüllen eines Fülltrichters eingesetzt. Dabei sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln oder vom LKW aus befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. \cite{PSIORIGmbH.2019}
