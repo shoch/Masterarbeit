@@ -1,18 +1,23 @@
-\listoftodos
-34\_40 Tonnen
-7m
-16 pro tag
-
-
-
-
-
 \chapter{Grundlagen}
 \label{chap:Grundlagen}
 
-	\section{TODO GRUNDALGENDETAIL}
-	\label{sec:TODOGrundlagenDetail}
-	\todo{notwendige klassische Grundlagen definieren} 
+	\section{ Convolutional Autoencoder}
+	\label{sec:StackedConvolutionalAutoencoder}
+		\subsection{Autoencoder }			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_CAE.png}
+				\caption[Schema Autoencoder]{Schema Autoencoder}
+				\label{img:SchemaCAE}
+			\end{figure}  
+		
+			- NN
+		\subsection{Stacked Convolutional Autoencoder }
+			, Convolutions nur per Quelle erläutern
+		\subsection{Layerwise Pretrain }
+
+		Warum pretrian?:	https://papers.nips.cc/paper/3048-greedy-layer-wise-training-of-deep-networks.pdf (Warum machen das andere heute nicht mehr? viele cnn haben vanishing gradients problem  über relu,... gelösst) (weitere literatur: möglicherweise Geoffrey E. Hinton)
+
 		Stacked Convolutional Auto-Encoders Stacked Convolutional Auto-Encoders for
 		Hierarchical Feature Extraction
 		Jonathan Masci, Ueli Meier, Dan Ciresan, and Jurgen Schmidhuber
@@ -20,12 +25,23 @@
 		Lugano, Switzerland
 		{jonathan,ueli,dan,juergen}@idsia.ch
 		
- 			- layerwise pretrain {Greedy Layer-Wise Training of Deep Networks}
-		- repraesentationen
-		- transferlearning
+		- layerwise pretrain {Greedy Layer-Wise Training of Deep Networks}
+	\section{Transfer Learning}
+	\label{sec:TransferLearning}
+			oberste Schichten allgemeiner todo papaer verweisen
+	\section{AutoML}
+	\label{sec:AutoML}
+		
+		\subsection{RandomSearch }
+		
+		\subsection{HyperBand }
+
+		\subsection{BOHB }
+
+
 	\section{Bibliotheken und Werkzeuge}
 	\label{sec:BibliothekenundWerkzeuge}
-	Für den Praktischen Teil der Abschlussarbeit wurde als Entwicklungsumgebung Cnvrg \cite{cnvrg.io.} genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure[] zugreifen. Für die Experimente wurde ein vorgefertiger Container mit einer tesla-k80 \cite{Nvidia.2020}, fünf CPUs und 49 GB Arbeitspeicher genutzt. 
+	Für den Praktischen Teil der Abschlussarbeit wurde als Entwicklungsumgebung Cnvrg \cite{cnvrg.io.} genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure \cite{Micorsoft.2020} zugreifen. Für die Experimente wurde ein vorgefertiger Container mit einer tesla-k80 \cite{Nvidia.2020}, fünf CPUs und 49 GB Arbeitspeicher genutzt. 
 
 	Für die Entwicklung wurden insbesondere Python \cite{PythonSoftwareFoundation.2020}, Jupyter Notebooks \cite{ProjectJupyter} und das Framework Tensorflow \cite{MartinAbadi.2015}  genutzt. Die wichtigsten Bibliotheken für die Arbeit sind Keras \cite{Chollet.2015} , Numpy \cite{Oliphant.2006} , Matplotlib \cite{Hunter.2007} , scikit-learn \cite{Pedregosa.2011} , ConfigSpace \cite{Lindauer.8162019} , Bayesian Optimization and Hyperband \cite{StefanFalkner.2018} . 
 	
@@ -55,11 +71,18 @@
 		\label{img:KlassendiagrammConvolutionalAutoencoder}
 	\end{figure}  
 	
-	\paragraph{hyperparameter\_mixin.py}  Hyperparameter\_mixin wird zum Standardisierten ablegen von Hyperparametern für AutoML Klassen genutzt. Auf die Hyperaparameter kann anschließend einheitlich zugegriffen werden.
+	\paragraph{hyperparameter\_mixin.py}  Hyperparameter\_mixin wird zum Standardisierten Verwalten von Hyperparametern für AutoML-Klassen genutzt. Auf die Hyperaparameter kann anschließend einheitlich zugegriffen werden. Abbildung \ref{img:KlassendiagrammHyperparametermixin}  zeigt das zugehörige UML-Klassendiagramm mit den Methoden zum Hinzufügen, Löschen und Laden der Hyperparameter. Da die Methoden öffentlich sind können über jede erbende Klasse die Hyperparameter eingenständig verwaltet werden.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth, center]{bilder/Klassendiagramme/Hyperparametermixin.png}
+		\caption[Klassendiagramm Hyperparametermixin]{Klassendiagramm Hyperparametermixin}
+		\label{img:KlassendiagrammHyperparametermixin}
+	\end{figure}  
 	
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
-	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Dieser Kran wird in einer holzverarbeitenden Anlage zum Befüllen eines Fülltrichters eingesetzt. Dabei sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln oder vom LKW aus befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. \cite{PSIORIGmbH.2020}
+	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Dieser Kran wird in einer holzverarbeitenden Anlage zum Befüllen eines Fülltrichters eingesetzt. Dabei sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln oder vom LKW aus befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. Im Normalbetrieb werden Täglich circa 16 LKW entladen. Dabei ist die Ladung ~ sieben Meter lang und ist 34 bis 40 Tonnen schwer.  \cite{PSIORIGmbH.2020}
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
@@ -68,7 +91,8 @@
 	\end{figure}		
 
 	\paragraph{Greifer-Erkennung} 
-Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet 	[https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/]
+Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Zur Erzeugung des Neuronalen Netzwerkes wurde auf die Technik des Single Shot MultiBox Detector [todo https://arxiv.org/abs/1512.02325] zurückgegriffen.
+ Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet und einen Vertrauenswert der aussagt wie sicher sich das Netzt mit seiner Aussage ist.	[https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/]
 		
 	\paragraph{Baumstamm-Klassifikation} 
 	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt als meta\_graph vor. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück.
@@ -117,7 +141,6 @@ Die Datenvorbereitung dient dazu, einen finalen Datensatz zu erstellen, der die 
 			
 			Die Bilddaten werden 		
 			
-			\todo{Pretrain erläutern}
 
  
 
