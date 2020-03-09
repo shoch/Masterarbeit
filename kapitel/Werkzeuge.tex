@@ -52,8 +52,7 @@ Dieses Kapitel erläutert die erstellten Werkzeuge im Detail. Die Werkzeuge baue
 	second_criterion_loss = 'categorical_crossentropy',
 	loss_weights=[8., 1.],
 	second_criterion_metrics = {'second_criterion':'accuracy'},
-	code_layer_kwargs=dict(),        
-	)
+	code_layer_kwargs=dict())
 	\end{lstlisting}
 Listing  \ref{lst:BspPretrainConvolutionalSecondCriterionAutoenocder}  zeigt den Aufruf der Methode Pretrain. Der Aufruf führt zu einem Schichtenweise-Trainieren des Netzwerkes mit den Daten x\_train bei 20 Epochen und einer Stapelgröße von 64. 
 \begin{lstlisting}[language=python,caption=Beispielaufruf Pretrain  in Python, label=lst:BspPretrainConvolutionalSecondCriterionAutoenocder]
@@ -80,14 +79,16 @@ validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 		\caption[Schema TransferSecondCriterionAutoenocder]{Schema TransferSecondCriterionAutoenocder}
 		\label{img:SchemaTSCAE}
 	\end{figure}  
-	Im Klassendiagramm \ref{img:KlassendiagrammTransferSecondCriterionAutoenocder} für den TSCAE ist zu sehen. Das besondere ist, dass ein SCAE als Konstruktorargument übergeben wird. Die Einstellungen für den ConvolutionalAutoencoder werden aus diesem Model kopiert. Zusätlich müssen nur noch die Einstellungen für das zweite Kriterium übergeben werden. 	
-	Listing \ref{lst:BspTransferSecondCriterionAutoenocder} zeigt einen Beispielhaft die Anwendung dieses Werkzeuges. Im Vergleich zu dem sCAE ist die Anwendung schon deutlich einfacher. Es gibt weniger Hyperparameter zum Beachten. Da das Modell auf einem trainierten SCAE basiert ist ist kein $pretrain(..)$ mehr notwenig. Die Methode $fit(..)$ wird auf die selbe Weisse wie bei SCAE angwendet.	
+	Im Klassendiagramm \ref{img:KlassendiagrammTransferSecondCriterionAutoenocder} für den TSCAE ist zu sehen. Das besondere ist, dass ein SCAE als Konstruktorargument übergeben wird. Die Einstellungen für den ConvolutionalAutoencoder werden aus diesem Model kopiert. Zusätlich müssen nur noch die Einstellungen für das zweite Kriterium übergeben werden. Aus diesen wird das Model für das zweite Kriterium erstellt.
+	Neu hinzugekommen ist, ein Parameter(freeze\_encoder\_layers) über den eingestellt werden kann, ob und welche Schichten nicht neu trainiert werden können. Es können dierrkt Schichten ausgewählt werden oder es kann über einen Ganzahlenwert Beginnend über die erste Schicht Schichten eingefroren. Werden nur Werte für den Encoder übergeben werden Werte für den Decoder (freeze\_decoder\_layers) daraus abgeleitet. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Klassendiagramme/Klassendiagramm_TLCSCAE.png}
 		\caption[Klassendiagramm TransferSecondCriterionAutoenocder]{Klassendiagramm TransferSecondCriterionAutoenocder}
 		\label{img:KlassendiagrammTransferSecondCriterionAutoenocder}
 	\end{figure}  
+	Listing \ref{lst:BspTransferSecondCriterionAutoenocder} zeigt einen Beispielhaft die Anwendung dieses Werkzeuges. Im Vergleich zu dem SCAE ist die Anwendung schon deutlich einfacher. Es gibt weniger Hyperparameter zum Beachten. Da das Modell auf einem trainierten SCAE basiert ist ist kein $pretrain(..)$ mehr notwenig. Die Methode $fit(..)$ wird auf die selbe Weisse wie bei SCAE angwendet.	
+
 
 	\begin{lstlisting}[language=python,caption=Beispiel TransferSecondCriterionAutoenocder in Python, label=lst:BspTransferSecondCriterionAutoenocder]
 	tscm = TransferLearningConvolutionalSecondCriterionAutoencoder(csc_autoencoder,
@@ -97,8 +98,7 @@ validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 	second_criterion_output_layer_kwargs = {'activation': 'sigmoid'}, 
 	loss_weights=[1, 0.01],
 	freeze_encoder_layers = 2
-	,freeze_decoder_layers =2)
-	
+	,freeze_decoder_layers =[0,1])
 	
 	history = tscm.fit(
 	x_train,
@@ -111,15 +111,16 @@ validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 			
 	\section{AutoTransferSecondCriterionAutoenocder}
 	\label{sec:AutoTransferSecondCriterionAutoenocder}
-
-
+	Der AutoTransferSecondCriterionAutoenocder ist ein TransferSecondCriterionAutoenocder welcher mit Hilfe von HpBandSter AutoML zur Hyperparameteroptimierung einsetzt. Konkret ist erbt die Klasse von hpbandster.core.worker. Zur Speicherung und Verwaltung der Hyperparameter wird auf die Klassse HyperparameterMixin zurückgegriffen. Bei der Instanzierung der Klasse werden sinvolle Standardwerte für Hyperparameter gesetzt. Die Werte können aber später noch angepasst werden. 
+	In Abbildung \ref{img:KlassendiagrammAutoTransferSecondCriterionAutoenocder}  ist das zugehörige Klassendiagramm abgebildet. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Klassendiagramme/Klassendiagramm_AutoTLCSCAE.png}
 		\caption[Klassendiagramm AutoTransferSecondCriterionAutoenocder]{Klassendiagramm AutoTransferSecondCriterionAutoenocder}
 		\label{img:KlassendiagrammAutoTransferSecondCriterionAutoenocder}
 	\end{figure}  
-
+	In Listing \ref{lst:BspAutoTransferSecondCriterionAutoenocder} ist eine einfache Implementierung eines AutoTransferSecondCriterionAutoenocder dargestellt. Der Konstruktor unterscheidet sich nur an einer Stelle zum Konstruktor des TransferSecondCriterionAutoenocder. Es wird keine Instanz des SCAE übergeben sondern ein Pfad zu einem abgespeicherten Modell eines SCAE. 
+	Im Gegensatz zur bisherigen Vorgehensweise werden die Trainings und Testdaten mit der Methode $set_generators(..)$  oder $set_numpy_data(..)$ übergeben. Ziel ist es dabei die komplexität der Methode $optimize(..)$ zu reduzieren. Durch den Aufruf von $optimize(..)$ wird der Optimierungsvorgang gestartet. Die Parameter sind dabei die Anzahl an Iterationen, die Optimierungsstrategie und ein Wörterbuch welches zusätzliche Einstellungen für die einzelnen Optimierer enthalten kann. In jeder Iteration der Optimierung wird ein neuer TransferSecondCriterionAutoenocder erstellt und mittels der ausgewählten Hyperparameter und übergebenen Daten trainiert. 
 	\begin{lstlisting}[language=python,caption=Beispiel AutoTransferSecondCriterionAutoenocder in Python, label=lst:BspAutoTransferSecondCriterionAutoenocder]
 	tscm = AutoTransferConvolutionalSecondCriterionAutoencoder(max_deep_freeze=2,
 	path_to_model = path_to_base_model,            
@@ -137,3 +138,27 @@ validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 	,'RandomSearch'
 	,optimization_kwargs = optimization_kwargs)
 	\end{lstlisting}
+	Das Werkezug unterstützt derzeit die Optimierer, Randomsearch, Hyperband und BOHB.	In Tabelle \ref{table:HyperparparameterAutoML} sind die Hyperaparameter und ihre mögliche Werte dargestellt.
+	\begin{table}[ht]
+		\centering
+		\begin{tabularx}{\textwidth}{lll}
+			 \textbf{Hyperparameter} & \textbf{Werte}  & \textbf{Datentyp} 					 	\\
+			\textbf{Optimierer}   & 	Adam, sgd, rmsprop		&	Kategorial			\\
+			\textbf{Batch\_size}  &  32 - 1024					 &	Ganzzahl			        \\
+			\textbf{Epochen}	 &  10 - 10.000				 &	Ganzzahl					 	\\
+			\textbf{autoencoder\_loss\_weight}	 	  &  0.01 - 1	 &	Fließkommazahl	\\
+			\textbf{second\_criterion\_loss\_weight}	& 0.01 - 1  &	Fließkommazahl	 \\
+			\textbf{freeze\_encoder\_layers}	 	  &  0 - Parameter  &	Ganzzahl						\\
+			\textbf{freeze\_decoder\_layers}	 	  &  0 - Parameter &	Ganzzahl								
+		\end{tabularx}
+		\caption{Standard Hyperparameter für AutoML-Suche}
+		\label{table:HyperparparameterAutoML}
+	\end{table}
+	Der Wertebereich für die Batchsize wurde aus der Autocrane-Problemstellung abgeleitet. Sie kann maximal so groß werde, dass kein Speicherplatz-Fehler auftreten kann. Die maximale Anzahl der Epochen wurde bewusst groß gewählt. Es sollen weitere  Problemstellungen ohne viel Konfigurationsaufwand gelöst werden können. Absurd lange Laufzeiten können durch ein EarlyStopping Kriterium verhindert werden. Die Maximal anzahl der möglicherweise einzufrierenden Schichten wird über den Anwender des Werkzeuges definiert, sie sind Anwendungsspezifisch.
+	
+		\todo{weight durch Verhältnis w1/w2 anpassen.}  
+	
+	\todo{Worker Budget berücksichtingen / notieren}  
+
+	
+	
