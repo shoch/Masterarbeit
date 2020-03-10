@@ -26,6 +26,8 @@
 		{jonathan,ueli,dan,juergen}@idsia.ch
 		
 		- layerwise pretrain {Greedy Layer-Wise Training of Deep Networks}
+		
+	\section{Image Augumentation}
 	\section{Transfer Learning}
 	\label{sec:TransferLearning}
 			oberste Schichten allgemeiner todo papaer verweisen
@@ -92,7 +94,7 @@
 		\label{img:CircularCrane}
 	\end{figure}		
 
-	\paragraph{Greifer-Erkennung} Bei der Aufgabenstellung Greifer-Erkennung muss in einem Bild die Position eines Rahmen um den Greifer gefunden werden. Abbildung \ref{img:Grapple} zeigt ein Bild mit Rahmen um den Greifer. Es handelt sich um eine klassische 'Object-Detection' Aufgabe.
+	\paragraph{Greifererkennung} Bei der Aufgabenstellung Greifer-Erkennung muss in einem Bild die Position eines Rahmen um den Greifer gefunden werden. Abbildung \ref{img:Grapple} zeigt ein Bild mit Rahmen um den Greifer. Es handelt sich um eine klassische 'Object-Detection' Aufgabe.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Grapple_8.png}
@@ -101,60 +103,88 @@
 	\end{figure}
 	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei  wurde auf die Technik des Single Shot MultiBox Detector (SSD) [todo https://arxiv.org/abs/1512.02325] zurückgegriffen. Das Netz liegt als frozen\_inference\_graph.pb vor.  Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Um Vorhersagen treffen zu können wurde eine Klasse erstellt, welche mittels einer Tensorflowsession und dem Model vorhersagen trifft.  Dabei wird liefert das Mode pro Billd einen Rahmen in welchem sich der Greifer befindet und einen Vertrauenswert. Der Vertrauensswert sagt aus wie sicher sich das Netzt mit seiner Aussage ist. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt.
 		
-	\paragraph{Baumstamm-Klassifikation} Die Aufgabe der Baumstamm-Klassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe.
+	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe.
 	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt als Tensorflow-MetaGraph[https://www.tensorflow.org/api\_docs/python/tf/compat/v1/train/import\_meta\_graph] vor. Um Vorhersagen treffen zu können wurde eine Klasse welche den MetaGraph nutzt erstellt. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück. Dieses Model wird wie das Greifererkennung Model  als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt.
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
-	Anlehnend dem in Kapitel \ref{sec:Vorgehen} beschriebenen Vorgehen \todo{Vorgehen auch so beschreiben /  ansonsten Kapitel Einleitung anpassen} werden in diesem Kapitel die zur Verfügung stehenden Daten und deren Qualität beschrieben. Dabei ist das Kapitel entsprechend der Beschriftung der Daten in zwei Teilbereiche unterteilt.
+	Mittels Kamera an der Kabine können neue unbeschriftete Bilder aufgenommen und bei PSIORI abgelegt werden. Durch den Aufbau des Rundkrans und der Kameraposition befindet sich der Greifer immer im Bild wobei sich der Hintergrund der Bilder stark ändern kann. Die geographische Lage des Rundkrans ist im Hinblick auf das Wetter positiv. Es fällt kein Schnee und es gibt wenige Regentage. In Abbildung  \ref{img:Bildqualität} sind Ausprägungen der  Bildqualität dargestellt. Abgesehen von Bildern in guter Qualität gibt es helle Bilder, dunkle Bilder und Bidler mit reflexionen. Die Bilder sind 1024 auf 648 Pixel groß und in Farbe. Die einzelnen Pixel können dabei Werte zwischen 0 und 255 annehmen. 
+	Entsprechend der beiden Aufgabenstellungen Greifererkennung und Baumstammklassifikation werden Daten mit einer apssenden Beschriftung benötigt.
+		\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Logs_14.png}
+		\caption[Bsp. Bild: Greifer mit Baumstämmen]{Greifer mit Baumstämmen}
+		\label{img:Logs}
+	\end{figure}
 	
-	Im Rahmen des Autocrane-Projektes \ref{sec:BestehendesSystem} \todo{Im Kapitel Bestehdens System erwähnen / diesen Teil in das andere Kapitel verschieben?} wurde eine Kamera an einem Rundlaufkran angebracht. Die Kamera ist so ausgerichtet, dass sich Aufhängung des Greifers am mittleren oberen Bildrand befindet. Bei einem Rundlaufkran kann die Auslenkung komplett um das Zentrum des Krans bewegt werden. Der Hintergrund der Bilder kann sich stark ändern. Mittels der Kamera werden kontinuirlich neue unbeschriftete Bilder aufgenommen und bei PSIORI abgelegt. Zu Beginn dieser Arbeit standen mehr 385.000 nicht beschriftete Bilder zur Verfügung. Die Bilder sind 1024 auf 648 Pixel groß und in Farbe. Sie sind in der Form (1024, 648, 3). Die einzelnen Pixel können dabei Werte zwischen 0 und 255 annehmen. 
-	Zum Erreichen der Zielstellung werden zwei Datensätze benötigt.
-	
-		\paragraph{Greifer Datensatz} Der Greifer Datensatz enthält Bilder, in welchen der Greifer mittels Rahmen markiert ist. Abbildung \ref{img:Logs}  zeigt ein beispielhaftes Bild mit markiertem Greifer. Abbildung \ref{img:Grapple} zeigt ein beispielhaftes Bild mit markiertem Greifer.
-
-		Der Datensatz besteht aus zwei Sammlungen von qualitativ unterschiedlich gut beschrifteten Bildern. Die eine Sammlung besteht aus einem bestehenden Datensatz, welcher 4.684 durch Menschen annotierten Bildern enthält. Für den zweiten Teil der Sammlung wurden mittels der bestehenden Objekterkennung 14.018 Bilder annotiert. 
+	\begin{figure}[h]
+		\begin{subfigure}[c]{0.24\textwidth}			
+			\includegraphics[width=1\textwidth]{bilder/Grundlagen/Daten_Bildqualitaet/gut.png}
+			\subcaption{Gut}			
+		\end{subfigure}
+		\begin{subfigure}[c]{0.24\textwidth}			
+			\includegraphics[width=1\textwidth]{bilder/Grundlagen/Daten_Bildqualitaet/hell.png}
+			\subcaption{Hell}			
+		\end{subfigure}
+		\begin{subfigure}[c]{0.24\textwidth}			
+			\includegraphics[width=1\textwidth]{bilder/Grundlagen/Daten_Bildqualitaet/dunkel.png}
+			\subcaption{Dunkel}			
+		\end{subfigure}
+		\begin{subfigure}[c]{0.24\textwidth}			
+			\includegraphics[width=1\textwidth]{bilder/Grundlagen/Daten_Bildqualitaet/Reflexionen.png}
+			\subcaption{Reflexionen}			
+		\end{subfigure}
+		\caption{Bildqualität}
+		\label{img:Bildqualität}
+	\end{figure}
 		
-		\paragraph{Baumstamm Datensatz} Der Baumstamm Datensatz enthält Bilder, welche die Annotation, ob sich Baumstämme im Greifer befinden haben. Abbildung \ref{img:Logs} zeigt ein Bild, in welchem der Greifer Baumstämme greift. In Abbildung \ref{img:Grapple} befinden sich keine Baumstämme im Greifer.
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Logs_14.png}
-			\caption[Bsp. Bild: Greifer mit Baumstämmen]{Greifer mit Baumstämmen}
-			\label{img:Logs}
-		\end{figure}
-		Der Datensatz wurde im Zusammenarbeit mit quality-match[https://www.quality-match.com/imprint] und Crowdworkern erstellt.  
+	\paragraph{Greiferdatensatz} Der Greifer Datensatz enthält Bilder, in welchen der Greifer mittels Rahmen markiert ist. Abbildung \ref{img:Grapple} zeigt ein beispielhaftes Bild mit markiertem Greifer. Die Annotationen der Position des Greifers wurde pro Bild in einer XML-Datei abgelegt. Konkret wurde die Position als x, y Kordinaten in der Form ymin, xmin, ymax und xmax  abgespeichert. Über die vier Werte lässt sich problemlos ein Rahmen um den Greifer spannen. Der Datensatz bestehent aus 4.684 durch Menschen annotierten Bildern.
+	 
+	\paragraph{Baumstammdatensatz} Der Baumstamm Datensatz enthält Bilder, welche die Annotation, ob sich Baumstämme im Greifer befinden oder nicht enthält. Die Bilder sind durch zwei Ordner in Bidler mit und Bilder ohne Bausmtämme aufgeteilt.  Abbildung \ref{img:Logs} zeigt ein Bild, in welchem der Greifer Baumstämme greift. In Abbildung \ref{img:Grapple} befinden sich keine Baumstämme im Greifer.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Logs_14.png}
+		\caption[Bsp. Bild: Greifer mit Baumstämmen]{Greifer mit Baumstämmen}
+		\label{img:Logs}
+	\end{figure}
+	Im Gegensatz zu dem Greiferdatensatz wurde dieser Datensatz (zum Teil) im Rahmen der Abschlussarbeit angefertigt. Hierzu wurde mit Quality Match GmbH [https://www.quality-match.com] zusammengearbeitet. Die Quality Match GmbH  arbeitet mit Crowdworkern zusammen um Datensätze mit kontrollierter Annotationsqualität zu erstellen.  
 
-		\paragraph{Weiterer Datensatz}
-		Im laufe der Arbeit wurden in Zusammenarbeit mit quality-match ein weiterer Datensatz erstellt. Dieser Datensatz enthält \todo{finale Zahl setzen} 80.000 beschriftete Bilder. Es wurden sowohl die Beschriftung "Logs ja / nein" als auch die Beschriftung  Rahmen des Greifers erstellt. Zusätzlich wurden weitere Beschriftungen wie Hellichkeit, Winkel des Greifers, ... erstellt. Dieses weiteren Beschriftungen wurden in der Arbeit nicht genutzt.		\todo{stimmt das am Ende noch?}
-	
-		
+	\paragraph{Weiterer Datensatz} Für mitte 2020 ist ein weitere Datensatz geplannt. Dieser Datensatz enthält circa 80.000 beschriftete Bilder. Er wird sowohl die Annotation 'Logs ja / nein' als auch die Rahmen um den Greifer enthalten. Zusätzlich sind für diesen Datensatz weitere Beschriftungen wie Hellichkeit, Winkel des Greifers und weitere Annotationen geplannt. 
+			
 	\section{Datenvorbereitung}
 	\label{sec:DataPreparation}
+	In Vorbereitung auf die Modellierungsphase wurde ein finaler Datensatz erstellt und Werkzeuge zum Laden und vorbereiten der Daten implementiert.
+	\paragraph{Erste Iteration}  Als erstes wurden die Daten mittels Scripten in Training, Test und Validation Daten aufgeteilt und  der Cnvrg-Plattform als Versionierbarer Datenspeicher zur Verfügung gestellt. In Tabelle \ref{table:DatenaufteilungTrainTestValidation} ist die Finale Datenaufteilung zu sehen. Die Greifer Daten sind in 70\% Trainingsdaten und jeweils 15\% Test und Validierungsdaten aufgeteilt. Die Baumstammdaten sind in 80\% Trainingsdaten 10\% Testdaten und 10\% Validierungsdaten getrennt worden. 	Die Traingsdaten werden zum Trainieren der Modelle genutzt, die Testadten zum Überprüfen der Modelle und die Validierungsdaten werden am Ende der Experimente als finale Überprüfung der Ergebnisse eingesetzt.
+	\begin{table}[ht]
+		\centering
+		\begin{tabularx}{\textwidth}{lllll}
+			& \textbf{Train} & \textbf{Test}  & \textbf{Validation} & \textbf{Summe} 	 \\
+			\textbf{Greifer} 				 & 	3.279			& 703	 & 704				   & 4.686 	\\
+			\textbf{Baumstämme j/n}	 	  &  9.749	   & 1.221 	& 1.225	& 12.195\\		
+		\end{tabularx}
+		\caption{Datenaufteilung - Train Test Validation}
+		\label{table:DatenaufteilungTrainTestValidation}
+	\end{table}
+	
+	Für das Laden der Daten wurde ein Modul 'data\_loader.py' erstellt. Dieses Modul enthält die drei Klassen DataLoader, GrappleDataLoader, LogsDataLoader. DataLoader ist eine abstrakte Klasse welche Methoden zum Laden der Train-, Test- und Validationdaten definiert. Sie liefern entsprechend eines Parameters, bis zur maximalen Anzahl an Bildern, Bilder als Numparray zurück. Die Klassen GrappleDataLoader und LogsDataLoader implementieren für den jeweiligen Datensatz die konkreten Mehtoden zum Laden der Daten.
+	
+	Mittels dem Modul 'data\_preparation.py' und der Klasse Preprocessing werden die Bilder auf die Passende größe verkleinert oder vergrößert und auf den Wertebereich zwischen 0 und 1 normalisiert.
+	
+	\paragraph{Zweite Iteration} 
+	In der zweiten Iteration wurde ein neues Modul namens data\_generator\_provider.py erstellt. Da Bilder als Numpyarray direkt in den Speicher geladen werden können nicht belibig viele Bildergenutzt werden. Dieses Problem wird von den Keras ImageDataGeneratoren [https://keras.io/preprocessing/image/] adressiert. Sie erlauben es Bilder Stapelweise bereitszustellen. Zusätzlich werden bei den Imagedatageneratoren direkt die Zielgrößen bereitgestelt. Das Modul implementiert jeweils für die Baumstamm Datensatz und den Greiferdatensatz eine Klasse zum Bereitstellen von ImageDatageneratoren.
+	
+	Da die Modelle Mehrfach-Ausgang-Modelle sind erfolgt zusätlich noch eine Aufbereitung der bereirtstellung der Daten. Standarmäßig stellen die Generatoren Stapel mit Einträgen der Form $X ,Y$  bereit. Wobei X die Eingangsdaten sind und Y die Zielgröße. Zum Beispiel kann X ein Bild sein und Y die zugehörige Klasse. Die Werkezuge mit zweitem Kriterium benötigen Generatoren die Einträge der Stapel der From $X, [X, Y]$ erzeugen. Die Zielgröße hat sich zu einer Liste mit zwei Größen Verändert. Die erste Zielgröße ist entspricht den Eingagnsdaten, sie werden für den Decoder ausgang genutz. Die zweite Zielgröße wird für den zweiten Ausgang genutzt. Sie entspricht der Zielgröße eines normalen ImageDataGeneratoren. Das Ganze wird mit Hilfe der Klasse  tensorflow.keras.utils.Sequence erreicht. Ihr wird im Kosntruktor ein ImageDataGenerator übergeben. Bei der Bereirtstellung eines Elementrs wird der output des Generators angepasst. Die entscheidenden Codezeilen sind in Listing \ref{lst:AufbereritungGeneratorergebnis}  dargestellt. 
+	\begin{lstlisting}[language=python,caption=Aufbereitung Generatorergebnis in Python, label=lst:AufbereritungGeneratorergebnis]
+		res = self.generator.next()
+		return res[0], [res[0], res[1]]
+	\end{lstlisting}
+	
+	Für das Vortrainieren werden Generatoren bereitgestellt welche Stapel mit Einträgen der Form $X ,X$ erzeugen. Hierbei wird auf Standardfunktionalität der Klasse ImageDataGenerator zurückgegriffen.
+	
+	Die ImageDataGeneratoren bieten Standardfunktionalität zum Anpassen der Daten. Alle Generatoren Normaliseren die Werte der Bilder zwischen 0 und 1. Die Generatoren für die Trainingsdaten führen noch zufällige Veränderungen der Helligkeit und Kanalverschiebungen durch. Bei den Log Daten werdne die Bilder zusätzlich horizontal umgedreht. 
 
-Die Datenvorbereitung dient dazu, einen finalen Datensatz zu erstellen, der die Basis für die nächste Phase der Modellierung bildet.
-
-
-			In dem Schritt Datenvorbereitung werden die Bilder für die Modellerstelung vorbereitet. In dieser Arbeit wurde für diesen Schritt eine Klasse Preprocessing in einem neuen Modul data\_preperation.py  erstellt. Wie in Listing 
-			% \lstinputlisting[language=Python,caption={Preprocessing},label=lst:Preprocessing]{\srcloc/data\_preperation.py }
-			
-			 zu sehen werden die Pixel der Bilder zwischen 0 und 1 Skaliert. Dei Skalierung erfolgt damit jedes Bild eine ähnliche Gewichtung
-			
-			Neural networks process inputs using small weight values, and inputs with large integer values can disrupt or slow down the learning process. As such it is good practice to normalize the pixel values so that each pixel value has a value between 0 and 1.
-			
-			Die Bilddaten werden 		
-			
 
  
 
-	\begin{table}[ht]
-	\centering
-	\begin{tabularx}{\textwidth}{lllll}
-		 & \textbf{Train} & \textbf{Test}  & \textbf{Validation} & \textbf{Summe} 	 \\
-		\textbf{Greifer} 				 & 	3.279			& 703	 & 704				   & 4.686 	\\
-		\textbf{Baumstämme j/n}	 	  &  9.749	   & 1.221 	& 1.225	& 12.195\\
-		
-	\end{tabularx}
-	\caption{Datenaufteilung - Train Test Validation}
-	\label{table:DatenaufteilungTrainTestValidation}
- 	\end{table}
+
  
