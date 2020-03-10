@@ -265,3 +265,4 @@ TSWLatexianTemp*
 ### LaTeX Patch ###
 # glossaries
 *.glstex
+thesis.pdf
