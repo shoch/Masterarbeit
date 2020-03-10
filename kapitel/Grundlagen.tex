@@ -84,7 +84,7 @@
 	
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
-	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Diese Art von Kran werden in holzverarbeitenden Anlagen zum Befüllen von Fülltrichtern oder Förderbändern eingesetzt. Der Kran kann sich um 360 Grad drehen. Der Greifer kann nach oben, unten und entlang mittels eines Schlittens entlang Auslegers bewegt werden.	Für das Autocarne-Projekt sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln befüllt werden. Der Fülltrichter muss mit Holz aus einem LKW befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. Im Normalbetrieb werden Täglich 140-200 LKW entladen. Die Ladung ist 9 - 18 Meter lang und 34 - 40 Tonnen schwer.  \cite{PSIORIGmbH.2020}
+	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Diese Art von Kran werden in holzverarbeitenden Anlagen zum Befüllen von Fülltrichtern oder Förderbändern eingesetzt. Der Kran kann sich um 360 Grad drehen. Der Greifer kann nach oben, unten und entlang mittels eines Schlittens entlang Auslegers bewegt werden. Um die Bilder aufnehmen zu können wurde an der Kabine am Hauptstandfuß eine Kamera angebracht. Die Kamera ist auf das Ende des Auslegers und den Bereich darunter ausgerichtet. Die Kamera bewegt sich also mit dem Rundlaufkran und somit ist der Greiferlso immer im Bild. Für das Autocarne-Projekt sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln befüllt werden. Der Fülltrichter muss mit Holz aus einem LKW befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. Im Normalbetrieb werden Täglich 140-200 LKW entladen. Die Ladung ist 9 - 18 Meter lang und 34 - 40 Tonnen schwer.  \cite{PSIORIGmbH.2020}
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
@@ -92,11 +92,17 @@
 		\label{img:CircularCrane}
 	\end{figure}		
 
-	\paragraph{Greifer-Erkennung} 
-	Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Zur Erzeugung des Neuronalen Netzwerkes wurde auf die Technik des Single Shot MultiBox Detector [todo https://arxiv.org/abs/1512.02325] zurückgegriffen. Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet und einen Vertrauenswert der aussagt wie sicher sich das Netzt mit seiner Aussage ist.	[https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/]
+	\paragraph{Greifer-Erkennung} Bei der Aufgabenstellung Greifer-Erkennung muss in einem Bild die Position eines Rahmen um den Greifer gefunden werden. Abbildung \ref{img:Grapple} zeigt ein Bild mit Rahmen um den Greifer. Es handelt sich um eine klassische 'Object-Detection' Aufgabe.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Grapple_8.png}
+		\caption[Bsp. Bild: Greifer mit Rahmen]{Greifer mit Rahmen}
+		\label{img:Grapple}
+	\end{figure}
+	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei  wurde auf die Technik des Single Shot MultiBox Detector (SSD) [todo https://arxiv.org/abs/1512.02325] zurückgegriffen. Das Netz liegt als frozen\_inference\_graph.pb vor.  Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Um Vorhersagen treffen zu können wurde eine Klasse erstellt, welche mittels einer Tensorflowsession und dem Model vorhersagen trifft.  Dabei wird liefert das Mode pro Billd einen Rahmen in welchem sich der Greifer befindet und einen Vertrauenswert. Der Vertrauensswert sagt aus wie sicher sich das Netzt mit seiner Aussage ist. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt.
 		
-	\paragraph{Baumstamm-Klassifikation} 
-	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt als meta\_graph vor. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück.
+	\paragraph{Baumstamm-Klassifikation} Die Aufgabe der Baumstamm-Klassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe.
+	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt als Tensorflow-MetaGraph[https://www.tensorflow.org/api\_docs/python/tf/compat/v1/train/import\_meta\_graph] vor. Um Vorhersagen treffen zu können wurde eine Klasse welche den MetaGraph nutzt erstellt. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück. Dieses Model wird wie das Greifererkennung Model  als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt.
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
@@ -106,12 +112,7 @@
 	Zum Erreichen der Zielstellung werden zwei Datensätze benötigt.
 	
 		\paragraph{Greifer Datensatz} Der Greifer Datensatz enthält Bilder, in welchen der Greifer mittels Rahmen markiert ist. Abbildung \ref{img:Logs}  zeigt ein beispielhaftes Bild mit markiertem Greifer. Abbildung \ref{img:Grapple} zeigt ein beispielhaftes Bild mit markiertem Greifer.
-		\begin{figure}[h]
-				\centering
-				\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Grapple_8.png}
-				\caption[Bsp. Bild: Greifer mit Rahmen]{Greifer mit Rahmen}
-				\label{img:Grapple}
-		\end{figure}
+
 		Der Datensatz besteht aus zwei Sammlungen von qualitativ unterschiedlich gut beschrifteten Bildern. Die eine Sammlung besteht aus einem bestehenden Datensatz, welcher 4.684 durch Menschen annotierten Bildern enthält. Für den zweiten Teil der Sammlung wurden mittels der bestehenden Objekterkennung 14.018 Bilder annotiert. 
 		
 		\paragraph{Baumstamm Datensatz} Der Baumstamm Datensatz enthält Bilder, welche die Annotation, ob sich Baumstämme im Greifer befinden haben. Abbildung \ref{img:Logs} zeigt ein Bild, in welchem der Greifer Baumstämme greift. In Abbildung \ref{img:Grapple} befinden sich keine Baumstämme im Greifer.
