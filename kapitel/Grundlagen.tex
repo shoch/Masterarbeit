@@ -41,29 +41,31 @@
 
 	\section{Bibliotheken und Werkzeuge}
 	\label{sec:BibliothekenundWerkzeuge}
-	Für den Praktischen Teil der Abschlussarbeit wurde als Entwicklungsumgebung Cnvrg \cite{cnvrg.io.} genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure \cite{Micorsoft.2020} zugreifen. Für die Experimente wurde ein vorgefertiger Container mit einer tesla-k80 \cite{Nvidia.2020}, fünf CPUs und 49 GB Arbeitspeicher genutzt. 
+	Für den Praktischen Teil der Abschlussarbeit wurde insbesondere Cnvrg \cite{cnvrg.io.} genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure \cite{Micorsoft.2020} zugreifen. Für die Experimente wurde ein vorgefertiger Container mit einer tesla-k80 \cite{Nvidia.2020}, fünf CPUs und 49 GB Arbeitspeicher genutzt. 
 
-	Für die Entwicklung wurden insbesondere Python \cite{PythonSoftwareFoundation.2020}, Jupyter Notebooks \cite{ProjectJupyter} und das Framework Tensorflow \cite{MartinAbadi.2015}  genutzt. Die wichtigsten Bibliotheken für die Arbeit sind Keras \cite{Chollet.2015} , Numpy \cite{Oliphant.2006} , Matplotlib \cite{Hunter.2007} , scikit-learn \cite{Pedregosa.2011} , ConfigSpace \cite{Lindauer.8162019} , Bayesian Optimization and Hyperband \cite{StefanFalkner.2018} . 
+	Für die Entwicklung wurden Python \cite{PythonSoftwareFoundation.2020}, Jupyter Notebooks \cite{ProjectJupyter} und das Framework Tensorflow \cite{MartinAbadi.2015}  genutzt. Die wichtigsten Bibliotheken für die Arbeit sind Keras \cite{Chollet.2015} , Numpy \cite{Oliphant.2006} , Matplotlib \cite{Hunter.2007} , scikit-learn \cite{Pedregosa.2011} , ConfigSpace \cite{Lindauer.8162019} , Bayesian Optimization and Hyperband \cite{StefanFalkner.2018} . 
 	
-	Insbesondere für die Visualisierung von Embeddings wurde das Werkzeug PSIORI Visualizer erweitert und eingesetzt. Der Visualizer erlaubt es Daten in 3D darzustellen, von verschiedenen Blickwinkel und Zoomstufen zu betrachten, zu Filtern und mit zusätzlichen Informationen zu versehen. 
+	Für die Visualisierung von Bildeinbettung wurde das Werkzeug "PSIORI Visualizer" erweitert und eingesetzt. Der Visualizer erlaubt es Daten in 3D darzustellen, von verschiedenen Blickwinkel und Zoomstufen zu betrachten, zu Filtern und mit zusätzlichen Informationen zu versehen. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth, center]{bilder/Grundlagen/Example_Visualizer.png}
 		\caption[Beispiel PSIORI Visualizer]{Beispiel PSIORI Visualizer}
 		\label{img:ExampleVisualizer}
 	\end{figure}  
-	Die Abbildung \ref{img:ExampleVisualizer} zeigt einen Screenshot einer Visualisierung eines  Embeddings. Als zusätzliche Information sind die Datenpunkte entsprechend einer Klassifikation in True-Positiv, True-Negativ, False-Negativ und False-Positiv eingefärbt. Über einen Datenpunkt kann mit der Maus geschwebt werde,n um ein Bild anzuzeigen. Diese Funktion wurde insbesondere zum Anzeigen eines Orginalbildes und ihrer Rekonstruktion mittels Autoencoder genutzt. 
+	Die Abbildung \ref{img:ExampleVisualizer} zeigt einen Screenshot einer Visualisierung einer  Einbettung. Als zusätzliche Information sind die Datenpunkte entsprechend einer Klassifikation in True-Positiv, True-Negativ, False-Negativ und False-Positiv eingefärbt. Wird über einen Datenpunkt mit der Maus geschwebt, werden zusätliche Informationen zu dem Datenpunkt angezeigt. Diese Funktion wurde insbesondere zum Anzeigen eines Orginalbildes, ihrer Rekonstruktion mittels Autoencoder und einer Beschriftung  genutzt. 
 	
-	Kern des praktischen Teils der Arbeit ist das Framework  Psipy \cite{PSIORIGmbH.2019}.	
-	Psipy ist ein Python-Framework für Maschinelles Lernen welches von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt und die Modelle aus scikit-learn können in das von Framework eingebunden werden. Das Framework ermöglicht außerdem das Einbinden von Modellen basierend auf TensorFlow.
+	Kern der erstellten Werkzeuge ist das Framework  Psipy \cite{PSIORIGmbH.2019}. Psipy ist ein Python-Framework für Maschinelles Lernen welches von PSIORI selbst entwickelte Modelle zusammenfasst und eine einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt. Es können Modelle basierend auf scikit-learn  und Tensorflow eingebunden werden. 	
+	In den nachfolgenden Abschnitten werden die, für die Arbeit, wichtigsten bestehenden Module des Frameworks vorgestellt.
+	
+	 \paragraph{saveable.py} Das Modul Saveable ist eine flexible Basisklasse die Kernfunktionalität zum Speichern und Laden von Python-Objekten bietet. Es können Modelle welche diverse Bibliotheken nutzen auf eine einheitliche Art und Weise gespeichert werden. Um die Klasse Saveable nutzen zu können, müssen erbende Klassen ihre Konstruktorargumente an die Basisklasse übergeben. Zusätlich ist es notwendig eine erweiterung beim Speichern und Laden zu implemmentieren. Beim Speichern ist es notwendig eine Erweiterung um alle (meist ein) Module und weitere Argumente zu implemmentieren. Beim Laden müssen die gespeicherten Module und Argumente geladen werden. In Listing \ref{lst:SaveTensorflow} ist die Erweiterung zum Speichern eines Tensorflow Models abgebildet. 
+	\begin{lstlisting}[language=python,caption=Erweiterung zum Speichern eines Tensorflow Models, label=lst:SaveTensorflow]
+		...
+		zip_file.add("model.h5", self.model)
+		...
+	\end{lstlisting}
 
-	
-	In den nachfolgenden Abschnitten werden die wichtigsten Module des Frameworks vorgestellt. Diese Module wurden beim erstellen der neuen Module genutzt.
-	
-	 \paragraph{saveable.py} Das Modul Saveable bietet Kernfunktionalität zum Speichern und Laden von Klassen. Dabei werden verscheidene Arten von Modellen welche diverse Bibliotheken nutzen können auf eine einheitliche Art und Weise gespeichert. 
-
-	\paragraph{autoencoder.py} Das Modul Autoencoder enthält die drei Klassen StackedAutoencoder, FullyConnectedAutoencoder und ConvolutionalAutoencoder. Der StackedAutoencoder wird als Vaterklasse für die anderen beiden Klassen genutzt. Im Konstruktor werden Methoden aufgerufe,n welche in den Kindklassen ausprogrammiert sind. Dabei wird ein Keras-Modell für einen Encoder und Decoder enstprechend von Parametern  erstellt. Als weitere wichtigen Methoden gibt es die Methode pretrain und fit. Mittels pretrain werden die Schichten eines symmetrischer Autoencoder von aussen nach innen wie in 	\todo{Quelle Autoencoder pretrain} Greedy Layer-Wise Training of Deep Networks  vortrainiert. Die Auswahl der Schichten erfolgt wieder in den Kindklassen.
-	In der fit-Methode wird nach einigen Prüfungen die Methode fit() 	\todo{Quelle fit Keras}	[fit Keras] des Kerasmodells aufgerufen. In Abbildung \ref{img:KlassendiagrammConvolutionalAutoencoder} ist das Klassendiagramm mit den öffnetlichen Methoden des ConvolutionalAutoencoder dargestellt. 
+	\paragraph{autoencoder.py} Das Modul Autoencoder enthält die drei Klassen StackedAutoencoder, FullyConnectedAutoencoder und ConvolutionalAutoencoder. Der StackedAutoencoder wird als Basisklasse für die anderen beiden Klassen genutzt. Im Konstruktor werden Methoden aufgerufen welche in den abgeleiteten Klassen ausprogrammiert sind. Dabei wird ein Keras-Modell für einen Encoder und Decoder enstprechend von Parametern  erstellt. Als weitere wichtigen Methoden gibt es die Methode $pretrain(..)$ und $fit(..)$. Mittels $pretrain(..)$ werden die Schichten eines symmetrischer Autoencoder von aussen nach innen wie in 	\todo{Quelle Autoencoder pretrain} Greedy Layer-Wise Training of Deep Networks  vortrainiert. Die Auswahl der Schichten erfolgt wieder in den abgeleiteten Klassen.
+	In der $fit(..)$-Methode wird nach einigen Prüfungen die Methode f$fit(..)$ 	\todo{Quelle fit Keras}	[fit Keras] des Kerasmodells aufgerufen. In Abbildung \ref{img:KlassendiagrammConvolutionalAutoencoder} ist das Klassendiagramm mit den öffnetlichen Methoden des ConvolutionalAutoencoder dargestellt. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Klassendiagramme/klassendiagramm_public_cae.png}
@@ -82,7 +84,7 @@
 	
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
-	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Dieser Kran wird in einer holzverarbeitenden Anlage zum Befüllen eines Fülltrichters eingesetzt. Dabei sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln oder vom LKW aus befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. Im Normalbetrieb werden Täglich circa 140-200 LKW entladen. Dabei ist die Ladung ~ 9-18 Meter lang und ist 34 bis 40 Tonnen schwer.  \cite{PSIORIGmbH.2020}
+	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Diese Art von Kran werden in holzverarbeitenden Anlagen zum Befüllen von Fülltrichtern oder Förderbändern eingesetzt. Der Kran kann sich um 360 Grad drehen. Der Greifer kann nach oben, unten und entlang mittels eines Schlittens entlang Auslegers bewegt werden.	Für das Autocarne-Projekt sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln befüllt werden. Der Fülltrichter muss mit Holz aus einem LKW befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. Im Normalbetrieb werden Täglich 140-200 LKW entladen. Die Ladung ist 9 - 18 Meter lang und 34 - 40 Tonnen schwer.  \cite{PSIORIGmbH.2020}
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
@@ -91,8 +93,7 @@
 	\end{figure}		
 
 	\paragraph{Greifer-Erkennung} 
-Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Zur Erzeugung des Neuronalen Netzwerkes wurde auf die Technik des Single Shot MultiBox Detector [todo https://arxiv.org/abs/1512.02325] zurückgegriffen.
- Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet und einen Vertrauenswert der aussagt wie sicher sich das Netzt mit seiner Aussage ist.	[https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/]
+	Zur Lösung der Aufgaben wird unter anderem ein neuronales Netzwerk zur Positionserkennung des Greifers eingesetzt. Für diese Arbeit werden Vorhersagen des Netzes als Vergleichswert für die Versuche genutzt. Das Netz liegt als frozen\_inference\_graph.pb vor. Zur Erzeugung des Neuronalen Netzwerkes wurde auf die Technik des Single Shot MultiBox Detector [todo https://arxiv.org/abs/1512.02325] zurückgegriffen. Protocoll Buffer  [https://developers.google.com/protocol-buffers/] ist ein sprachneutraler, plattformneutraler, erweiterbarer Mechanismus zur Serialisierung strukturierter Daten. In diesem Fall enthält die Datei den eingefrorenen Graph und die Model Gewichte. Vorhersagen können mittels einer Tensorflowsession getroffen werden. Dabei liefert das Model, Rahmen in welchem sich der Greifer befindet und einen Vertrauenswert der aussagt wie sicher sich das Netzt mit seiner Aussage ist.	[https://leimao.github.io/blog/Save-Load-Inference-From-TF-Frozen-Graph/]
 		
 	\paragraph{Baumstamm-Klassifikation} 
 	Ein Klassifikatior, für die Frage ob sich Baumstämme in dem Greifer befinden liegt als meta\_graph vor. Die Vorhersage des Modells liefert die vorhergesagte Klasse mit einer Wahrscheinlichkeit zurück.
@@ -147,17 +148,9 @@ Die Datenvorbereitung dient dazu, einen finalen Datensatz zu erstellen, der die 
 	\begin{table}[ht]
 	\centering
 	\begin{tabularx}{\textwidth}{lllll}
-		 & \textbf{Train} & \textbf{Test}  & \textbf{Validation} & \textbf{Summe} 								  \\
-		\textbf{Greifer} 				 & 	X					&	X					& 4.684 				   & x 				\\
-		\textbf{Baumstämme T/F}	 	  &  X					 &	X					 &	X							& 18000		\\
-		
-		
-		logs 5671
-		not loaded 6542 
-		 
-		train 9.771 l 4.537  nl 5.233 80
-		test 1.224 l  568 nl 655  10
-		val  1.225 l 568 nl 656  10
+		 & \textbf{Train} & \textbf{Test}  & \textbf{Validation} & \textbf{Summe} 	 \\
+		\textbf{Greifer} 				 & 	3.279			& 703	 & 704				   & 4.686 	\\
+		\textbf{Baumstämme j/n}	 	  &  9.749	   & 1.221 	& 1.225	& 12.195\\
 		
 	\end{tabularx}
 	\caption{Datenaufteilung - Train Test Validation}
