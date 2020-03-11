@@ -4,23 +4,25 @@
 \chapter{Experimente}
 \label{chap:Experimente}
 
-	\section{Versuchsaufbau}
-	\label{sec:Versuchsaufbau}
-			\subsection{Psipy-Modul}
-			
-			\paragraph{Zweites Kriterium Autoencoder}
-			
-		Warum pretrian?:	https://papers.nips.cc/paper/3048-greedy-layer-wise-training-of-deep-networks.pdf (Warum machen das andere heute nicht mehr? viele cnn haben vanishing gradients problem  über relu,... gelösst) (weitere literatur: möglicherweise Geoffrey E. Hinton)
-			\paragraph{Transfer-Lernen Autoencoder}
-	
-			\paragraph{Auto-Transfer-Lernen Autoencoder}
-	\section{Modellierung}
-	\label{sec:Modeling}
-			\subsection{todo: Greifer }
-			\subsection{todo: Transferlearning}
-			\subsection{todo: Holz}
-			
-	\section{Evaluierung}
-	\label{sec:Evaluierung}
-		\subsection{todo: Greifer}
-		\subsection{todo: Holz}
+	\section{Basislinie}
+	\label{sec:Basislinie}
+	wie wird prinzipiell evaluiert?
+	PSIORI Grapple-detection
+	PSIORI Logs-Klassifizierung
+		
+	\section{ConvolutionalSecondCriterionAutoenocder}
+	\label{sec:ConvolutionalSecondCriterionAutoenocder}
+			\paragraph{CodeLayer}
+				3,7,10,15,...
+			\paragraph{Gewichtung der Verlustfunktion}
+			1/1; 1/10; 10/1; 1/0; 0/1;
+			\paragraph{Bestes Ergebnis}
+	\section{TransferSecondCriterionAutoenocder}
+	\label{sec:TransferSecondCriterionAutoenocder}
+			\paragraph{Datenmenge}
+			\paragraph{Gewichtung der Verlustfunktion}
+	\section{AutoTransferSecondCriterionAutoenocder}
+	\label{sec:AutoTransferSecondCriterionAutoenocder}
+
+
+		
