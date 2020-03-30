@@ -68,7 +68,7 @@ validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 
 	\section{TransferSecondCriterionAutoenocder}
 	\label{sec:TransferSecondCriterionAutoenocder}		
-	Ein TransferSecondCriterionAutoenocder basiert auf einem SCAE. Das zweite Kriterium wird durch ein neues Kriterium ersetzt. Zum Beispiel kann ein SCAE eine Objektkennung durchführen. Bei einem TransferSecondCriterionAutoenocder wird die Objektkennung durch eine Klassifizierungsaufgabe ersetzt. Abbildung \ref{img:SchemaTSCAE} zeigt den Aufbau des TSCAE.
+	Ein TransferSecondCriterionAutoenocder basiert auf einem SCAE. Das zweite Kriterium wird durch ein neues Kriterium ersetzt. Zum Beispiel kann ein SCAE eine Objektkennung durchführen. Bei einem TransferSecondCriterionAutoenocder wird die Objektkennung durch eines Klassifizierungsaufgabe ersetzt. Die Architektur und die Gewichte des Autoencoders werden weiterverwendet. Abbildung \ref{img:SchemaTSCAE} zeigt den Aufbau des TSCAE.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_TSCAE.png}

@@ -1,13 +1,7 @@
 % This file was created with Citavi 6.3.0.0
 
-@article{BergstraJamesandYoshuaBengio..2012,
-	author = {{Bergstra, James, and Yoshua Bengio.}},
-	year = {2012},
-	title = {Random search for hyper-parameter optimization.},
-	url = {http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf},
-	pages = {281--305},
-	journal = {Journal of Machine Learning Research 13},
-	file = {0df92c29-517c-4243-ae7b-1eeb0240c124:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\0df92c29-517c-4243-ae7b-1eeb0240c124.pdf:pdf}
+@proceedings{.1995,
+	year = {1995}
 }
 
 
@@ -93,6 +87,34 @@
 }
 
 
+@incollection{Michelucci.2018,
+	abstract = {In this chapter, you will look at the problem of finding the best hyperparameters to get the best results from your models. First, I will describe what a black-box optimization problem is, and how that class of problems relate to hyperparameter tuning. You will see the three best-known methods to tackle these kind of problems: grid search, random search, and Bayesian optimization. I will show you, with examples, which one works under which conditions, and I will give you a few tricks that are very helpful for improving optimization and sampling on a logarithmic scale. At the end of the chapter, I will show you how you can use those techniques to tune a deep model, using the Zalando dataset.},
+	author = {Michelucci, Umberto},
+	title = {Hyperparameter Tuning},
+	pages = {271--322},
+	publisher = {Apress},
+	isbn = {978-1-4842-3790-8},
+	booktitle = {Applied Deep Learning: A Case-Based Approach to Understanding Deep Neural Networks},
+	year = {2018},
+	address = {Berkeley, CA},
+	doi = {10.1007/978-1-4842-3790-8$\backslash$textunderscore}
+}
+
+
+@inproceedings{Masci.2011,
+	abstract = {We present a novel convolutional auto-encoder (CAE) for unsupervised feature learning. A stack of CAEs forms a convolutional neural network (CNN). Each CAE is trained using conventional on-line gradient descent without additional regularization terms. A max-pooling layer is essential to learn biologically plausible features consistent with those found by previous approaches. Initializing a CNN with filters of a trained CAE stack yields superior performance on a digit (MNIST) and an object recognition (CIFAR10) benchmark.},
+	author = {Masci, Jonathan and Meier, Ueli and Cire{\c{s}}an, Dan and Schmidhuber, J{\"u}rgen},
+	title = {Stacked Convolutional Auto-Encoders for Hierarchical Feature Extraction},
+	pages = {52--59},
+	publisher = {{Springer Berlin Heidelberg}},
+	isbn = {978-3-642-21735-7},
+	editor = {Honkela, Timo and Duch, W{\l}odzis{\l}aw and Girolami, Mark and Kaski, Samuel},
+	booktitle = {Artificial Neural Networks and Machine Learning -- ICANN 2011},
+	year = {2011},
+	address = {Berlin, Heidelberg}
+}
+
+
 @misc{MartinAbadi.2015,
 	author = {{Martin Abadi} and {Ashish Agarwal} and {Paul Barham} and {Eugene Brevdo} and {Zhifeng Chen} and {Craig Citro} and Corrado, Greg S and {Andy Davis} and {Jeffrey Dean} and {Matthieu Devin} and {Sanjay Ghemawat} and {Ian Goodfellow} and {Andrew Harp} and {Geoffrey Irving} and {Michael Isard} and Jia, Yangqing and {Rafal Jozefowicz} and {Lukasz Kaiser} and {Manjunath Kudlur} and {Josh Levenberg} and {Dandelion Man{\'e}} and {Rajat Monga} and {Sherry Moore} and {Derek Murray} and {Chris Olah} and {Mike Schuster} and {Jonathon Shlens} and {Benoit Steiner} and {Ilya Sutskever} and {Kunal Talwar} and {Paul Tucker} and {Vincent Vanhoucke} and {Vijay Vasudevan} and {Fernanda Vi{\'e}gas} and {Oriol Vinyals} and {Pete Warden} and {Martin Wattenberg} and {Martin Wicke} and {Yuan Yu} and {Xiaoqiang Zheng}},
 	year = {2015},
@@ -114,7 +136,43 @@
 	title = {HYPERBAND: BANDIT-BASED CONFIGURATION EVALUATION FOR HYPERPARAMETER OPTIMIZATION},
 	url = {https://openreview.net/pdf?id=ry18Ww5ee},
 	journal = {ICLR},
-	file = {87b0f05b-e99a-4e70-9283-1c799362149e:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\87b0f05b-e99a-4e70-9283-1c799362149e.pdf:pdf}
+	file = {hyperband_bandit_based_configuration_evaluation_for_hyperparameter_optimization.pdf}
+}
+
+
+@article{StefanFalkner.2018,
+	abstract = {Proceedings of the International Conference on Machine Learning 2018},
+	author = {{Stefan Falkner} and {Aaron Klein} and {Frank Hutter}},
+	year = {2018},
+	title = {BOHB: Robust and Efficient Hyperparameter Optimization at Scale},
+	url = {https://openreview.net/pdf?id=ry18Ww5ee},
+	keywords = {ICML;Machine Learning},
+	journal = {arXiv:1807.01774},
+	file = {18-ICML-BOHB.pdf}
+}
+
+
+@incollection{LeCun.1999,
+	abstract = {Finding an appropriate set of features is an essential problem in the design of shape recognition systems. This paper attempts to show that for recognizing simple objects with high shape variability such as handwritten characters, it is possible, and even advantageous, to feed the system directly with minimally processed images and to rely on learning to extract the right set of features. Convolutional Neural Networks are shown to be particularly well suited to this task. We also show that these networks can be used to recognize multiple objects without requiring explicit segmentation of the objects from their surrounding. The second part of the paper presents the Graph Transformer Network model which extends the applicability of gradient-based learning to systems that use graphs to represents features, objects, and their combinations.},
+	author = {LeCun, Yann and Haffner, Patrick and Bottou, L{\'e}on and Bengio, Yoshua},
+	title = {Object Recognition with Gradient-Based Learning},
+	pages = {319--345},
+	publisher = {{Springer Berlin Heidelberg}},
+	isbn = {978-3-540-46805-9},
+	booktitle = {Shape, Contour and Grouping in Computer Vision},
+	year = {1999},
+	address = {Berlin, Heidelberg},
+	doi = {10.1007/3-540-46805-6{\textunderscore }19}
+}
+
+
+@article{JoaquinVanschoren.2018,
+	author = {{Joaquin Vanschoren}},
+	year = {2018},
+	title = {Meta-Learning: A Survey},
+	volume = {abs/1810.03548},
+	journal = {CoRR},
+	file = {http://arxiv.org/abs/1810.03548}
 }
 
 
@@ -140,6 +198,16 @@
 	publisher = {{IEEE COMPUTER SOC}},
 	journal = {Computing in Science {\&} Engineering},
 	doi = {10.1109/MCSE.2007.55}
+}
+
+
+@proceedings{Honkela.2011,
+	year = {2011},
+	title = {Artificial Neural Networks and Machine Learning -- ICANN 2011},
+	address = {Berlin, Heidelberg},
+	publisher = {{Springer Berlin Heidelberg}},
+	isbn = {978-3-642-21735-7},
+	editor = {Honkela, Timo and Duch, W{\l}odzis{\l}aw and Girolami, Mark and Kaski, Samuel}
 }
 
 
@@ -171,9 +239,9 @@
 	title = {EMNIST: an extension of MNIST to handwritten letters},
 	url = {http://arxiv.org/pdf/1702.05373v2},
 	keywords = {Computer Science - Computer Vision and Pattern Recognition},
-	file = {https://arxiv.org/pdf/1702.05373v2.pdf},
+	file = {EMNIST_1702.05373v2.pdf},
 	file = {http://arxiv.org/abs/1702.05373v2},
-	file = {f92f9939-4f5f-442a-9568-fac0903c19a9:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\f92f9939-4f5f-442a-9568-fac0903c19a9.pdf:pdf}
+	file = {https://arxiv.org/pdf/1702.05373v2.pdf}
 }
 
 
@@ -192,15 +260,52 @@
 }
 
 
-@article{StefanFalkner.2018,
-	abstract = {Proceedings of the International Conference on Machine Learning 2018},
-	author = {{Stefan Falkner} and {Aaron Klein} and {Frank Hutter}},
+@article{BergstraJamesandYoshuaBengio..2012,
+	author = {{Bergstra, James, and Yoshua Bengio.}},
+	year = {2012},
+	title = {Random search for hyper-parameter optimization.},
+	url = {http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf},
+	pages = {281--305},
+	journal = {Journal of Machine Learning Research 13},
+	file = {Random_Search_bergstra12a.pdf}
+}
+
+
+@inproceedings{Bengio.2007,
+	author = {Bengio, Y. and Lamblin, Pascal and Popovici, D. and Larochelle, Hugo and Montreal, U.},
+	title = {Greedy layer-wise training of deep networks},
+	volume = {19},
+	year = {2007}
+}
+
+
+@book{.2018,
 	year = {2018},
-	title = {BOHB: Robust and Efficient Hyperparameter Optimization at Scale},
-	url = {https://openreview.net/pdf?id=ry18Ww5ee},
-	keywords = {ICML;Machine Learning},
-	journal = {arXiv:1807.01774},
-	file = {cd1ed838-bbf8-42eb-ba7a-6e19e3f75b61:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\cd1ed838-bbf8-42eb-ba7a-6e19e3f75b61.pdf:pdf}
+	title = {Applied Deep Learning: A Case-Based Approach to Understanding Deep Neural Networks},
+	address = {Berkeley, CA},
+	publisher = {Apress},
+	isbn = {978-1-4842-3790-8}
+}
+
+
+@proceedings{.2007,
+	year = {2007}
+}
+
+
+@book{.1999,
+	year = {1999},
+	title = {Shape, Contour and Grouping in Computer Vision},
+	address = {Berlin, Heidelberg},
+	publisher = {{Springer Berlin Heidelberg}},
+	isbn = {978-3-540-46805-9}
+}
+
+
+@incollection{Kohavi.,
+	author = {Kohavi, Ron and John, George},
+	title = {Autmatic Parameter Selection by Minimizing Estimated Error},
+	pages = {304--312}
 }
 
 
