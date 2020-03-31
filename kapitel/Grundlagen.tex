@@ -1,18 +1,22 @@
 \chapter{Grundlagen}
 \label{chap:Grundlagen}
+Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick auf die durchgeführten Experimente beschrieben. Begonnen wird mit den theoretischen Grundlagen, gefolgt von einer Beschreibung der bestehenden Systeme und abgeschlossen wird mit einem Abschnitt über die Daten und ihre Vorverarbeitung.
 
-\todo{Quellen}
-	\section{Stacked Convolutional Autoencoder }
-	\label{sec:StackedConvolutionalAutoencoder}		
-		CNN \cite{LeCun.1999}
-CAE \cite{Masci.2011}	
-	\todo{sec:StackedConvolutionalAutoencoder }
+	\section{Autoencoder}
+	\label{sec:ConvolutionalAutoencoder}		
+	Autoencoder \cite{D.E.Rumelhart.1987} sind Werkzeuge welche insbesondere zum Finden von Repräsentationen eingesetzt werden. Dabei komprimieren Sie die Eingabe in einen niedrigdimensionaleren Raum und rekonstruieren aus diesem Code die Eingabe. Konkret besteht ein Autoencoder als aus drei Dingen, dem Encoder, dem Codelayer und dem Decoder. In Abbildung \ref{img:SchemaCAE} ist das Schema eines Autoencoders abgebildet.
+				\todo{Schema verdeutlichen encoder + decoder}
 			\begin{figure}[h]
+			
 				\centering
 				\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_CAE.png}
 				\caption[Schema Autoencoder]{Schema Autoencoder}
 				\label{img:SchemaCAE}
-			\end{figure}  
+			\end{figure} 
+	In der einfachsten Form besteht ein Autoencoder aus einer Eingabeschicht, einer versteckten Schicht und eine Ausgabeschicht. Sie können aber auch mit mehreren Layern, also mit 'tiefe Architekturen' genutzt werden. \cite{Hinton.2006} Der Encoder lässt sich auch vereinfacht als die Funktion $F(x)=c$ und der Decoder als die Funktion $ F(c)=x'$ darstellen wobei $x\stackrel{!}{=}x'$ sein soll. 
+	Autoencoder gibt es in vielen verschiedenen Ausführungen. Dabei sind die meisten Typen von Autoencoder unvollständige Autoencoder. Die verborgene Schicht, das Codelayer enthält weniger Informationen als die Eingabe. Hierdurch wird die Dimensionsreduzierung erzwungen. Andere Aufgaben können Entrauschung mittels Denoising autoencoder \cite{} oder Generierung neuer Datenpunkte mittels Varrational Autoencoder sein. Bei  Contractive autoencoder \cite{} nutzen einen Regularisierer in der Zielfunktion um das Modell zu zwingen eine Funktion zu lernen, die flexibler auf Variationen der Eingabewerte reagiert.   	
+
+	Für die Arbeit ist der \acl{cae} \cite{Masci.2011} kurz \ac{cae} interessant. Er ist ist ein Stacked Autoencoder welcher Convolutional Layer (Faltungsschichten) \cite{LeCun.1999} integriert.  
 
 		\subsection{Layerwise Pretrain }
 
