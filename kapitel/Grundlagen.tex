@@ -14,7 +14,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 				\label{img:SchemaCAE}
 			\end{figure} 
 	In der einfachsten Form besteht ein Autoencoder aus einer Eingabeschicht, einer versteckten Schicht und eine Ausgabeschicht. Sie können aber auch mit mehreren Layern, also mit 'tiefe Architekturen' genutzt werden. \cite{Hinton.2006} Der Encoder lässt sich auch vereinfacht als die Funktion $F(x)=c$ und der Decoder als die Funktion $ F(c)=x'$ darstellen wobei $x\stackrel{!}{=}x'$ sein soll. 
-	Autoencoder gibt es in vielen verschiedenen Ausführungen. Dabei sind die meisten Typen von Autoencoder unvollständige Autoencoder. Die verborgene Schicht, das Codelayer enthält weniger Informationen als die Eingabe. Hierdurch wird die Dimensionsreduzierung erzwungen. Andere Aufgaben können Entrauschung mittels Denoising autoencoder \cite{} oder Generierung neuer Datenpunkte mittels Varrational Autoencoder sein. Bei  Contractive autoencoder \cite{} nutzen einen Regularisierer in der Zielfunktion um das Modell zu zwingen eine Funktion zu lernen, die flexibler auf Variationen der Eingabewerte reagiert.   	
+	Autoencoder gibt es in vielen verschiedenen Ausführungen. Dabei sind die meisten Typen von Autoencoder unvollständige Autoencoder. Die verborgene Schicht, das Codelayer enthält weniger Informationen als die Eingabe. Hierdurch wird die Dimensionsreduzierung erzwungen. Andere Aufgaben können Entrauschung mittels Denoising autoencoder \cite{Vincent.2008} oder Generierung neuer Datenpunkte mittels Varrational Autoencoder \cite{Kingma.2019} sein. Bei  Contractive autoencoder \cite{Rifai.201} nutzen einen Regularisierer in der Zielfunktion um das Modell zu zwingen eine Funktion zu lernen, die flexibler auf Variationen der Eingabewerte reagiert.   	
 
 	Für die Arbeit ist der \acl{cae} \cite{Masci.2011} kurz \ac{cae} interessant. Er ist ist ein Stacked Autoencoder welcher Convolutional Layer (Faltungsschichten) \cite{LeCun.1999} integriert.  
 
@@ -25,9 +25,32 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\section{ Transferlernen}
 	\label{sec:Transferlernen}
 		\todo{sec:Transferlernen }
-		- Was ist das
-		-	oberste Schichten allgemeiner als untere --> todo papaer verweisen
-		s
+		- Was ist das \cite{FuzhenZhuang.2019}
+		Homogeneous transfer learning
+	Heterogeneous transfer learning	
+	
+		-	oberste Schichten allgemeiner als untere --> todo papaer verweisen \cite{Tirumala.2018}	
+
+		\subsection{semi-superwised learning}
+		Semi-superwised learning \cite{Chapelle.2010} ist ein an das Tranfer-Learning angrenzendes Gebiet. 
+				- abgrenzung  vs transfer learning
+		semi-superwised handling mit wenigen Labels / unvollständigen Labels aber in aktuellen modell - transfer: transfer in andere domäne Transfer learning involves using the solution to an existing problem and adapting it to a new related target problem	
+		
+		\subsection{Multi-Task Learning}
+		Multi-Task Learning } ist ein an das Tranfer-Learning insbesondere die Kategorie inductive transfer angrenzendes Gebiet.
+		
+		
+		Der Hauptunterschied zum induktiven Transfer-Lernen besteht darin, dass beim induktiven Transfer-Lernen angenommen wird, dass es eine Hauptaufgabe und eine Nebenaufgabe gibt. Die Nebenaufgabe bietet zusätzliche Informationen, um die Hauptaufgabe zu verbessern bzw. zu Generalisieren. Im Multi-Task Learning gibt es keine solche Unterscheidung, die Aufgaben werden gelichberechtigt betrachtet. Induktiven Transfer-Lernen kann deshalb als Sonderfomr des Multi-Task Learning gesehen werden.   
+		
+		\paragraph{Single-Input Multi-Output}
+		
+		\todo{Bild Layers}
+	\paragraph{Multi-Input Single-Output}
+	
+	\paragraph{Multi-Input Multi-Output}
+	
+	\cite{Thung.2018
+
 	\section{Automatisiertes maschinelles Lernen}
 	\label{sec:AutoML}
 	 Das \acl{automl} kurz \ac{automl} hat das Ziel alle Aspekte des maschinellen Lernens und der Datenanalyse-Pipeline zu automatisieren. Die vollständige Automatisierung erlaubt es auch Nutzern ohne oder mit geringen Kenntnissen von ML-Techniken die Erstellung von ML-Systemen. 
