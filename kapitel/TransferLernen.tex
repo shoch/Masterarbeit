@@ -1,0 +1,27 @@
+\chapter{Transfer Lernen}
+\label{chap:HauptteilTransferLernen}
+In Kapitel \ref{chap:HauptteilMultiTaskLernen} wurde gezeigt, dass ein Autoencoder auf das Merkmal Greifer fokusiert werden kann. In diesem Kapitel wird ausgehend von der Repräsentation die Frage beantwortet ob die Erkenntnisse auf andere Aufgaben transferiert werden können
+
+	\section{Transfer Experiment}
+	\label{sec:todo}
+	Um einen Transfer auf neue Aufgaben durchführen zu können wurde ein neues Werkzeug TransferTaskFocusAE erstellt. Dieses Werkzeug basiert auf dem TaskFocusAE und ersetzt den fokusierenden Task.
+	\subsection{Werkzeug}
+	Konkret wird der 2 Task ersetzt die Architektur und gelernten gewichte bleiben gleich	. ... \todo{TL einfügen} 
+	\subsection{Ergebnis}
+	In Abbildung ist das Ergebnis einen TrasnferTFAE zu sehen, es wird beinahe der selbe Score erreicht.
+
+
+	\section{Auto Transfer Experiment}
+	\label{sec:todo}
+	Ein Hyperparameter des TransferTFAE ist die Gewichtung der Verlustfunktion. Es soll herausgefunden werden, welchen Einfluss der Hyperparameter auf die Ergebnisse hat. Da es sehr viele Möglichkeiten für die Gewichtung der Verlustfunktion gibt wird hierzu ein neues Modul erstellt. Dieses Modul greift auf den AutoMl-Ansatz der automatischen Hyperparameteroptimierung zu.
+	\subsection{Werkzeug}
+	\subsection{Ergebnis}
+	Die Gewichtung der beiden Teile der Verlustfunktion hat einen starken Einfluss auf die Modellqualität. In Abbildung x,y,z \todo{Abb gewichtung} ist zu sehen, dass Bei einer Gewichtung von abc das Beste Ergebnis erreicht wird. Besonders interessant ist, dass es  (Kurve erläutern.)
+
+
+	\section{Transfer-Experiment}
+	\label{sec:todo}
+	In den vorangegangen Experimenten wurde gezeigt, dass ein Transfer möglich ist und gute Ergebnisse erzielt. In diesem Experiment soll herausgefunden werden, in welchem Maß der Transfer eine Steigerung der Leistung erbringt. Hierzu werden die genutzten Datenmengen auf 200, 2000 und 9749 annotierte Bilder begrenzt.
+	
+	In Abbildung \todo{todo bild datenkmenge} sind die Ergebnisse mit verschiedenen Datenmengen dargestellt. Es sticht hervor... 
+	
