@@ -57,41 +57,44 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\section{Automatisiertes maschinelles Lernen}
 	\label{sec:AutoML}
 	 Das \acl{automl} kurz \ac{automl} hat das Ziel alle Aspekte des maschinellen Lernens und der Datenanalyse-Pipeline zu automatisieren. Die vollständige Automatisierung erlaubt es auch Nutzern ohne oder mit geringen Kenntnissen von ML-Techniken die Erstellung von ML-Systemen. 
-	Die volle Automatisierung ist ein langfristiges Ziel. Aktuelle Systeme sind halbautomatisch und zielen darauf ab, Personenaufwände bei Bedarf nach und nach durch Rechenvorgänge zu reduzieren. Trotz der steigenden Rechenleistung, können sind AutoML-Methoden sehr rechenintensiv.  \ac{automl} wir in drei Methoden eingeordnet. Das Meta-Learning, \acl{nas} kurz \ac{nas} und \acl{hpo} kurz \ac{hpo}. \cite{Hutter.2019} 
+	Die volle Automatisierung ist ein langfristiges Ziel. Aktuelle Systeme sind halbautomatisch und zielen darauf ab, Personenaufwände bei Bedarf nach und nach durch Rechenvorgänge zu reduzieren. Trotz der steigenden Rechenleistung, können AutoML-Methoden sehr rechenintensiv sein.  \ac{automl} wir in drei Methoden eingeordnet. Das Meta-Learning, \acl{nas} kurz \ac{nas} und \acl{hpo} kurz \ac{hpo}. \cite{Hutter.2019} 
 	
-	\subsection{\acl{hpo}}	
-	\acl{hpo} oder Hyperparameter-Tuning wir in jedem \ac{hpo}-Algorithmus zur Steuerung des Trainings eingesetzt. 
+	\subsection{\acl{hpo}}
+	\label{subsec:HyperparameterOptimierung}	
+	Hyperparameter sind alle Parameter, welche vor Beginn des Trainings zur Steuerung des Trainings eingestellt werden können. Eine passende Einstellung dieser Parameter beeinflusst die Leistung eines Modells maßgeblich. In \cite{Kohavi.1995} wurde festgestellt, dass verschiedene Hyperparameterkonfigurationen für verschiedene Datensätze am besten funktionieren. Es ist also notwendig für jede Aufgabe aufs Neue die beste Hyperparameterkonfigurationen zu finden.      
+	Automatische-\ac{hpo} ist die Technik des automatischen Setzens der Hyperparameter um die Leistung zu optimieren. Dabei hat sie insbesondere drei Ziele. Es sollen Personenaufwände bei der Anwendung von maschinellem Lernen zu reduziert werden. Es soll die Leistung von Algorithmen und Modellen des maschinellen Lernens verbessern. In der Wissenschaft sollen soll die Reproduzierbarkeit und Fairness von Studien verbessert werden, da Automatische-\ac{hpo} einfacher reproduzierbar ist als manuelle-\ac{hpo}. In dem Kapitel \ref{subsec:Optimierungstechniken} werden einige gängige Optimierungstechniken der automatischen-\ac{hpo} erläutert.  \cite{Feurer.2019}		
 	
-	\cite{Kohavi.}
-	
-	\cite{Feurer.2019}		
-	
-		Datenänderungen (führen zu es funktioniert nicht)
-	Kohavi, R., John, G.: Automatic Parameter Selection by Minimizing Estimated Error. In:
-	Prieditis, A., Russell, S. (eds.) Proceedings of the Twelfth International Conference on
-	Machine Learning, pp. 304–312. Morgan Kaufmann Publishers (1995))
 	
 	\subsection{Meta-Learning}
-		\cite{JoaquinVanschoren.2018}
-		\cite{Vanschoren.2019}
-	\subsection{Neural Architecture Search}
-	\cite{Elsken.2019}	
-
-	Die \ac{automl}-Methoden nutzen dabei Optimierungsmethoden wie Rastersuche, Zufallssuche, Bayesian optimization, HyperBand und Mischungen davon wie BOHB. 
-
-	\subsection{Rastersuche}
-			\cite{Michelucci.2018}
-	\subsection{Zufallssuche}
-			\cite{BergstraJamesandYoshuaBengio..2012}
-			\cite{Michelucci.2018}
-	\subsection{Bayesian optimization}
-			\cite{Michelucci.2018}
-	\subsection{HyperBand}	
-			\cite{Li.2017}
-	\subsection{BOHB}
-			\cite{StefanFalkner.2018}	
+	\label{subsec:MetaLearning}
+	Unter \cite{JoaquinVanschoren.2018} ist eine Übersicht über das Meta-Learning zu finden. In dieser Arbeit wird das Thema nur vollständigkeitshalber aufgelistet. Meta-Learning umfasst jede Art von Lernen, welches auf frühere Erfahrungen zurückgreift. Dabei können umso mehr Arten von Metadaten genutzt werden je ähnlicher die Aufgaben sind. Metadaten sind dabei alle Daten die frühere Lernaufgaben beschreiben. Dies können z.B Algorithmuskonfigurationen, Hyperparameter, Netzarchitekturen, Modellbewertungen und vieles mehr sein.
 	
+	\subsection{Neural Architecture Search}
+	\label{subsec:NeuralArchitectureSearch}
+	Im Deep Learning hängt die Leistung eines Modells maßgeblich von der genutzten Architektur ab. Das manuelle Suchen von Architekturen ist zeitaufwendig und fehleranfällig. Die Neural Architecture Search befasst sich damit, wie Architekturen automatisch gefunden werden können. In dieser Arbeit wurde nicht auf die Technik der Neural Architecture Search zurückgegriffen und das Thema ist nur vollständigkeitshalber aufgeführt. Unter \cite{Elsken.2019} kann eine Übersicht über die Neural Architecture Search gefunden werden. 	
 
+	\subsection{Optimierungstechniken}
+	\label{subsec:Optimierungstechniken}
+	In diesem Unterkapitel werden gängige Optimierungsmethoden des \ac{automl} dargestellt. Die Auflistung ist nicht vollständig, deckt aber die im praktischen Teil der Arbeit zur Verfügung stehenden Methoden ab.  
+	
+	\subsubsection{Rastersuche}
+	Die Rastersuche ist eine modellunabhängige Optimierunsstrategie. Es werden Parameterkombinationen definiert und anschließend Modelle ausgehend von den Kombinationen erstellt und evaluiert. Diese Technik hat einige schwächen. Es müssen Parameterkombinationen definiert werden, es muss jedes Modell trainiert werden und wenn die optimale Konfiguration nicht enthalten ist, wird sie nie gefunden. \cite{Michelucci.2018}
+	
+	\subsubsection{Zufallssuche}
+	Die Zufallssuche ähnelt der Rastersuche. Sie unterscheidet sich dahingehend, dass die Parameterkombinationen nicht mehr definiert werden müssen. Es werden zufällige Stichprobenkonfigurationen aus dem (definierten) Parameterraum gezogen und evaluiert. 
+	In \cite{BergstraJamesandYoshuaBengio..2012} wurde gezeigt, das insbesondere bei unterschiedlicher Wichtigkeit der Hyperparameter, bessere Ergebnisse erzielt werden. 
+
+	\subsubsection{Bayesian optimization}
+	Bei der Bayes-Suche wird die Hyperparameter-Optimierung wie ein Problem der [Regression] behandelt. Mit einer vorgegebenen Reihe von Eingabefunktionen (den Hyperparametern) optimiert die Hyperparameter-Optimierung ein Modell für die Metrik, die Sie auswählen. Um das Problem einer Regression zu lösen, werden bei der Hyperparameter-Optimierung Vermutungen angestellt, welche Hyperparameter-Kombinationen wahrscheinlich die besten Ergebnisse erzielen. Um diese Werte zu überprüfen, werden anschließend Schulungsaufträge ausgeführt. Nach dem Testen der ersten Hyperparameter-Werte setzt die Hyperparameter-Optimierung die Regression ein, um die nächsten Werte zu testen.
+			\cite{Michelucci.2018}
+			
+	\subsubsection{Hyperband}	
+	Hyperband \cite{Li.2017} erweitert Successive Halving \cite{Jamieson.27.02.2015}. Successive Halving weißt einer Reihe von Hyperparameter-Konfigurationen ein einheitliches menge an Ressourcen zu und berechnet die Leistung von allen Konfigurationen und entfernt die schlechtere Hälfte. Die Konfigurationen werden dabei zufällig gezogen. Das Ganze wird wiederholt, bis eine Konfiguration übrig bleibt. In jedem Durchlauf wird der übriggebliebenen Hälfte exponentiell mehr Ressourcen zugewiesen. SH benötigt als Eingangsparameter die Ressourcen und die Anzahl an Konfigurationen. Dabei ist es schwierig, zu entscheiden, ob wenige Konfigurationen mit mehr Ressourcen oder viele Konfigurationen mit weniger Ressourcen durchgeführt werden sollen.
+	Hyberband erweitert SH um dieses Problem zu adressieren. Hyperband führt eine Rastersuche für die beiden Parameter durch. Es werden also mehrere SH-Durchläufe mit diversen Konfigurationen durchgeführt. Die Anzahl an Konfigurationen wird dabei immer weiter reduziert. Abgeschlossen wird eine Ausführung mit einer normalen Gittersuche.
+	
+	\subsubsection{BOHB}
+	BOHB \cite{StefanFalkner.2018} ist ein Ansatz, der Bayesian optimization und Hyperband kombiniert. Dabei wird Bayesian optimization zur Auswahl von Konfigurationen herangezogen und Hyperband bestimmt wieviele Konfigurationen mit welchem Budget ausgeführt werden sollen. Anschließend werden die Konfigurationen mittels Successive Halving ausgeführt. Unter https://github.com/automl/HpBandSter kann eine Implementierung des Werkzeuges gefunden werden. Diese Framework wurde im praktischen Teil der Arbeit genutzt.
+			
 	\section{Bibliotheken und Werkzeuge}
 	\label{sec:BibliothekenundWerkzeuge}
 	Für den praktischen Teil der Abschlussarbeit wurde insbesondere Cnvrg \cite{cnvrg.io.} genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure \cite{Micorsoft.2020} zugreifen. Für die Experimente wurde ein vorgefertigter Container mit einer tesla-k80 \cite{Nvidia.2020}, fünf CPUs und 49 GB Arbeitsspeicher genutzt. 
@@ -162,11 +165,10 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\label{img:Greifer}
 	\end{figure}	
 
-	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) [todo https://arxiv.org/abs/1512.02325] zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist  die ausschalggebende Metrik die Intersection over Union mit einem Schwellenwert von 0.8. Das Modell erreicht einen Wert von \todo{IoU prüfen 0.87}0.87.
+	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) [todo https://arxiv.org/abs/1512.02325] zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist  die ausschalggebende Metrik die Intersection over Union mit einem Schwellenwert von 0.8. Das Modell erreicht einen Wert von \todo{IoU prüfen }$0.87$.
 	
-
 		
-	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe. Für diese Aufgabe wurde von PSIORI ein Model erstellt. Dieses Model wird wie das Greifererkennungsmodel als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt. Das Modell erreicht auf den Validation-Daten eine Accuracy von \todo{ACC_Logs0.9??}.
+	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe. Für diese Aufgabe wurde von PSIORI ein Model erstellt. Dieses Model wird wie das Greifererkennungsmodel als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt. Das Modell erreicht auf den Validation-Daten eine Accuracy von.
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
