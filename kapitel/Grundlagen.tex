@@ -1,6 +1,6 @@
 \chapter{Grundlagen}
 \label{chap:Grundlagen}
-Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick auf die durchgeführten Experimente beschrieben. Begonnen wird mit den theoretischen Grundlagen, gefolgt von einer Beschreibung der bestehenden Systeme und abgeschlossen wird mit einem Abschnitt über die Daten und ihre Vorverarbeitung.
+Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick auf die durchgeführten Experimente beschrieben. Begonnen wird mit den theoretischen Grundlagen, gefolgt von einer Beschreibung der bestehenden Systeme und abgeschlossen wird mit einem Abschnitt über die Daten und ihrer Vorverarbeitung.
 
 	\section{Autoencoder}
 	\label{sec:ConvolutionalAutoencoder}		
@@ -18,9 +18,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 
 	Für die Arbeit ist der \acl{cae} \cite{Masci.2011} kurz \ac{cae} interessant. Er ist ist ein Stacked Autoencoder welcher Convolutional Layer (Faltungsschichten) \cite{LeCun.1999} integriert.  
 
-		\subsection{Layerwise Pretrain }
-
-	\cite{Bengio.2007}
+	\paragraph{Schichtenweise Vortrainieren} Im schichtenweise Vortrainieren werden einzelne Schichten eines neuronalen Netzwerkes vor dem eigentlichen Training trainiert und die Leistung des gesamten Models zu erhöhen. \cite{Bengio.2007} Bei (symmetrischen) Autoencodern werden dabei die zueinandersymmetrischen Schichten des Encoders und Decoders miteinander trainiert. Die Zielgröße ist dabei die Rekonstruktion der Eingabedaten.    
 
 	\section{ Transferlernen}
 	\label{sec:Transferlernen}
@@ -34,7 +32,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		-	oberste Schichten allgemeiner als untere --> todo papaer verweisen \cite{Tirumala.2018}	
 
 		\subsection{Halbüberwachtes Lernen}
-		Halbüberwachtes Lernen ist eine Methode, die sich zwischen unüberwachtes und überwachtem Lernen einordnet. Methoden des unüberwachten Lernens arbeiten komplett ohne annotierte Daten, überwachtes Lernen arbeitet mit vollständig annotierten Daten. Das halbüberwachte Lernen arbeitet mit Teilweise annotierten Daten. Die Anzahl der nicht annotierten Daten übersteigt, in der Regel, die Menge der annotierten Daten. Diese Technik adressiert reduziert Annotationskosten durch den Einsatz weniger Daten mit Annotationen. Zu beachten ist dabei, dass sowohl die Beschrifteten als nicht beschriftete Daten aus der gleichen Verteilung entnommen werden. 
+		Halbüberwachtes Lernen ist eine Methode, die sich zwischen unüberwachtes und überwachtem Lernen einordnet. Methoden des unüberwachten Lernens arbeiten komplett ohne annotierte Daten, überwachtes Lernen arbeitet mit vollständig annotierten Daten. Das halbüberwachte Lernen arbeitet mit Teilweise annotierten Daten. Die Anzahl der nicht annotierten Daten übersteigt, in der Regel, die Menge der annotierten Daten. Diese Technik reduziert Annotationskosten durch den Einsatz weniger Daten mit Annotationen. Zu beachten ist dabei, dass sowohl die Beschrifteten als nicht beschriftete Daten aus der gleichen Verteilung entnommen werden. 
 		Im Gegensatz dazu sind bei dem Transferlernen die Datenverteilungen der Quell- und Zieldomäne oft unterschiedlich.
 		\cite{Chapelle.2010} 
 		
@@ -47,12 +45,32 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\paragraph{Multi-Input Single-Output} bedeutet es werden mehrere Eingaben zum Vorhersagen eines Ausgabezieles genutzt.
 	
 		\paragraph{Multi-Input Multi-Output} bedeutet es werden mehrere Eingaben zum Vorhersagen von verschiedenen Arten von Ausgabezielen genutzt.
-		\todo{Bild Layers oder für jedes der drei}
-		Abbildung \ref{} zeigt die schematischen Struktur eines \ac{mtl} künstlichen neuronalen Netzes in der Ausprägung \ac{simo} .
 		
-		Induktiven Transferlernen und \ac{mtl} wird darin unterschieden, dass beim induktiven Transferlernen angenommen wird, dass es eine Hauptaufgabe und eine Nebenaufgabe gibt. Die Nebenaufgabe bietet zusätzliche Informationen, um die Hauptaufgabe zu verbessern bzw. zu generalisieren. Im \ac{mtl} gibt es keine solche Unterscheidung, die Aufgaben werden gleichberechtigt betrachtet. Induktiven Transfer-Lernen kann deshalb als Sonderform des \ac{mtl} gesehen werden. 
+		\begin{figure}[h]
+			\centering
+			\begin{subfigure}[c]{0.45\textwidth}			
+				\includegraphics[width=1\textwidth, center]{bilder/Grundlagen/MTL/MTL_SIMO.png}
+				\caption[MTL-SIMO]{Single-Input Multi-Output}
+				\label{img:MTL_SIMO}	
+			\end{subfigure}
+			\begin{subfigure}[c]{0.45\textwidth}			
+				\includegraphics[width=1\textwidth, center]{bilder/Grundlagen/MTL/MTL_MISO.png}
+				\caption[MTL-MISO]{Multi-Input Single-Output}
+				\label{img:MTL_MISO}	
+			\end{subfigure}
+			\begin{subfigure}[c]{0.45\textwidth}			
+				\includegraphics[width=1\textwidth, center]{bilder/Grundlagen/MTL/MTL_MIMO.png}
+				\caption[MTL-MIMO]{Multi-Input Multi-Output}
+				\label{img:MTL-MIMO}	
+			\end{subfigure}
+			\caption{Multi-Task-Lernen: Ausprägungen}
+			\label{img:MultiTaskLernen}
+		\end{figure}
+		Abbildung \ref{img:MultiTaskLernen} zeigt die verschiedenen Ausprägungen künstlicher neuronalen Netze die auf \ac{mtl} beruhen.
 		
-		\cite{Thung.2018} \cite{Pan.2010}
+		Induktiven Transferlernen und \ac{mtl} wird darin unterschieden, dass beim induktiven Transferlernen angenommen wird, dass es eine Hauptaufgabe und eine Nebenaufgabe gibt. Die Nebenaufgabe bietet zusätzliche Informationen, um die Hauptaufgabe zu verbessern bzw. zu generalisieren. Im \ac{mtl} gibt es keine solche Unterscheidung, die Aufgaben werden gleichberechtigt betrachtet. Induktiven Transfer-Lernen kann deshalb als Sonderform des \ac{mtl} gesehen werden. \cite{Thung.2018} \cite{Pan.2010}
+		
+		
 
 	\section{Automatisiertes maschinelles Lernen}
 	\label{sec:AutoML}
@@ -85,8 +103,8 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	In \cite{BergstraJamesandYoshuaBengio..2012} wurde gezeigt, das insbesondere bei unterschiedlicher Wichtigkeit der Hyperparameter, bessere Ergebnisse erzielt werden. 
 
 	\subsubsection{Bayesian optimization}
-	Bei der Bayes-Suche wird die Hyperparameter-Optimierung wie ein Problem der [Regression] behandelt. Mit einer vorgegebenen Reihe von Eingabefunktionen (den Hyperparametern) optimiert die Hyperparameter-Optimierung ein Modell für die Metrik, die Sie auswählen. Um das Problem einer Regression zu lösen, werden bei der Hyperparameter-Optimierung Vermutungen angestellt, welche Hyperparameter-Kombinationen wahrscheinlich die besten Ergebnisse erzielen. Um diese Werte zu überprüfen, werden anschließend Schulungsaufträge ausgeführt. Nach dem Testen der ersten Hyperparameter-Werte setzt die Hyperparameter-Optimierung die Regression ein, um die nächsten Werte zu testen.
-			\cite{Michelucci.2018}
+	Bayesian optimization ist ein Ansatz welcher zur Optimierung von Zielfunktionen, die eine lange Zeit (Minuten oder Stunden) zur Auswertung benötigen. Im Gengensatz zur Rastersuche oder Zufallssuche ist der Ansatz modellabhängig. Der Ansatz ist iterativ und baut auf zwei Komponenten auf. Ein probabilistisches Ersatzmodell und einer Erfassungsfunktion die zur Bewertung welcher Punkt als nächstes bewertet werden soll herangezogen wird. Das Ersatzmodell wird in jeder Iteration an alle Beobachtungen angepasst. Im Gegensatz zur Blackboxfunktion, ist die Auswertung der Erfassungsfunktion billig und kann somit zur Optimierung herangezogen werden.
+	\cite{Frazier.08.07.2018}
 			
 	\subsubsection{Hyperband}	
 	Hyperband \cite{Li.2017} erweitert Successive Halving \cite{Jamieson.27.02.2015}. Successive Halving weißt einer Reihe von Hyperparameter-Konfigurationen ein einheitliches menge an Ressourcen zu und berechnet die Leistung von allen Konfigurationen und entfernt die schlechtere Hälfte. Die Konfigurationen werden dabei zufällig gezogen. Das Ganze wird wiederholt, bis eine Konfiguration übrig bleibt. In jedem Durchlauf wird der übriggebliebenen Hälfte exponentiell mehr Ressourcen zugewiesen. SH benötigt als Eingangsparameter die Ressourcen und die Anzahl an Konfigurationen. Dabei ist es schwierig, zu entscheiden, ob wenige Konfigurationen mit mehr Ressourcen oder viele Konfigurationen mit weniger Ressourcen durchgeführt werden sollen.
@@ -149,7 +167,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\end{figure}		
 
 	\paragraph{Greifererkennung} Bei der Aufgabenstellung Greifer-Erkennung muss in einem Bild die Position eines Rahmen um den Greifer gefunden werden. Abbildung \ref{img:Grapple} zeigt ein Bild mit Rahmens um den Greifer. Es handelt sich um eine klassische Objekterkennungs-Aufgabe.
-		\begin{figure}[h]
+	\begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth, center]{bilder/Grundlagen/Grapple_8.png}
