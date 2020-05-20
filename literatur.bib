@@ -30,10 +30,24 @@
 }
 
 
-@article{Lindauer.,
-	author = {Lindauer, M. and Eggensperger, K. and Feurer, M. and Biedenkapp, A. and Marben, J. and M{\"u}ller, P. and Hutter, F.},
-	title = {BOAH: A Tool Suite for Multi-Fidelity Bayesian Optimization {\&} Analysis of Hyperparameters},
-	journal = {arXiv:1908.06756  In Citavi anzeigen[cs.LG]}
+@misc{Lindauer.16.08.2019,
+	abstract = {Hyperparameter optimization and neural architecture search can become prohibitively expensive for regular black-box Bayesian optimization because the training and evaluation of a single model can easily take several hours. To overcome this, we introduce a comprehensive tool suite for effective multi-fidelity Bayesian optimization and the analysis of its runs. The suite, written in Python, provides a simple way to specify complex design spaces, a robust and efficient combination of Bayesian optimization and HyperBand, and a comprehensive analysis of the optimization process and its outcomes.},
+	author = {Lindauer, Marius and Eggensperger, Katharina and Feurer, Matthias and Biedenkapp, Andr{\'e} and Marben, Joshua and M{\"u}ller, Philipp and Hutter, Frank},
+	date = {16.08.2019},
+	title = {BOAH: A Tool Suite for Multi-Fidelity Bayesian Optimization {\&} Analysis  of Hyperparameters},
+	url = {https://arxiv.org/pdf/1908.06756},
+	file = {https://arxiv.org/pdf/1908.06756v1.pdf}
+}
+
+
+@misc{Liu.08.12.2015,
+	abstract = {We present a method for detecting objects in images using a single deep neural network. Our approach, named SSD, discretizes the output space of bounding boxes into a set of default boxes over different aspect ratios and scales per feature map location. At prediction time, the network generates scores for the presence of each object category in each default box and produces adjustments to the box to better match the object shape. Additionally, the network combines predictions from multiple feature maps with different resolutions to naturally handle objects of various sizes. Our SSD model is simple relative to methods that require object proposals because it completely eliminates proposal generation and subsequent pixel or feature resampling stage and encapsulates all computation in a single network. This makes SSD easy to train and straightforward to integrate into systems that require a detection component. Experimental results on the PASCAL VOC, MS COCO, and ILSVRC datasets confirm that SSD has comparable accuracy to methods that utilize an additional object proposal step and is much faster, while providing a unified framework for both training and inference. Compared to other single stage methods, SSD has much better accuracy, even with a smaller input image size. For {\$}300$\backslash$times 300{\$} input, SSD achieves 72.1{\%} mAP on VOC2007 test at 58 FPS on a Nvidia Titan X and for {\$}500$\backslash$times 500{\$} input, SSD achieves 75.1{\%} mAP, outperforming a comparable state of the art Faster R-CNN model. Code is available at https://github.com/weiliu89/caffe/tree/ssd .},
+	author = {Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.},
+	date = {2016},
+	title = {SSD: Single Shot MultiBox Detector},
+	url = {https://arxiv.org/pdf/1512.02325},
+	doi = {10.1007/978-3-319-46448-0{\textunderscore }2},
+	file = {https://arxiv.org/pdf/1512.02325v5.pdf}
 }
 
 
@@ -100,6 +114,16 @@
 }
 
 
+@inproceedings{Kohavi.1995,
+	author = {Kohavi, Ron and John, George H.},
+	title = {Automatic Parameter Selection by Minimizing Estimated Error},
+	pages = {304--312},
+	publisher = {{Morgan Kaufmann}},
+	booktitle = {In Proceedings of the Twelfth International Conference on Machine Learning},
+	year = {1995}
+}
+
+
 @article{Pan.2010,
 	author = {Pan, Sinno Jialin and Qiang, Yang},
 	year = {2010},
@@ -108,16 +132,6 @@
 	volume = {22},
 	number = {10},
 	journal = {IEEE Transactions on Knowledge and Data Engineering}
-}
-
-
-@article{Pedregosa.2011,
-	author = {Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
-	year = {2011},
-	title = {Scikit-learn: Machine Learning in Python},
-	pages = {2825--2830},
-	volume = {12},
-	journal = {Journal of Machine Learning Research}
 }
 
 
@@ -226,13 +240,24 @@
 }
 
 
-@inproceedings{Kohavi.1995,
-	author = {Kohavi, Ron and John, George H.},
-	title = {Automatic Parameter Selection by Minimizing Estimated Error},
-	pages = {304--312},
-	publisher = {{Morgan Kaufmann}},
-	booktitle = {In Proceedings of the Twelfth International Conference on Machine Learning},
-	year = {1995}
+@article{Pedregosa.2011,
+	author = {Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+	year = {2011},
+	title = {Scikit-learn: Machine Learning in Python},
+	pages = {2825--2830},
+	volume = {12},
+	journal = {Journal of Machine Learning Research}
+}
+
+
+@incollection{Vanschoren.2019,
+	author = {Vanschoren, Joaquin},
+	title = {Meta-Learning: 2},
+	pages = {39--68},
+	publisher = {Springer},
+	editor = {Hutter, Frank and Kotthoff, Lars and Vanschoren, Joaquin},
+	booktitle = {Automatic Machine Learning: Methods, Systems, Challenges},
+	year = {2019}
 }
 
 
@@ -247,16 +272,6 @@
 	issn = {1935-8245},
 	journal = {Foundations and Trends{\circledR} in Machine Learning},
 	doi = {10.1561/2200000056}
-}
-
-
-@article{JoaquinVanschoren.2018,
-	author = {{Joaquin Vanschoren}},
-	year = {2018},
-	title = {Meta-Learning: A Survey},
-	volume = {abs/1810.03548},
-	journal = {CoRR},
-	file = {http://arxiv.org/abs/1810.03548}
 }
 
 
@@ -354,14 +369,13 @@
 }
 
 
-@incollection{Vanschoren.2019,
-	author = {Vanschoren, Joaquin},
-	title = {Meta-Learning: 2},
-	pages = {39--68},
-	publisher = {Springer},
-	editor = {Hutter, Frank and Kotthoff, Lars and Vanschoren, Joaquin},
-	booktitle = {Automatic Machine Learning: Methods, Systems, Challenges},
-	year = {2019}
+@article{JoaquinVanschoren.2018,
+	author = {{Joaquin Vanschoren}},
+	year = {2018},
+	title = {Meta-Learning: A Survey},
+	volume = {abs/1810.03548},
+	journal = {CoRR},
+	file = {http://arxiv.org/abs/1810.03548}
 }
 
 
@@ -369,7 +383,7 @@
 	author = {Chollet, Fran{\c{c}}ois and others},
 	year = {2015},
 	title = {Keras},
-	url = {https://keras.io/preprocessing/image}
+	url = {https://keras.io/}
 }
 
 
@@ -481,7 +495,7 @@
 
 
 @misc{cnvrg.io.,
-	author = {cnvrg.io},
+	author = {cnvrg},
 	title = {cnvrg.io},
 	url = {https://cnvrg.io/},
 	urldate = {19.02.2020}

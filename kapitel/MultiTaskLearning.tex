@@ -1,12 +1,12 @@
 
-\chapter{Greifer Erkennung und Multi Task Lernen}
+\chapter{Experimente und Werkzeuge}
 \label{chap:HauptteilMultiTaskLernen}
 Als Kostenfaktor in DataScience-Projekten wurden die hohen Kosten zum Annotieren von Daten ermittelt. Im Autocrane-Projekt werden viele Aufgaben in einer Domäne durchgeführt. Als Frage stellt sich, ob eine geeignete Repräsentation der Domäne gefunden und ausgehend von dieser Repräsentation datensparsam (kostensparsam) aufgaben in dieser Domäne gelöst werden können.  
 
 
 	\section{Greifererkennung auf Autoencoder}
 	\label{sec:GreifererkennungAufAutoencoder}
-    Autoencoder sind ein Ansatz um unüberwacht, also  ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{ErgebnissRegressionAufAE} sind die Ergebnisse von drei Durchläufen abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von \todo{Iou Grapple}.
+    Autoencoder sind ein Ansatz um unüberwacht, also ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{ErgebnissRegressionAufAE} sind die Ergebnisse von drei Durchläufen abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von \todo{Iou Grapple}.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_SCAE.png}
