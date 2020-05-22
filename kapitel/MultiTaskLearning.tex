@@ -6,14 +6,51 @@ Als Kostenfaktor in DataScience-Projekten wurden die hohen Kosten zum Annotieren
 
 	\section{Greifererkennung auf Autoencoder}
 	\label{sec:GreifererkennungAufAutoencoder}
-    Autoencoder sind ein Ansatz um unüberwacht, also ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{ErgebnissRegressionAufAE} sind die Ergebnisse von drei Durchläufen abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von \todo{Iou Grapple}.
-	\begin{figure}[h]
+    Autoencoder sind ein Ansatz um unüberwacht, also ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{img:ErgebnissRegressionAufAE} sind die Ergebnisse von drei Durchläufen abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von \todo{Iou Grapple}.
+    \begin{figure}[h]
+    	\centering
+    	\begin{subfigure}[c]{0.49\textwidth}			
+    		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
+    		\caption[Boxplot]{Boxplot Regression auf Autoencoder}
+    		\label{img:BoxPlot_RegressionAufAutoencoder}	
+    	\end{subfigure}
+    	\begin{subfigure}[c]{0.49\textwidth}			
+    		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
+    		\caption[Recall-IoU]{RecallIou Regression auf Autoencoder}
+    		\label{img:RecalllIoUt_RegressionAufAutoencoder}	
+    	\end{subfigure}
+    	\caption{Ergebniss Regression auf Autoencoder}
+        \label{img:ErgebnissRegressionAufAE}
+    \end{figure}
+ 
+	In Abbildung \ref{todo Embedding} ist das Embedding des zugrundeliegenden Autoencoders abgebildet. Die Datenpunkte verteilen sich gut im Raum, bilden aber keine Merkmale des Greifers ab. In Abbildung \ref{todo Rekonstruktionen} sind Bilder mit ihren Rekonstruktionen abgebildet. Es ist sehr deutlich zu erkennen, dass sich der stark ändernde Hintergrund herausfordernd ist und in erster Linie die Lichtverhältnisse gelernt wurden.   
+	
+	
+	% x ,y psoition
+	   \begin{figure}[h]
+		\centering
+		\begin{subfigure}[c]{0.49\textwidth}			
+			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
+			\caption[Boxplot]{Boxplot Regression auf Autoencoder}
+			\label{img:BoxPlot_RegressionAufAutoencoder}	
+		\end{subfigure}
+		\begin{subfigure}[c]{0.49\textwidth}			
+			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
+			\caption[Recall-IoU]{RecallIou Regression auf Autoencoder}
+			\label{img:RecalllIoUt_RegressionAufAutoencoder}	
+		\end{subfigure}
+		\caption{Embedding}
+		\label{img:Embedding}
+	\end{figure}
+	
+	% rekonstuktion
+		\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_SCAE.png}
 		\caption[Schema SecondCriterionAutoenocder]{Schema SecondCriterionAutoenocder}
-		\label{img:ErgebnissRegressionAufAE}
+		\label{img:SchemaSCAE}
 	\end{figure}  
-	In Abbildung \ref{todo Embedding} ist das Embedding des zugrundeliegenden Autoencoders abgebildet. Die Datenpunkte verteilen sich gut im Raum, bilden aber keine Merkmale des Greifers ab. In Abbildung \ref{todo Rekonstruktionen} sind Bilder mit ihren Rekonstruktionen abgebildet. Es ist sehr deutlich zu erkennen, dass sich der stark ändernde Hintergrund herausfordernd ist und in erster Linie die Lichtverhältnisse gelernt wurden.   
+	
 	
 	\section{Mutli-Task Experiment}
 	\label{sec:MultiTaskExperiment}
