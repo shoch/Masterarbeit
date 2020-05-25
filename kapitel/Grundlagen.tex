@@ -1,31 +1,29 @@
 \chapter{Grundlagen}
 \label{chap:Grundlagen}
-Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick auf die durchgeführten Experimente beschrieben. Begonnen wird mit den theoretischen Grundlagen, gefolgt von einer Beschreibung der bestehenden Systeme und abgeschlossen wird mit einem Abschnitt über die Daten und ihrer Vorverarbeitung.
+Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick auf die gewählten Ansätze beschrieben. Begonnen wird mit den theoretischen Grundlagen, gefolgt von einer Beschreibung der bestehenden Systeme und abgeschlossen wird mit einem Abschnitt über die Daten und ihrer Vorverarbeitung.
 
 	\section{Autoencoder}
 	\label{sec:ConvolutionalAutoencoder}		
-	Autoencoder \cite{D.E.Rumelhart.1987} sind Werkzeuge welche insbesondere zum Finden von Repräsentationen eingesetzt werden. Dabei komprimieren Sie die Eingabe in einen niedrigdimensionaleren Raum und rekonstruieren aus diesem Code die Eingabe. Konkret besteht ein Autoencoder als aus drei Dingen, dem Encoder, dem Codelayer und dem Decoder. In Abbildung \ref{img:SchemaCAE} ist das Schema eines Autoencoders abgebildet.
-				\todo{Schema verdeutlichen encoder + decoder}
+	Autoencoder \cite{D.E.Rumelhart.1987} sind Werkzeuge welche insbesondere zum Finden von Repräsentationen eingesetzt werden. Dabei komprimieren Sie die Eingabe in einen niedrigdimensionaleren Raum und rekonstruieren aus diesem Code die Eingabe. Konkret besteht ein Autoencoder als aus drei Teilen, dem Encoder, dem Codelayer und dem Decoder. In Abbildung \ref{img:SchemaCAE} ist das Schema eines Autoencoders abgebildet.
 			\begin{figure}[h]
-			
 				\centering
-				\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_CAE.png}
+				\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_CAE2.png}
 				\caption[Schema Autoencoder]{Schema Autoencoder}
 				\label{img:SchemaCAE}
 			\end{figure} 
-	In der einfachsten Form besteht ein Autoencoder aus einer Eingabeschicht, einer versteckten Schicht und eine Ausgabeschicht. Sie können aber auch mit mehreren Layern, also mit 'tiefe Architekturen' genutzt werden. \cite{Hinton.2006} Der Encoder lässt sich auch vereinfacht als die Funktion $F(x)=c$ und der Decoder als die Funktion $ F(c)=x'$ darstellen wobei $x\stackrel{!}{=}x'$ sein soll. 
+	In der einfachsten Form besteht ein Autoencoder aus einer Eingabeschicht, einer versteckten Schicht und eine Ausgabeschicht. Sie können aber auch mit mehreren Schichten, also mit 'tiefe Architekturen' genutzt werden. \cite{Hinton.2006} Der Encoder lässt sich auch vereinfacht als die Funktion $F(x)=c$ und der Decoder als die Funktion $ F(c)=x'$ darstellen wobei $x\stackrel{!}{=}x'$ sein soll. 
 	Autoencoder gibt es in vielen verschiedenen Ausführungen. Dabei sind die meisten Typen von Autoencoder unvollständige Autoencoder. Die verborgene Schicht, das Codelayer enthält weniger Informationen als die Eingabe. Hierdurch wird die Dimensionsreduzierung erzwungen. Andere Aufgaben können Entrauschung mittels Denoising autoencoder \cite{Vincent.2008} oder Generierung neuer Datenpunkte mittels Varrational Autoencoder \cite{Kingma.2019} sein. Bei  Contractive autoencoder \cite{Rifai.201} nutzen einen Regularisierer in der Zielfunktion um das Modell zu zwingen eine Funktion zu lernen, die flexibler auf Variationen der Eingabewerte reagiert.   	
 
-	Für die Arbeit ist der \acl{cae} \cite{Masci.2011} kurz \ac{cae} interessant. Er ist ist ein Stacked Autoencoder welcher Convolutional Layer (Faltungsschichten) \cite{LeCun.1999} integriert.  
+	Für die Arbeit ist der \acl{cae} \cite{Masci.2011} kurz \ac{cae} interessant. Er ist ist ein Stacked Autoencoder welcher Faltungsschichten (Convolutional Layer) \cite{LeCun.1999} integriert.  
 
-	\paragraph{Schichtenweise Vortrainieren} Im schichtenweise Vortrainieren werden einzelne Schichten eines neuronalen Netzwerkes vor dem eigentlichen Training trainiert und die Leistung des gesamten Models zu erhöhen. \cite{Bengio.2007} Bei (symmetrischen) Autoencodern werden dabei die zueinandersymmetrischen Schichten des Encoders und Decoders miteinander trainiert. Die Zielgröße ist dabei die Rekonstruktion der Eingabedaten.    
+	\paragraph{Schichtenweise Vortrainieren} Im schichtenweise Vortrainieren werden einzelne Schichten eines neuronalen Netzwerkes vor dem eigentlichen Training trainiert und die Leistung des gesamten Models zu erhöhen. \cite{Bengio.2007} Bei (symmetrischen) Autoencodern werden dabei die zueinander symmetrischen Schichten des Encoders und Decoders miteinander trainiert. Die Zielgröße ist dabei die Rekonstruktion der Eingabedaten.    
 
 	\section{ Transferlernen}
 	\label{sec:Transferlernen}
-	Im traditionellen maschinellem Lernen wird pro Aufgabe und Datenset ein isoliertes Modell erstellt. Das Transferlernen hat das Ziel Wissen zu teilen. Die Isolation der Modelle soll aufgehoben werden. Dabei erfolgt eine Aufteilung in Quell und Zieldomäne.
+	Im traditionellen maschinellem Lernen wird pro Aufgabe und Datenset ein isoliertes Modell erstellt. Das Transferlernen hat das Ziel Wissen zu teilen. Die Isolation der Modelle soll aufgehoben werden. Dabei erfolgt eine Aufteilung in Quell und Zieldomäne. In \cite{FuzhenZhuang.2019}
 	
 		\todo{sec:Transferlernen }
-		- Was ist das \cite{FuzhenZhuang.2019}
+		- Was ist das 
 		Homogeneous transfer learning
 	Heterogeneous transfer learning	
 	
@@ -115,13 +113,13 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 			
 	\section{Bibliotheken und Werkzeuge}
 	\label{sec:BibliothekenundWerkzeuge}
-	Für den praktischen Teil der Abschlussarbeit wurde insbesondere Cnvrg \cite{cnvrg.io.} genutzt. Cnvrg.io ist eine "full-stack Data Science Platform" welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure \cite{Micorsoft.2020} zugreifen. Für die Experimente wurde ein vorgefertigter Container mit einer tesla-k80 \cite{Nvidia.2020}, fünf CPUs und 49 GB Arbeitsspeicher genutzt. 
+	Für den praktischen Teil der Abschlussarbeit wurde insbesondere Cnvrg \cite{cnvrg.io.} genutzt. Cnvrg.io ist eine "full-stack" Data Science Platform welche Werkzeuge für die Erstellung, Verwaltung, Bereitstellung und Automatisierung von maschinellem Lernen bereitstellt. Cnvrg erlaubt es Arbeitsbereiche mittels Containern zu erstellen. Die Container können dabei auf Maschinen in Azure \cite{Micorsoft.2020} zugreifen. Für die Experimente wurde ein vorgefertigter Container mit einer tesla-k80 \cite{Nvidia.2020}, fünf CPUs und 49 GB Arbeitsspeicher genutzt. 
 
 	Für die Entwicklung wurden Python \cite{PythonSoftwareFoundation.2020}, Jupyter Notebooks \cite{ProjectJupyter.} und das Framework Tensorflow \cite{MartinAbadi.2015}  genutzt. Die wichtigsten Bibliotheken für die Arbeit sind Keras \cite{Chollet.2015} , Numpy \cite{Oliphant.2006} , Matplotlib \cite{Hunter.2007} , scikit-learn \cite{Pedregosa.2011} , ConfigSpace \cite{Lindauer.16.08.2019} , Bayesian Optimization and Hyperband \cite{StefanFalkner.2018}. 
 	
-	Für die Visualisierung von Bildeinbettungen wurde das Werkzeug "PSIORI Visualizer" erweitert und eingesetzt. Der Visualizer erlaubt es dreidimensionale Daten darzustellen. Dabei können Filter eingesetzt werden, der Blickwinkel geändert werden, die Daten mit zusätzlicher Information versehen werden und Zoomen ist möglich. Als zusätzliche Informationen kann z.B. ein Originalbild und seine Rekonstruktion oder die Information ob eine Vorhersage korrekt oder falsch wahr hinterlegt werden.
+	Für die Visualisierung von Bildeinbettungen wurde die Software "PSIORI Visualizer" erweitert und eingesetzt. Die Software erlaubt es dreidimensionale Daten darzustellen. Dabei können Filter eingesetzt werden, der Blickwinkel geändert werden, die Daten mit zusätzlicher Information versehen werden und Zoomen ist möglich. Als zusätzliche Informationen kann z.B. ein Originalbild und seine Rekonstruktion oder die Information ob eine Vorhersage korrekt oder falsch wahr hinterlegt werden.
 	
-	Kern der erstellten Werkzeuge ist das Framework  Psipy \cite{PSIORIGmbH.2019}. Psipy ist ein Python-Framework für maschinelles Lernen welches von PSIORI selbst entwickelte Werkzeuge zusammenfasst und unter einer einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt. Es können Modelle basierend auf scikit-learn  und Tensorflow eingebunden werden. In den nachfolgenden Abschnitten werden die, für die Arbeit, wichtigsten bestehenden Module des Frameworks vorgestellt.
+	Kern der erstellten Softwaremodule ist das Framework  Psipy \cite{PSIORIGmbH.2019}. Psipy ist ein Python-Framework für maschinelles Lernen welches von PSIORI selbst entwickelte Werkzeuge zusammenfasst und unter einer einheitliche API zu Verfügung stellt. Diese API ist an die API des verbreiteten Frameworks scikit-learn angelehnt. Es können Modelle basierend auf scikit-learn  und Tensorflow eingebunden werden. In den nachfolgenden Abschnitten werden die, für die Arbeit, wichtigsten bestehenden Module des Frameworks vorgestellt.
 	
 	 \paragraph{saveable.py} Das Modul Saveable ist eine flexible Basisklasse die Kernfunktionalität zum Speichern und Laden von Python-Objekten bietet. Es können Modelle, welche diverse Bibliotheken nutzen auf eine einheitliche Art und Weise gespeichert werden. Um die Klasse Saveable nutzen zu können, müssen erbende Klassen ihre Konstruktorargumente an die Basisklasse übergeben. Zusätzlich ist es notwendig eine Erweiterung beim Speichern und Laden zu implementieren. Beim Speichern ist es notwendig eine Erweiterung, um alle (meist ein) Module und weitere Argumente zu implementieren. Beim Laden müssen die gespeicherten Module und Argumente geladen werden. In Listing \ref{lst:SaveTensorflow} ist die Erweiterung zum Speichern eines Tensorflow-Models abgebildet. 
 	\begin{lstlisting}[language=python,caption=Erweiterung zum Speichern eines Tensorflow Models, label=lst:SaveTensorflow]
@@ -139,8 +137,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\label{img:KlassendiagrammConvolutionalAutoencoder}
 	\end{figure}  
 	
-	\paragraph{hyperparameter\_mixin.py}  Hyperparameter\_mixin wird zum standardisierten Verwalten von Hyperparametern für AutoML-Klassen genutzt. Auf die Hyperaparameter kann anschließend einheitlich zugegriffen werden. Abbildung \ref{img:KlassendiagrammHyperparametermixin}  Zeigt das zugehörige UML-Klassendiagramm mit den Methoden zum Hinzufügen, Löschen und Laden der Hyperparameter. Da die Methoden öffentlich sind, können über jede erbende Klasse die Hyperparameter eigenständig verwaltet werden.
-	
+	\paragraph{hyperparameter\_mixin.py}  Hyperparameter\_mixin wird zum standardisierten Verwalten von Hyperparametern für AutoML-Klassen genutzt. Auf die Hyperaparameter kann anschließend einheitlich zugegriffen werden. Abbildung \ref{img:KlassendiagrammHyperparametermixin} zeigt das zugehörige UML-Klassendiagramm mit den Methoden zum Hinzufügen, Löschen und Laden der Hyperparameter. Da die Methoden öffentlich sind, können über jede erbende Klasse die Hyperparameter eigenständig verwaltet werden.	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Klassendiagramme/Hyperparametermixin.png}
@@ -150,7 +147,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	
 	\section{Einordnung und bestehende Systeme}
 	\label{sec:BestehendesSystem}
-	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein laufendes Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Diese Art von Kran werden in holzverarbeitenden Anlagen zum Befüllen von Fülltrichtern oder Förderbändern eingesetzt. Der Kran kann sich um 360 Grad drehen. Der Greifer kann nach oben, unten und mittels eines Schlittens entlang eines Auslegers bewegt werden. Um die Bilder aufnehmen zu können, wurde an der Kabine am Hauptstandfuß eine Kamera angebracht. Die Kamera ist auf das Ende des Auslegers und den Bereich darunter ausgerichtet. Die Kamera bewegt sich also mit dem Rundlaufkran und somit ist der Greifer immer im Bild. Für das Autocarne-Projekt sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln befüllt werden. Der Fülltrichter muss mit Holz aus einem LKW befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. Im Normalbetrieb werden täglich 140-200 LKW entladen. Die Ladung ist 9 - 18 Meter lang und 34 - 40 Tonnen schwer. \cite{PSIORIGmbH.2020}
+	Die Bilddaten und Aufgabenstellungen der neuronalen Netzwerke sind in die Problemstellungen des Autocrane-Projekts von PSIORI einzuordnen. Es sind also echte Datensätze und echte Problemstellungen, wobei die gezeigten Aufgabenstellungen und Modelle nicht zwingend in dem Autocrane-Projekt zum Einsatz kommen. Das Autocrane-Projekt ist ein (laufendes) Projekt, welches das Ziel hat, einen feststehenden Rundlaufkran vollautomatischen zu steuern. In Abbildung \ref{img:CircularCrane} ist ein Rundlaufkran abgebildet. Diese Art von Kran werden in holzverarbeitenden Anlagen zum Befüllen von Fülltrichtern oder Förderbändern eingesetzt. Der Kran kann sich um 360 Grad drehen. Der Greifer kann nach oben, unten und mittels eines Schlittens entlang eines Auslegers bewegt werden. Um die Bilder aufnehmen zu können, wurde an der Kabine am Hauptstandfuß eine Kamera angebracht. Die Kamera ist auf das Ende des Auslegers und den Bereich darunter ausgerichtet. Die Kamera bewegt sich also mit dem Rundlaufkran und somit ist der Greifer immer im Bild. Für das Autocarne-Projekt sind insbesondere drei Anwendungsfälle interessant. Die Baumstämme werden mittels LKW angeliefert und müssen nach vorgegebenen Regeln (z. B. Ausrichtung, freier Lagerplatz) als Holzstapel gelagert werden. Der Fülltrichter muss mit Holz aus den Holzstapeln befüllt werden. Der Fülltrichter muss mit Holz aus einem LKW befüllt werden. Es ergeben sich also Aufgabenstellungen wie Greifer-Erkennung, Baumstamm-Erkennung, LKW-Erkennung, Strategien für das entladen und aufbewahren der Baumstämme und vieles mehr. Im Normalbetrieb werden täglich 140-200 LKW entladen. Die Ladung ist 9 - 18 Meter lang und 34 - 40 Tonnen schwer. \cite{PSIORIGmbH.2020}
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Grundlagen/Kran_vollstaendig_N1_030.jpg}
@@ -175,10 +172,10 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\label{img:Greifer}
 	\end{figure}	
 
-	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) \cite{Liu.08.12.2015} zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist  die ausschalggebende Metrik die Intersection over Union mit einem Schwellenwert von 0.8. Das Modell erreicht einen Wert von \todo{IoU prüfen }$0.87$.
+	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) \cite{Liu.08.12.2015} zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist  die ausschlaggebende Metrik die \todo{Metrik im Detail beschreiben} Intersection over Union mit einem Schwellenwert von 0.8. Das Modell erreicht einen Wert von $0.87$. In Anhang \ref{appendix:Basislinie_Grapple} ist die vollständige Basislinie dargestellt.
 	
 		
-	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe. Für diese Aufgabe wurde von PSIORI ein Model erstellt. Dieses Model wird wie das Greifererkennungsmodel als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt. Das Modell erreicht auf den Validation-Daten eine Accuracy von.
+	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe. Für diese Aufgabe wurde von PSIORI ein Model erstellt. Dieses Model wird wie das Greifererkennungsmodel als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt. Das Modell erreicht auf den Validation-Daten eine Accuracy von \todo{ACC Logs}. Im Anhang \ref{appendix:BaseLineLogs} ist die vollständige Basislinie dargestellt. 
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
@@ -225,6 +222,8 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\caption{Datenaufteilung - Train Test Validation}
 		\label{table:DatenaufteilungTrainTestValidation}
 	\end{table}
+
+	\todo{Generierter Datensatz?}
 	
 	Für das Laden der Daten wurde ein Modul 'data\_loader.py' erstellt. Dieses Modul enthält die drei Klassen DataLoader, GrappleDataLoader, LogsDataLoader. DataLoader ist eine abstrakte Klasse, welche Methoden zum Laden der Train-, Test- und Validationdaten definiert. Sie liefern entsprechend eines Parameters, bis zur maximalen Anzahl an Bildern, Bilder als Numparray zurück. Die Klassen GrappleDataLoader und LogsDataLoader implementieren für den jeweiligen Datensatz die konkreten Methoden zum Laden der Daten.
 	
