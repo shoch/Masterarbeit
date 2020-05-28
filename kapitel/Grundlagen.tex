@@ -28,8 +28,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\paragraph{Instanzbasiert} Instanz-basierte Ansätze ergänzen, mittels geeigneter Strategie, Gewichte in der Zieldomäne mit Gewichten aus der Quelldomäne.
 		\paragraph{Abbildungbasiert} Abbildungs-basierte Ansätze bilden Instanzen aus der Quell- und Zieldomäne in einen neuen Datenraum ab. In dem neuen Datenraum sind die Instanzen aus den zwei Bereichen ähnlich und können für ein gemeinsames Training eines tiefen neuronales Netzwerk genutzt werden. 
 		\paragraph{Netzwerkbasiert} Der netzwerkbasierte Ansatz wiederverwendet einen Teil des in der Quelldomäne trainierten Netzwerkes in der Zieldomäne. Es werden dabei sowohl die Netzstruktur als auch die Verbindungsparameter übernommen. Die Netzwerke werden dabei in zwei Teile unterteilt. Der erste Teil ist die sprachunabhängige Merkmalstransformation und der zweite Teil ist der sprachabhängige Klassifikator. Dabei kann die sprachunabhängige Merkmalstransformation in der Zieldomäne wiederverwendet werden.   
-		\paragraph{Gegnerischbasiert}
-		\todo{text}
+		\paragraph{Gegnerischbasiert} Gegenerischbasierte tiefes Transferlerning ist von dem Ansatz "erzeugende gegnerische Netzwerke" (Generative Adversarial Networks) \cite{IanJ.Goodfellow.2014} inspiriert. Es werden übertragbare Repräsentationen gesucht, die sowohl auf die Quell- als auch auf die Zieldomäne anwendbar sind.
 
 		\subsection{Halbüberwachtes Lernen}
 		Halbüberwachtes Lernen ist eine Methode, die sich zwsischen unüberwachtes und überwachtem Lernen einordnet. Methoden des unüberwachten Lernens arbeiten komplett ohne annotierte Daten, überwachtes Lernen arbeitet mit vollständig annotierten Daten. Das halbüberwachte Lernen arbeitet mit Teilweise annotierten Daten. Die Anzahl der nicht annotierten Daten übersteigt, in der Regel, die Menge der annotierten Daten. Diese Technik reduziert Annotationskosten durch den Einsatz weniger Daten mit Annotationen. Zu beachten ist dabei, dass sowohl die Beschrifteten als nicht beschriftete Daten aus der gleichen Verteilung entnommen werden. 
@@ -174,10 +173,10 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\label{img:Greifer}
 	\end{figure}	
 
-	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) \cite{Liu.08.12.2015} zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist  die ausschlaggebende Metrik die \todo{Metrik im Detail beschreiben} Intersection over Union mit einem Schwellenwert von 0.8. Das Modell erreicht einen Wert von $0.87$. In Anhang \ref{appendix:Basislinie_Grapple} ist die vollständige Basislinie dargestellt.
+	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) \cite{Liu.08.12.2015} zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist  die ausschlaggebende Metrik die \todo{Metrik im Detail beschreiben} Intersection over Union mit einem Schwellenwert von 0.8. Das Modell erreicht einen Wert von $0.86$. In Anhang \ref{appendix:Basislinie_Grapple} ist die vollständige Basislinie dargestellt.
 	
 		
-	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe. Für diese Aufgabe wurde von PSIORI ein Model erstellt. Dieses Model wird wie das Greifererkennungsmodel als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt. Das Modell erreicht auf den Validation-Daten eine Accuracy von \todo{ACC Logs}. Im Anhang \ref{appendix:BaseLineLogs} ist die vollständige Basislinie dargestellt. 
+	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe. Für diese Aufgabe wurde von PSIORI ein Model erstellt. Dieses Model wird wie das Greifererkennungsmodel als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt. Das Modell erreicht auf den Validation-Daten eine Accuracy von 0.9828\%. Im Anhang \ref{appendix:BaseLineLogs} ist die vollständige Basislinie dargestellt. 
 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
