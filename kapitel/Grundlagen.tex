@@ -173,9 +173,8 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\label{img:Greifer}
 	\end{figure}	
 
-	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) \cite{Liu.08.12.2015} zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist  die ausschlaggebende Metrik die \todo{Metrik im Detail beschreiben} Intersection over Union mit einem Schwellenwert von 0.8. Das Modell erreicht einen Wert von $0.86$. In Anhang \ref{appendix:BasislinieGreifer} ist die vollständige Basislinie dargestellt.
+	PSIORI hat die Aufgabe mittels neuronalem Netzwerk gelöst. Dabei wurde auf die Technik des Single Shot MultiBox Detector (SSD) \cite{Liu.08.12.2015} zurückgegriffen. Die Vorhersagegenauigkeit dieses Modells wird als Basislinie und Vergleichswert genutzt. Dabei ist die ausschlaggebende Metrik die  \acl{iou} kurz \ac{iou} mit einem Schwellenwert von 0.8. Es wird also die Fläche der Überschneidung der Beiden Rahmen durch die Gesamtfläche der Rahmen geteilt und wenn ein Wert >= 80\% erreicht wird als korrekt vorhergesagt eingestuft.  Das Modell erreicht einen Wert von $0.86$. In Anhang \ref{appendix:BasislinieGreifer} ist die vollständige Basislinie dargestellt.
 	
-		
 	\paragraph{Baumstammklassifikation} Die Aufgabe der Baumstammklassifikation hat zum Ziel, zu erkennen ob sich Baumstämme im Greifer befindet oder nicht. Es handelt sich um eine Klassifikationsaufgabe. Für diese Aufgabe wurde von PSIORI ein Model erstellt. Dieses Model wird wie das Greifererkennungsmodel als Basislinie und Vergleichswert für die durchgeführten Versuche genutzt. Das Modell erreicht auf den Validation-Daten eine Accuracy von 0.9828\%. Im Anhang \ref{appendix:BasislinieBaumstämme} ist die vollständige Basislinie dargestellt. 
 
 	\section{Datenverständnis}
@@ -206,6 +205,8 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\end{figure}
 		
 	\paragraph{Greiferdatensatz} Der Greifer Datensatz enthält Bilder, in welchen der Greifer mittels Rahmen markiert ist. Abbildung \ref{img:Grapple} zeigt ein beispielhaftes Bild mit markiertem Greifer. Die Annotationen der Position des Greifers wurde pro Bild in einer XML-Datei abgelegt. Konkret wurde die Position als x, y Koordinaten in der Form ymin, xmin, ymax und xmax abgespeichert. Über die vier Werte lässt sich problemlos ein Rahmen um den Greifer spannen. Der Datensatz besteht aus 4.684 durch Personen annotierten Bildern.
+	
+	\paragraph{Generierter Greiferdatensatz}  Erfahrungsgemäß lernen Autoencoder lichtverhältnisse in Bidler relativ gut. Um für erste Versuche den Fokus von den Lichtverhältnissen auf die eignetliche Aufgabnestellung zu setzen wurde ein weiterer Greiferdatensatz erzeugt. Hierfür wurden 8966 Bilder mittels dem Basislinienmodell beschriftet und in 7171 Trainignsdaten und jeweils 896 Test- und Validationsaten aufgeteilt.
 	 
 	\paragraph{Baumstammdatensatz} Der Baumstamm Datensatz enthält Bilder, welche die Annotation, ob sich Baumstämme im Greifer befinden oder nicht enthält. Die Bilder sind durch zwei Ordner in Bilder mit und Bilder ohne Baumstämme aufgeteilt. Abbildung \ref{img:Logs} zeigt ein Bild, in welchem der Greifer Baumstämme greift. In Abbildung \ref{img:Grapple} befinden sich keine Baumstämme im Greifer.  
 			
@@ -223,8 +224,6 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\caption{Datenaufteilung - Train Test Validation}
 		\label{table:DatenaufteilungTrainTestValidation}
 	\end{table}
-
-	\todo{Generierter Datensatz?}
 	
 	Für das Laden der Daten wurde ein Modul 'data\_loader.py' erstellt. Dieses Modul enthält die drei Klassen DataLoader, GrappleDataLoader, LogsDataLoader. DataLoader ist eine abstrakte Klasse, welche Methoden zum Laden der Train-, Test- und Validationdaten definiert. Sie liefern entsprechend eines Parameters, bis zur maximalen Anzahl an Bildern, Bilder als Numparray zurück. Die Klassen GrappleDataLoader und LogsDataLoader implementieren für den jeweiligen Datensatz die konkreten Methoden zum Laden der Daten.
 	

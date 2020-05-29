@@ -3,19 +3,20 @@
 \label{chap:HauptteilMultiTaskLernen}
 Als Kostenfaktor in DataScience-Projekten wurden die hohen Kosten zum Annotieren von Daten ermittelt. Im Autocrane-Projekt werden viele Aufgaben in einer Domäne durchgeführt. Als Frage stellt sich, ob eine geeignete Repräsentation der Domäne gefunden und ausgehend von dieser Repräsentation datensparsam (kostensparsam) aufgaben in dieser Domäne gelöst werden können.  
 
+In den nachfolgenden Abschnitten wird zusätzlich zu den Experimenten zur Verdeutlichung der Ansätze ein Blick auf die erstellten Module geworfen.
 
 	\section{Greifererkennung auf Autoencoder}
 	\label{sec:GreifererkennungAufAutoencoder}
-    Autoencoder sind ein Ansatz um unüberwacht, also ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{img:ErgebnissRegressionAufAE} sind die Ergebnisse von drei Durchläufen abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von \todo{Iou Grapple}.
+    Autoencoder sind ein Ansatz um unüberwacht, also ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{img:ErgebnissRegressionAufAE} sind die Ergebnisse von drei Durchläufen abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von $0.86$.
     \begin{figure}[h]
     	\centering
     	\begin{subfigure}[c]{0.49\textwidth}			
-    		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
+    		%\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
     		\caption[Boxplot]{Boxplot Regression auf Autoencoder}
     		\label{img:BoxPlot_RegressionAufAutoencoder}	
     	\end{subfigure}
     	\begin{subfigure}[c]{0.49\textwidth}			
-    		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
+    		%\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
     		\caption[Recall-IoU]{RecallIou Regression auf Autoencoder}
     		\label{img:RecalllIoUt_RegressionAufAutoencoder}	
     	\end{subfigure}
@@ -30,12 +31,12 @@ Als Kostenfaktor in DataScience-Projekten wurden die hohen Kosten zum Annotieren
 	   \begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
-			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
+		%	\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
 			\caption[Boxplot]{Boxplot Regression auf Autoencoder}
 			\label{img:BoxPlot_RegressionAufAutoencoder}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.49\textwidth}			
-			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
+		%	\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
 			\caption[Recall-IoU]{RecallIou Regression auf Autoencoder}
 			\label{img:RecalllIoUt_RegressionAufAutoencoder}	
 		\end{subfigure}
@@ -52,8 +53,8 @@ Als Kostenfaktor in DataScience-Projekten wurden die hohen Kosten zum Annotieren
 	\end{figure}  
 	
 	
-	\section{Mutli-Task Experiment}
-	\label{sec:MultiTaskExperiment}
+	\section{Mutli-Task Greifererkennung}
+	\label{sec:MultiTaskGreifererkennung
 	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde als schwäche des Ansatzes die fehlende Fokusierung des Autoencoders auf den Greifer ausgemacht. Multi-Task-Lernen soll durch gleichzeitiges bearbeiten der Aufgaben Repräsenation finden und Greifererkennung die schwäche des fehlenden Fokus kompensieren.   
 	\subsection{Werkzeug}
 	Zur Umsetzung der SIMO Multi-Task-Idee wurde ein Modul in Python erstellt. Das Werkzeug erweitert ... \todo{Werkezug beschreiben} 
@@ -62,7 +63,7 @@ Als Kostenfaktor in DataScience-Projekten wurden die hohen Kosten zum Annotieren
 	
 	In der Repräsentation werden die Merkmale des Greifers deutlich abgebildet. .....Vergleicht man die Rekosntruktionen des ersten Ansatzes mit denen des TaskFocusingAE lässt sich eine Fokusierung auf den Greifer erkennen. Besonders in Bild \ref{todo} zu sehen.
 	
-	\section{ConvolutionalSecondCriterionAutoenocder}
+	\section{Werkzeug: TaskFocusingOnAutoencoder }
 	\label{sec:SecondCriterionAutoenocder}
 	Der SCAE erweitert einen ConvolutionalAutoencoder um ein weiteres Kriterium. Es gibt also zusätzlich zu der Rekonstruktion des Autoencoders einen weiteren Ausgang. Der zweite Ausgang kann wie jeder Ausgang für eine Binärklassifikation, für eine Multiklassifikation, für eine Regression oder jede andere beliebige Aufgabe genutzt werden. In Abbildung \ref{img:SchemaSCAE} ist der schematische Aufbau des SCAE abgebildet. Die Schichten des zweiten Kriteriums werden an die Code-Schicht des NN angehängt. Es können beliebig  viele Schichten genutzt werden. Die Verlustfunktion des NN besteht aus der Summe der einzelnen Verlustfunktionen und einer Gewichtung. Sie lautet im Detail: 
 	\begin{align}
@@ -126,7 +127,9 @@ batch_size = 64,
 validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 \end{lstlisting}
 
-	\section{TransferSecondCriterionAutoenocder}
+	Diese ersten Versuche wurden auf dem Generierter Greiferdatensatz durchgeführt. 
+
+	\section{Werkzeug: FocusTransferOnAutoencoder}
 	\label{sec:TransferSecondCriterionAutoenocder}		
 	Ein TransferSecondCriterionAutoenocder basiert auf einem SCAE. Das zweite Kriterium wird durch ein neues Kriterium ersetzt. Zum Beispiel kann ein SCAE eine Objektkennung durchführen. Bei einem TransferSecondCriterionAutoenocder wird die Objektkennung durch eines Klassifizierungsaufgabe ersetzt. Die Architektur und die Gewichte des Autoencoders werden weiterverwendet. Abbildung \ref{img:SchemaTSCAE} zeigt den Aufbau des TSCAE.
 	\begin{figure}[h]
@@ -165,7 +168,7 @@ validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 	)
 	\end{lstlisting}
 			
-	\section{AutoTransferSecondCriterionAutoenocder}
+	\section{Werkzeug: AutoFocusTransferOnAutoencoder}
 	\label{sec:AutoTransferSecondCriterionAutoenocder}
 	Der AutoTransferSecondCriterionAutoenocder ist ein TransferSecondCriterionAutoenocder welcher mithilfe von HpBandSter AutoML zur Hyperparameteroptimierung einsetzt. Konkret  erbt die Klasse von hpbandster.core.worker. Zur Speicherung und Verwaltung der Hyperparameter wird auf die Klasse HyperparameterMixin zurückgegriffen. Bei der Instanziierung der Klasse werden sinnvolle Standardwerte für Hyperparameter gesetzt. Die Werte können aber später noch angepasst werden. 
 	In Abbildung \ref{img:KlassendiagrammAutoTransferSecondCriterionAutoenocder}  ist das zugehörige Klassendiagramm abgebildet. 
