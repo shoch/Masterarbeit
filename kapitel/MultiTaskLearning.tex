@@ -1,4 +1,3 @@
-
 \chapter{Experimente und Werkzeuge}
 \label{chap:HauptteilMultiTaskLernen}
 Als Kostenfaktor in DataScience-Projekten wurden die hohen Kosten zum Annotieren von Daten ermittelt. Im Autocrane-Projekt werden viele Aufgaben in einer Domäne durchgeführt. Als Frage stellt sich, ob eine geeignete Repräsentation der Domäne gefunden und ausgehend von dieser Repräsentation datensparsam (kostensparsam) aufgaben in dieser Domäne gelöst werden können.  
@@ -7,16 +6,17 @@ In den nachfolgenden Abschnitten wird zusätzlich zu den Experimenten zur Verdeu
 
 	\section{Greifererkennung auf Autoencoder}
 	\label{sec:GreifererkennungAufAutoencoder}
-    Autoencoder sind ein Ansatz um unüberwacht, also ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{img:ErgebnissRegressionAufAE} sind die Ergebnisse von drei Durchläufen abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von $0.86$.
+    Autoencoder sind ein Ansatz um unüberwacht, also ohne konkrete Aufgabe / Annotation, Repräsentationen zu finden. Ausgehend von dieser Repräsentation soll die  Aufgabe Greifererkennung gelöst werden. Hierzu wird auf die Datenrepäsentation des Autoencders eine Regression ausgeführt. In Abbildung \ref{img:ErgebnissRegressionAufAE} ist das Ergebnisse abgebildet. Dieses Lösung erreicht deutlich schlechtere Ergebnisse als die Basislinie mit einer IoU von $0.86$.
+    
     \begin{figure}[h]
     	\centering
     	\begin{subfigure}[c]{0.49\textwidth}			
-    		%\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
+    		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
     		\caption[Boxplot]{Boxplot Regression auf Autoencoder}
     		\label{img:BoxPlot_RegressionAufAutoencoder}	
     	\end{subfigure}
     	\begin{subfigure}[c]{0.49\textwidth}			
-    		%\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
+    		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
     		\caption[Recall-IoU]{RecallIou Regression auf Autoencoder}
     		\label{img:RecalllIoUt_RegressionAufAutoencoder}	
     	\end{subfigure}
@@ -24,37 +24,35 @@ In den nachfolgenden Abschnitten wird zusätzlich zu den Experimenten zur Verdeu
         \label{img:ErgebnissRegressionAufAE}
     \end{figure}
  
-	In Abbildung \ref{todo Embedding} ist das Embedding des zugrundeliegenden Autoencoders abgebildet. Die Datenpunkte verteilen sich gut im Raum, bilden aber keine Merkmale des Greifers ab. In Abbildung \ref{todo Rekonstruktionen} sind Bilder mit ihren Rekonstruktionen abgebildet. Es ist sehr deutlich zu erkennen, dass sich der stark ändernde Hintergrund herausfordernd ist und in erster Linie die Lichtverhältnisse gelernt wurden.   
+	In Abbildung \ref{img:EmbeddingAE} ist das Embedding des zugrundeliegenden Autoencoders abgebildet. Die Datenpunkte verteilen sich gut im Raum, bilden aber keine Merkmale des Greifers ab.  In Abbildung \ref{img:Rekonstruktion AE} sind Bilder mit ihren Rekonstruktionen abgebildet. Es ist sehr deutlich zu erkennen, dass sich der stark ändernde Hintergrund herausfordernd ist und in erster Linie die Lichtverhältnisse gelernt wurden.   
 	
-	
-	% x ,y psoition
-	   \begin{figure}[h]
+	  \begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
-		%	\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
-			\caption[Boxplot]{Boxplot Regression auf Autoencoder}
+			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/Embedding_y.png}
+			\caption{Embedding mit y-Psoition des Greifers}
 			\label{img:BoxPlot_RegressionAufAutoencoder}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.49\textwidth}			
-		%	\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
-			\caption[Recall-IoU]{RecallIou Regression auf Autoencoder}
+			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/Embedding_x.png}
+			\caption{Embedding mit x-Psoition des Greifers}
 			\label{img:RecalllIoUt_RegressionAufAutoencoder}	
 		\end{subfigure}
-		\caption{Embedding}
-		\label{img:Embedding}
+		\caption{Embedding Autoencoder}
+		\label{img:EmbeddingAE}
 	\end{figure}
 	
-	% rekonstuktion
-		\begin{figure}[h]
+	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_SCAE.png}
-		\caption[Schema SecondCriterionAutoenocder]{Schema SecondCriterionAutoenocder}
-		\label{img:SchemaSCAE}
+		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/OriginalPicturesAndReconstruction.png}
+		\caption{Rekonstruktion Autoencoder}
+		\label{img:Rekonstruktion AE}
 	\end{figure}  
 	
 	
+	
 	\section{Mutli-Task Greifererkennung}
-	\label{sec:MultiTaskGreifererkennung
+	\label{sec:MultiTaskGreifererkennung}
 	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde als schwäche des Ansatzes die fehlende Fokusierung des Autoencoders auf den Greifer ausgemacht. Multi-Task-Lernen soll durch gleichzeitiges bearbeiten der Aufgaben Repräsenation finden und Greifererkennung die schwäche des fehlenden Fokus kompensieren.   
 	\subsection{Werkzeug}
 	Zur Umsetzung der SIMO Multi-Task-Idee wurde ein Modul in Python erstellt. Das Werkzeug erweitert ... \todo{Werkezug beschreiben} 
