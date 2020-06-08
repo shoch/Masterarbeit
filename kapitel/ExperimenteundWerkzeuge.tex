@@ -1,6 +1,6 @@
 \chapter{Experimente und Werkzeuge}
 \label{chap:HauptteilMultiTaskLernen}
-Als großer Kostenfaktor in DataScience-Projekten wurden die Kosten zum Annotieren von Daten ermittelt. Im Autocrane-Projekt werden viele Aufgaben in einer Domäne durchgeführt. Als Frage stellt sich, ob eine geeignete Repräsentation der Domäne gefunden und ausgehend von dieser Repräsentation, datensparsam (kostensparsam) Aufgaben in dieser Domäne gelöst werden können.  
+Als großer Kostenfaktor in Data-Science-Projekten wurden die Kosten zum Annotieren von Daten ermittelt. Im Autocrane-Projekt werden viele Aufgaben in einer Domäne durchgeführt. Als Frage stellt sich, ob eine geeignete Repräsentation der Domäne gefunden und ausgehend von dieser Repräsentation, datensparsam (kostensparsam) Aufgaben in dieser Domäne gelöst werden können.  
 
 In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlich zu den Experimenten ein Blick auf die erstellten Module geworfen.
 
@@ -211,7 +211,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 		\end{figure}
 	
 		
-	\section{\ac{automl} und 'Greifer beladen'-Klassifikation}
+	\section{AutoMl und 'Greifer beladen'-Klassifikation}
 	\label{sec:Transfer_autoMl}
 	Die starke Anpassung an die Klassifikationsaufgabe im vorangegangenen Versuch motiviert einen Blick auf die Hyperparameter zur Gewichtung der Verlustfunktion zu werfen. Ziel dieses Versuches ist es, herauszufinden welchen Einfluss die Hyperparameter auf das Ergebnis hat. Es gibt sehr viele Möglichkeiten für die Gewichtung der Verlustfunktion. Um den manuellen Aufwand gering zu halten, wird ein neues Modul erstellt, welches auf \ac{automl} zur Hyperparameteroptimierung zurückgreift.
 	\subsection{Werkzeug: AutoTaskTransferOnAutoencoder}
