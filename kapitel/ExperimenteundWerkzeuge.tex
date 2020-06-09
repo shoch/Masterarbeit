@@ -29,25 +29,8 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
     	\caption{Ergebnis Regression auf Autoencoder}
         \label{img:ErgebnissRegressionAufAE}
     \end{figure}
- 
 
-%	  \begin{figure}[h]
-%		\centering
-%		\begin{subfigure}[c]{0.49\textwidth}			
-%			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/Embedding_y.png}
-%			\caption{Embedding mit y-Psoition des Greifers}
-%			\label{img:BoxPlot_RegressionAufAutoencoder}	
-%		\end{subfigure}
-%		\begin{subfigure}[c]{0.49\textwidth}			
-%			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/Embedding_x.png}
-%			\caption{Embedding mit x-Psoition des Greifers}
-%			\label{img:RecalllIoUt_RegressionAufAutoencoder}	
-%		\end{subfigure}
-%		\caption{Embedding Autoencoder}
-%		\label{img:EmbeddingAE_M}
-%	\end{figure}
 	
-	\todo{Bilder Einbettung auswählen}
 	  \begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
@@ -159,7 +142,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	Als Quelldomäne wird das Netzwerk, welches in Experiment \ref{sec:MultiTaskGreifererkennung} erstellt wurde genutzt. In der Zieldomäne werden die Architektur und die Gewichte des Auteoncoder weiterverwendet. Der zweite Task wird durch die Aufgabe der Klassifikation ob sich Baumstämme im Greifer befinden ersetzt. Abbildung \ref{img:SchemaTTAE} zeigt das Schema des Ansatzes. 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.5\textwidth, center]{bilder/Schema_Autoencoders/Schema_TSCAE.png}
+		\includegraphics[width=0.6\textwidth, center]{bilder/Schema_Autoencoders/Schema_TSCAE.png}
 		\caption[Schema TaskTransferOnAutoencoder]{Schema TaskTransferOnAutoencoder}
 		\label{img:SchemaTTAE}
 	\end{figure}
@@ -170,7 +153,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 		\caption[Klassendiagramm TaskTransferOnAutoencoder]{Klassendiagramm TaskTransferOnAutoencoder}
 		\label{img:KlassendiagrammTransferSecondCriterionAutoenocder}
 	\end{figure}  
-	Listing \ref{lst:BspTransferSecondCriterionAutoenocder} zeigt beispielhaft die Anwendung dieses Werkzeuges. Im Vergleich zu dem \ac{tfae} ist die Anwendung schon deutlich einfacher. Es gibt weniger Hyperparameter zum Modifizieren. Da das Modell auf einem trainierten \ac{tfae} basiert, ist kein $pretrain(..)$ mehr notwenig. Die Methode $fit(..)$ / $fit_generator(..)$ wird auf dieselbe Weise wie in Keras angewendet.	
+	Listing \ref{lst:BspTransferSecondCriterionAutoenocder} zeigt beispielhaft die Anwendung dieses Werkzeuges. Im Vergleich zu dem \ac{tfae} ist die Anwendung schon deutlich einfacher. Es gibt weniger Hyperparameter zum Modifizieren. Da das Modell auf einem trainierten \ac{tfae} basiert, ist kein $pretrain(..)$ mehr notwenig. Die Methode $fit(..)$ / $fit\_generator(..)$ wird auf dieselbe Weise wie in Keras angewendet.	
 	
 	\begin{lstlisting}[language=python,caption=Beispiel TransferSecondCriterionAutoenocder in Python, label=lst:BspTransferSecondCriterionAutoenocder]
 	tscm = TransferLearningConvolutionalSecondCriterionAutoencoder(csc_autoencoder,
@@ -192,7 +175,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	\end{lstlisting}	
 	
 	\subsection{Ergebnis}
-	Mit dem vorgestellten Ansatz lässt sich die Aufgabe 'Greifer beladen' lösen. Im Median von drei Versuchen wird ein Accuracy von 0.9827\% erreicht, was nahezu der Leistung der Basislinie mit einer Accuracy von 0.9828\% entspricht. In Abbildung \ref{img:Ergebnis_Transfer} sind die Ergebnisse des Versuchs dargestellt. Die Unterabbildung \ref{img:Einbettung_Logs_Vorhersage} stellt die neu gefundene Einbettung dar. Die blauen Datenpunte entsprechen der Vorhersage True Positiv, die lila Datenpunkte der Vorhersage True Negativ, gelb entspricht False Positiv und grün False Negativ. Es ist eine deutliche Anpassung der Einbettung an die Problemstellung erkennbar, wobei der Übergang von der einen zur anderen Klasse noch nicht 100\% korrekt ist.  
+	Mit dem vorgestellten Ansatz lässt sich die Aufgabe 'Greifer beladen' lösen. Im Median von drei Versuchen wird ein Accuracy von 0.9827\% erreicht, was nahezu der Leistung der Basislinie mit einer Accuracy von 0.9828\% entspricht. In Abbildung \ref{img:Ergebnis_Transfer} sind die Ergebnisse des Versuchs dargestellt. Die Unterabbildung \ref{img:Einbettung_Logs_Vorhersage} stellt die neu gefundene Einbettung dar. Die blauen Datenpunte entsprechen der Vorhersage True Positiv, die lila Datenpunkte der Vorhersage True Negativ, gelb entspricht False Positiv und grün False Negativ. Es ist eine deutliche Anpassung der Einbettung an die Problemstellung erkennbar, wobei der Übergang von der einen zur anderen Klasse nicht 100\% korrekt ist.  
 
 		 \begin{figure}[h]
 			\centering
@@ -213,7 +196,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 		
 	\section{AutoMl und 'Greifer beladen'-Klassifikation}
 	\label{sec:Transfer_autoMl}
-	Die starke Anpassung an die Klassifikationsaufgabe im vorangegangenen Versuch motiviert einen Blick auf die Hyperparameter zur Gewichtung der Verlustfunktion zu werfen. Ziel dieses Versuches ist es, herauszufinden welchen Einfluss die Hyperparameter auf das Ergebnis hat. Es gibt sehr viele Möglichkeiten für die Gewichtung der Verlustfunktion. Um den manuellen Aufwand gering zu halten, wird ein neues Modul erstellt, welches auf \ac{automl} zur Hyperparameteroptimierung zurückgreift.
+	Die starke Anpassung an die Klassifikationsaufgabe im vorangegangenen Versuch motiviert einen Blick auf die Hyperparameter zur Gewichtung der Verlustfunktion zu werfen. Ziel dieses Versuches ist es, herauszufinden welchen Einfluss die Hyperparameter auf das Ergebnis hat. Es gibt sehr viele Möglichkeiten für die Gewichtung der Verlustfunktion. Um den manuellen Aufwand für weitere Anwendungen gering zu halten, wird ein neues Modul erstellt, welches auf \ac{automl} zur Hyperparameteroptimierung zurückgreift.
 	\subsection{Werkzeug: AutoTaskTransferOnAutoencoder}
 	\label{subsec:AutoTaskTransferOnAutoencoder}
 	Das neue Modul integriert den Ansatz in der Klasse \acl{autottae}, kurz \ac{autottae}. Sie integriert die Klasse \acl{ttae} und erweitert sie mithilfe des HpBandSter-Frameworks um \ac{automl}-Ansätze zur \ac{hpo}. Konkret erbt die Klasse von hpbandster.core.worker. Zur Speicherung und Verwaltung der Hyperparameter wird auf die Klasse HyperparameterMixin zurückgegriffen. Nach nach dem Instanziieren der Klasse können weitere sinnvolle Hyperparameter gesetzt werden.
@@ -225,7 +208,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 		\label{img:KlassendiagrammAutoTaskTransferOnAutoencoder}
 	\end{figure}  
 	In Listing \ref{lst:BspAutoTransferSecondCriterionAutoenocder} ist eine einfache Implementierung eines AutoTaskTransferOnAutoencoder dargestellt. Der Konstruktor unterscheidet sich nur an einer Stelle zum Konstruktor des TaskTransferOnAutoencoder. Es wird keine Instanz des SCAE übergeben, sondern ein Pfad zu einem abgespeicherten Modell eines SCAE. 
-	Im Gegensatz zur bisherigen Vorgehensweise werden die Trainings und Testdaten mit der Methode $set_generators(..)$  oder $set_numpy_data(..)$ übergeben. Ziel ist es dabei die Komplexität der Methode $optimize(..)$ zu reduzieren. Durch den Aufruf von $optimize(..)$, wird der Optimierungsvorgang gestartet. Die Parameter sind dabei die Anzahl an Iterationen, die Optimierungsstrategie und ein Wörterbuch, welches zusätzliche Einstellungen für die einzelnen Optimierer enthalten kann. In jeder Iteration der Optimierung wird ein neuer TaskTransferOnAutoencoder erstellt und mittels der ausgewählten Hyperparameter und übergebenen Daten trainiert. 
+	Im Gegensatz zur bisherigen Vorgehensweise werden die Trainings und Testdaten mit der Methode $set\_generators(..)$  oder $set\_numpy\_data(..)$ übergeben. Ziel ist es dabei die Komplexität der Methode $optimize(..)$ zu reduzieren. Durch den Aufruf von $optimize(..)$, wird der Optimierungsvorgang gestartet. Die Parameter sind dabei die Anzahl an Iterationen, die Optimierungsstrategie und ein Wörterbuch, welches zusätzliche Einstellungen für die einzelnen Optimierer enthalten kann. In jeder Iteration der Optimierung wird ein neuer TaskTransferOnAutoencoder erstellt und mittels der ausgewählten Hyperparameter und übergebenen Daten trainiert. 
 	\begin{lstlisting}[language=python,caption=Beispiel AutoTransferSecondCriterionAutoenocder in Python, label=lst:BspAutoTransferSecondCriterionAutoenocder]
 	tscm = AutoTransferConvolutionalSecondCriterionAutoencoder(max_deep_freeze=2,
 	path_to_model = path_to_base_model,            
@@ -247,6 +230,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	Besondere Beachtung muss die Evaluationsmetrik zur Bewertung eines Optimierungslaufes finden. Da ein zu optimierender Hyperparameter die Gewichtung der Verlustfunktion ist, muss dies bei dem Einsatz der Evaluationsmetrik berücksichtigt werden. Die Evaluatiosmetrik kann bei dem Erstellen der Klasse frei gewählt werden.
 	
 	\subsection{Ergebnis}
+	\todo genauer versuchsaufbau
 	\todo{Auto Ergebnisse}
 	Die Gewichtung der beiden Teile der Verlustfunktion hat einen starken Einfluss auf die Modellqualität. In Abbildung x,y,z  ist zu sehen, dass bei einer Gewichtung von abc das Beste Ergebnis erreicht wird. Besonders interessant ist, dass es  (Kurve erläutern.)
 	
