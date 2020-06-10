@@ -176,6 +176,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	\end{lstlisting}	
 	
 	\subsection{Experiment}
+	\label{subsec:TransferLogs}
 	In \ref{sec:MultiTaskGreifererkennung} wurde ein fokussiertes Embedding erstellt. Zur Überprüfung, ob ausgehend von dieser Lösung, neue Aufgaben gelöst werden können wird ein Transfer auf die Aufgabe 'Greifer beladen' durchgeführt. Dabei kommt der gerade vorgestellte Ansatz zum Einsatz.  
 	
 	Mit dem vorgestellten Ansatz lässt sich die Aufgabe 'Greifer beladen' lösen. Im Median von drei Versuchen wird ein Accuracy von 0.9827\% erreicht, was nahezu der Leistung der Basislinie mit einer Accuracy von 0.9828\% entspricht. In Abbildung \ref{img:Ergebnis_Transfer} sind die Ergebnisse des Versuchs dargestellt. Die Unterabbildung \ref{img:Einbettung_Logs_Vorhersage} stellt die neu gefundene Einbettung dar. Die blauen Datenpunte entsprechen der Vorhersage True Positiv, die lila Datenpunkte der Vorhersage True Negativ, gelb entspricht False Positiv und grün False Negativ. Es ist eine deutliche Anpassung der Einbettung an die Problemstellung erkennbar, wobei der Übergang von der einen zur anderen Klasse nicht 100\% korrekt ist. Der erfolgreiche Transfer zeigt, dass das die Fokussierung des Basis-Autoencoders erfolgreich ist.     
@@ -232,6 +233,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	Besondere Beachtung muss die Evaluationsmetrik zur Bewertung eines Optimierungslaufes finden. Da ein zu optimierender Hyperparameter die Gewichtung der Verlustfunktion ist, muss dies bei dem Einsatz der Evaluationsmetrik berücksichtigt werden. Die Evaluationsmetrik kann bei dem Erstellen der Klasse frei gewählt werden.
 	
 	\subsection{Experiment}
+	\label{subsec:AutoMLExperiment}
 	In diesem Versuch wird die selbe Ausgangslage wie im Vorangegangenen Versuch genutzt. Der Unterschied besteht darin, dass der Hyperparameter 'Gewichtung der Verlustfunktion' automatisch gesucht wird. Zur Bewertung eines Optimierungsdurchlaufs wird der Wert $1-Accuracy$ des finalen Modells herangezogen. Die Ergebnisse von drei Optimierungsdurchläufen mit jeweils drei Iterationen sind in Anhang \ref{appendix:AutoML} zu finden. In den finalen Ergebnissen für die Aufgabe 'Greifer beladen' erreichen alle drei Versuch mindestens eine Accuracy von 0.98\% bei verschiedenen Gewichtungen.  Wirft man einen Blick auf die Durchläufe mit vollem Budget von 15 ist in Versuch [2,0,1] \ref{lst:AutoML2c} zu sehen, dass die Accuracy deutlich auf 0,79\% abfällt. In Abbildung \ref{img:EmbeddingAutoMLTransfer} sind die Einbettungen der drei Optimierungsdurchläufe abgebildet. Die Einzelnen Datenpunkte sind entsprechend ihrer Klasse eingefärbt. Es ist in allen drei Fällen eine Anpassung an die Klassifizierungsaufgabe erkennbar. In Durchlauf drei \ref{img:AutoMLEinbettungV3} ist die Anpassung deutlich geringer als in den anderen beiden Durchläufen. Der Versuch [2,0,1] und die Einbettung drei leifern deutliche Hinweise, dass die Gewichtung der beiden Teile der Verlustfunktion einen starken Einfluss auf die Modellqualität haben. 
 	
 	\begin{figure}[h]
@@ -257,6 +259,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	
 	
 	\section{Datenmenge und 'Greifer beladen'-Klassifikation}
+	\label{sec:TransferDatenmenge}
 	In den bisherigen Experimenten wurde die Grundsätzliche Funktionalität der Ansätze untersucht. Besonderes  Kosten-Einsparungspotential besteht bei einem Einsatz von geringeren Datenmengen. In diesem Versuch wird untersucht wie sich die Lösung bei unterschiedlichen Datenmengen verhält. Es wird untersucht, wie sich die Leistung der Ansätze bei 200, 2000 und 9749 annotierten Daten verhält. Als Gewichtungsfaktor der Verlustfunktion werden die Hyperparameter von Versuch [2, 0, 2] \ref{appendix:AutoML} 2 genutzt. 
 	
 	In Abbildung \ref{img:VergleichDatenmenge} sind die Ergebnisse des Versuchs für die Aufgabe ist der Greifer beladen dargestellt. Auf der X-Achse sind die Datenmengen, auf der y-Achse die Accuracy dargestellt. Der Versuch wurde einmal als \ac{ttae}-Ansatz hier blau und einmal als \ac{tfae}-Ansatz (lila) durchgeführt. Bei allen drei Datenmengen erreicht der \ac{ttae}-Ansatz deutlich bessere (22\%,15\%,5\%)Ergebnisse erzielt. Insbesondere bei niedrigen Datenmengen erzielt der \ac{ttae}-Ansatz gute Ergebnisse. Die Einzelergebnisse sind in Abbildung \ref{img:DatenmengenLeistung} dargestellt.
