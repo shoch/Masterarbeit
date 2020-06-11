@@ -5,6 +5,14 @@ Die Arbeit schließt mit einer Zusammenfassung der Inhalte ab, auf welche eine k
 	\section{Zusammenfassung}
 	\label{sec:Zusammenfassung}
 	Zu Beginn der Arbeit wurde die zu bearbeitende Problemstellung erläutert, anschließend wurden die theoretischen Hintergründe, das Umfeld der Problemstellung und die Datensätze vorgestellt. Der Hauptteil der Arbeit beschäftigt sich mit aufeinander aufbauenden Ansätzen des Transferlernens. Im ersten Schritt wurde gezeigt, dass ein Ansatz, ausgehend von einer nicht fokussierten Repräsentation fehlschlägt. Darauf folgend wurde ein Multi-Task-Ansatz zum gleichzeitigen Fokussieren und Lösen einer Regressionsaufgabe vorgestellt und evaluiert. Insbesondere die gefundene Repräsentation hat dabei deutlich die aktuelle Domäne widergespiegelt. Darauf aufbauend wurde ein Ansatz des modellbasierten Transferlernen vorgestellt. Die Ergebnisse erreichen eine ähnliche Leistung wie ein Modell, welches von einem Experten erstellt wurde. Zur \ac{hpo} der Aufgaben-Gewichtungsparameter wurde eine \ac{automl}-Erweiterung eingesetzt. Dabei hat sich gezeigt, dass der Hyperparameter einen deutlichen Einfluss auf das Ergebnis hat und die automatische Suche hilfreich ist. Abschließend wurde gezeigt, dass die Transfer-Lösung insbesondere für geringe Datenmengen gute Ergebnisse liefern kann. Begleitend zu der Vorstellung der Ansätze wurde jeweils eine Python-Implementierung des Ansatzes vorgestellt. 
+	
+	\section{Kritische Reflexion}
+	\label{sec:KritischeReflexion}
+	Eine  Abschlussarbeit wird immer in einem Zeitlich begrenzenden Rahmen durchgeführt. Diese zeitliche Begrenzung führt in manchen Fällen dazu, dass manche Teilaspekten der Arbeit nur angerissen oder mit  begrenzenden Mittel bearbeitet werden können. In dieser Arbeit betrifft dies insbesondere das Thema \ac{automl}, konkret den Versuch \ref{subsec:AutoMLExperiment}. Das zugehörige Python-Module \ac{autottae} baut auf den anderen beiden Modulen auf und wurde somit recht spät in der Masterarbeit bearbeitet. Eine Optimierungs-Iteration dauert circa einen Tag. Diese beiden Faktoren haben dazu geführt, dass der Versuch nur mit 3 Iterationen durchgeführt wurde. Hier empfiehlt es sich eine Optimierung mit deutlich mehr Iterationen durchzuführen.
+	
+	Auf Grund der Einfachheit (vier Ausgangsneuronen) wurde für  Aufgabe 'Rahmen um Greifer' eine Regression eingesetzt. In der Regel werden für Objekterkennungsaufgaben andere Techniken wie z.B. der bereits erwähnte \ac{ssd}-Ansatz eingesetzt. Durch eine explizite Lokalisierung und Klassifizierung werden oft bessere Ergebnisse erzielt.
+	
+	Die bisherigen Versuche wurden alle in der selben Domäne, mit  Bilder und dem Greifer durchgeführt. Die gewählten Ansätze wurden für diese Umgebung gewählt. Die Aussagekraft auf andere Domänen oder Umgebungen mit weniger stark ausgeprägten Merkmalen wie ein Greifer ist schwach und sollte in weiteren Versuchen untersucht werden.    
 							
 	\section{Ausblick und weitere Arbeiten}
 	\label{sec:AusblickWeitereArbeiten}
@@ -14,8 +22,8 @@ Die Arbeit schließt mit einer Zusammenfassung der Inhalte ab, auf welche eine k
 	\label{subsec:TransferGreiferDatensatz}
  	Die Annotationskosten sind je nach Art von Annotation und Aufwand unterschiedlich. Eine einfache Zuordnung eines Bildes zu einer, von zwei Klassen liegt dabei im einstelligen Cent-Bereich. Die Markierung eines Objektes in einem Bild mittels Rahmen verursacht Kosten im zweistelligen Cent-Bereich und die Markierung von Winkeln in einem Bild kann mehr als einen Euro kosten. In Experiment \ref{sec:TransferDatenmenge} und \ref{subsec:TransferLogs} wurde gezeigt, dass der Transfer für die Aufgabe 'Greifer beladen?' funktioniert und insbesondere bei wenigen Daten stark ist. Falls es möglich ist, dass ein Transfer von der Aufgabe 'Greifer beladen?' zu der Aufgabe 'Rahmen um Greifer' möglich ist, kann sehr viel Geld gespart werden, da die Annotationen deutlich teurer sind. 
  	
- 	Im ersten Versuch ist der Transfer auf dem Greiferdatensatz fehlgeschalgen, durch weitere Arbeiten an dem Problem konnte eine Verbesserung erzielt werden. Zu den weiteren Arbeiten zählen, das Entfernen von Bildern bei denen der Greifer über den Rand des Bildes hinausgeht. Diese Bidler können durch eine Modifikation der Kamerposition am Kran nicht mehr vorkommen. Weitere Verbesserungen konten durch Regularsierungstechniken erzielt werden. Im Anhang \ref{appendix:TTAEGreifer } ist die aktuelle Modellzusammenfassung zu finden.
- 	In Abbildung \ref{img:TTGrappleIoU} sind die Ergebnisse der Aufgabe 'Rahmen um Greifer' zu sehen. Bei einem Schwellenwert von 0.5 wird eine Leistung von 96\% Erreicht, bei einem Schwellenwert 0.8 eine Leistung von 55\%. Bei genauerer Betrachtung der Vorhersagen fällt auf, dass  der Greifer gefunden wird. Die genaue Form des Greifers wird nicht imer korrekt Vorhergesagt. Dieses Verhalten ist auch in Abbildung \ref{img:TTGrappleLabelVsPred} zu sehen. In dieser Art von Abbildungen werden die vorhersagen gegen die Beschriftungen aufgetragen. Bei einer perfekten Vorhersage befinden sich alle Datenpunkte auf der Diagonale. Sowohl in der Darstellung der Rahmenhöhe als auch der Rahmenbreite , ist zu sehen, das die Vorhersage zur Beschriftung passt, aber sich noch verbessern kann.  In Abbildung \ref{img:TTGrappleEinbettungVorhersage} sind die für den Schwellen wert 0.8 falsch vorhergesagten Datenpunkte lila eingefärbt. Die falschen Vorhersagen verteilen sich über alle Datenpunkte. Mit Blick auf die Einfärbung der x und y Position des Greifers \ref{img:TTGrappleIoU} zeigt sich in den Einbettungen die Position des Greifers im Bild. Wiederspeigelnd zu den Vorhersageergebnissen ist in der Einbettung die genaue Ausprägung des Greifers schwach abbgebildet.
+ 	Im ersten Versuch ist der Transfer auf dem Greiferdatensatz fehlgeschlagen, durch weitere Arbeiten an dem Problem konnte eine Verbesserung erzielt werden. Zu den weiteren Arbeiten zählen, das Entfernen von Bildern bei denen der Greifer über den Rand des Bildes hinausgeht. Diese Bildern können durch eine Modifikation der Kameraposition am Kran nicht mehr vorkommen. Weitere Verbesserungen konnten durch Regularsierungstechniken erzielt werden. Im Anhang \ref{appendix:TTAEGreifer } ist die aktuelle Modellzusammenfassung zu finden.
+ 	In Abbildung \ref{img:TTGrappleIoU} sind die Ergebnisse der Aufgabe 'Rahmen um Greifer' dargestellt. Bei einem Schwellenwert von 0.5 wird eine Leistung von 96\% Erreicht, bei einem Schwellenwert 0.8 eine Leistung von 55\%. Bei genauerer Betrachtung der Vorhersagen fällt auf, dass der Greifer gefunden wird. Die genaue Form des Greifers wird nicht immer korrekt Vorhergesagt. Dieses Verhalten ist auch in Abbildung \ref{img:TTGrappleLabelVsPred} zu sehen. In dieser Art von Abbildungen werden die vorhersagen gegen die Beschriftungen aufgetragen. Bei einer perfekten Vorhersage befinden sich alle Datenpunkte auf der Diagonale. Sowohl in der Darstellung der Rahmenhöhe, als auch der Rahmenbreite, ist zu sehen, dass die Vorhersage zur Beschriftung passt, aber sich noch verbessern kann. In Abbildung \ref{img:TTGrappleEinbettungVorhersage} sind die für den Schwellenwert 0.8 falsch vorhergesagten Datenpunkte in der Einbettung lila eingefärbt. Die falschen Vorhersagen verteilen sich über alle Datenpunkte. Mit Blick auf die Einfärbung der x und y Position des Greifers \ref{img:TTGrappleEmb} zeigt sich in den Einbettungen die Position des Greifers im Bild. Widerspiegelnd zu den Vorhersageergebnissen ist in der Einbettung die genaue Ausprägung des Greifers schwach repräsentiert.
  	
  	 
  	\begin{figure}[h]
@@ -52,21 +60,21 @@ Die Arbeit schließt mit einer Zusammenfassung der Inhalte ab, auf welche eine k
  
  	\begin{figure}[h]
  		\centering
- 		\begin{subfigure}[c]{0.32\textwidth}			
+ 		\begin{subfigure}[c]{0.49\textwidth}			
  			\includegraphics[width=1\textwidth]{bilder/FazitUndAusblick/Grapple_TTAE_Res/TT_Emb_y.png}
  			\subcaption{Einbettung markierte y-Position Greifer}			
  		\end{subfigure}
- 		\begin{subfigure}[c]{0.32\textwidth}			
+ 		\begin{subfigure}[c]{0.49\textwidth}			
  			\includegraphics[width=1\textwidth]{bilder/FazitUndAusblick/Grapple_TTAE_Res/TT_Emb_x.png}
  			\subcaption{Einbettung markierte x-Position Greifer}			
  		\end{subfigure}
- 		\begin{subfigure}[c]{0.32\textwidth}			
+ 		\begin{subfigure}[c]{0.6\textwidth}			
  			\includegraphics[width=1\textwidth]{bilder/FazitUndAusblick/Grapple_TTAE_Res/TT_Emb_pred.png}
  			\subcaption{Einbettung mit Vorhersage}		
  			\label{img:TTGrappleEinbettungVorhersage}	
  		\end{subfigure}
  		\caption{Einbettung TTAE Greifer}
- 		\label{img:TTGrappleIoU}
+ 		\label{img:TTGrappleEmb}
  	\end{figure}
  	
 	\subsection{Autocrane-Datensatz}
@@ -88,13 +96,5 @@ Die Arbeit schließt mit einer Zusammenfassung der Inhalte ab, auf welche eine k
 	Die bisherigen Module sind starr bei der Anwendung. Es ist notwendig, ein Multi-Aufgaben-Modell zu erstellen, um anschließend den modellbasierten Transfer durchzuführen. Soll ein neuer modellbasierter Transfer durchgeführt werden, ist es zwingend erforderlich dies ausgehend des Multi-Aufgaben-Modells durchzuführen. Es ist nicht möglich einen modellbasierten Transfer, ausgehend von einem vorherigen Transfer durchzuführen. 
 	Als mögliche Erweiterung der Module ist es empfehlenswert, eine Flexibilisierung des Gesamtansatzes durchzuführen. Durch eine Anpassung bei der Modellerstellung der Module, ist es möglich, dass die Abfolge nicht mehr notwendig ist. Es ist vorstellbar, dass ein neues Modell ausgehend von einer Architekturdefinition komplett neu trainiert wird, oder ausgehend von einem Autoencoder-Modell mit null bis beliebig vielen weiteren Aufgaben trainiert werden kann. Konkret muss im Konstruktor der Module eine Zusammenführung der bisher getrennten Ansätze durchgeführt werden.     
 
-	\section{Kritische Reflexion}
-	\label{sec:KritischeReflexion}
 
-	Eine  Abschlussarbeit wird immer in einem Zeitlich begrenzenden Rahmen durchgeführt. Diese zeitliche Begrenzung führt in manchen Fällen dazu, dass manche Teilaspekten der Arbeit nur angerissen oder mit  begrenzenden Mittel bearbeitet werden können. In dieser Arbeit betrifft dies insbesondere das Thema \ac{automl}, konkret den Versuch \ref{subsec:AutoMLExperiment}. Das zugehörige Python-Module \ac{autottae} baut auf den anderne beiden Modulen auf. und wurde somit recht spät in der Masterarbeit bearbeitet. eine Optimierungs-Iteration  dauert circa einen Tag. Diese beiden Faktoren haben dazu geführt, dass der Versuch nur mit 3 Iterationen durchgeführt wurde. Hier empfiehlt es sich eine Optimeirung mit deutlich mehr Iterationen durchzuführen.
-	
-	Auf Grund der Einfachheit (vier Ausgansneuronen) wurde für  Aufgabe 'Rahmen um Greifer' eine Regression eingesetzt. In der Regel werden für Objekterkennungsaufgaben andere Techniken wie z.B. der bereits erwähnte \ac{ssd}-Ansatz eingesetzt. Durch eine explizite lokalisierung und klassififzierung werden oft bessere Ergebnisse erzielt.
-	
-	\todo{Streung versuch MT-Grapple}
-	
 	   
