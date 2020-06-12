@@ -4,6 +4,8 @@ Als großer Kostenfaktor in Data-Science-Projekten wurden die Kosten zum Annotie
 
 In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlich zu den Experimenten ein Blick auf die erstellten Module geworfen.
 
+Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapitel \ref{sec:BibliothekenundWerkzeuge}) zurückgegriffen. Um die Daten in dem Werkzeug darzustellen, wird auf die Werte der Einbettung eine Hauptkomponentenanalyse mit 3 Komponenten durchgeführt. Die Einbettungen, in diesem Kapitel, haben die Diemsion 10.  
+
 	\section{Greifererkennung auf Repräsentation}
 	\label{sec:GreifererkennungAufAutoencoder}
 	Als erster Ansatz wird versucht, ausgehend von einer Repräsentation, welche mittels Autoencoder erstellt wird, den Greifer zu finden. Hierzu werden die gefundenen Repräsentationen als Eingangswerte für ein neuronales Netzwerk genutzt. Das Netzwerk führt in der Ausgangsschicht eine Regression durch. In Abbildung \ref{img:ErgebnissRegressionAufAE} ist das Ergebnis abgebildet. Bei einem Schwellenwert von 0.8 wird eine Punktzahl nahe 0 erreicht. In der Recall-IoU-Kurve ist ein stetiger Abfall der Punktzahl zu sehen. Dieses schlechte Ergebnis zeigt, dass der gewählte Ansatz nicht zielführend zur Lösung des Problems ist. Als Ursache für die schlechte Leistung kann die fehlende Fokussierung der Einbettung erkannt werden. In Abbildung \ref{img:EmbeddingAE_V} ist die Einbettung des zugrundeliegenden Autoencoders abgebildet. In den beiden Abbildungen werden die Datenpunkte farblich markiert. Dabei wird die y-Position des Greifers im Bild, in der einen und die x-Position des Greifers im Bild, in der anderen Abbildung zur Zuordnung genutzt. Die Datenpunkte verteilen sich im Raum, bilden aber keine Merkmale des Greifers ab. In Abbildung \ref{img:RekonstruktionAE} sind Bilder mit ihren Rekonstruktionen abgebildet. Es ist sehr deutlich zu erkennen, dass dass der sich stark verändernde Hintergrund eine Herausforderung ist. In erster Linie wurden die Lichtverhältnisse gelernt. Der Greifer verschwindet nahezu in allen Rekonstruktionen.   
@@ -58,7 +60,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	
 	\section{Aufgabenfokussierung und Greifererkennung}
 	\label{sec:MultiTaskGreifererkennung}
-	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde die fehlende Fokussierung des Autoencoders auf den Greifer als Schwäche ausgemacht. Als neuer Ansatz wird untersucht, ob ein gleichzeitiges Lernen der Datenrepräsentation und das finden des Rahmens um den Greifer, den Autoencoder fokussiert und gleichzeitig gute Ergebnisse für die Regression gefunden werden können. Konkret wird ein \ac{simo} Ansatz untersucht.  
+	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde die fehlende Fokussierung des Autoencoders auf den Greifer als Schwäche ausgemacht. Als neuer Ansatz wird untersucht, ob ein gleichzeitiges Lernen der Datenrepräsentation und das finden des Rahmens um den Greifer, den Autoencoder fokussiert und gleichzeitig gute Ergebnisse für die Regression gefunden werden können. Konkret wird ein \ac{mtl} \ac{simo} Ansatz untersucht.  
 	
 	\subsection{Werkzeug: TaskFocusingOnAutoencoder}
 	\label{subsec:SecondCriterionAutoenocder}
@@ -126,12 +128,60 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	\end{lstlisting}
 
 	\subsection{Experiment}
+	Mit dem \ac{tfae} wird für die Aufgabe 'Greifererkennung' im Median für den Schwellenwert 0.5 eine Leistung von 98.66\% erreichr, für den Schwellenwert von 0.8 eine Leistung von 66.62\%. In Abbildung \ref{img:ErgebnisRegressionMT} sind die Ergebnisse im Detail dargestellt. In Anhang \ref{appendix:MutliTaskGreifererkennung}	ist eine detailierte Einzelaufstellung der Ergebnisse zu finden. Diese Leistung ist deutlich besser, als die erzielte Leistung mit dem Ansatz 'Greifererkennung auf Repräsentation' \ref{sec:GreifererkennungAufAutoencoder}. Bei Betrachtung der Repräsentation in Abbildung \ref{img:EmbeddingMT} ist eine deutliche Anpassung an den Greifer zu erkennen. Sowohl die Farbkodierung für die y-Position als auch die x-Position des Greifers im Bild ist sehr deutlich zu erkennen. Zusätlich lässt sich eine Trennung der einzelnen Datenpunkte in das Merkaml Greifer ist offen oder Geschlossen erkennen. Es zieht sich eine sichtbare Trennung der Datenpunkte durch die Einbettung. Bei Betrachtung der Rekosntruktionen, insbesondere im direkten Vergleich zu den Rekonstruktionen des Autoencoders zeigt sich eine stärkere Ausprägung des Merkmales Greifer. In Abbildung \ref{img:RekonstruktionMTAE} sind drei Bilder mit ihren jeweiligen Rekosntruktionen dargestellt. Im Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine größere Auswahl an Rekonstruktionen dargestellt.  
 	
+	Die Ergebnisse der sieben Versuche weißen insbesondere bei größeren Schwellenwerten eine starke Schwankung auf. In Abbildung \ref{img:Emb_MT_Vorhersage} sind in der Einbettung die Fehlvorhersagen lila eingefärbt. Die meisten Fehler sind bei geschlossenem Greifer entstanden. Werden die Einbettungen aller Versuche (\ref{appendix:MutliTaskGreifererkennung}) betrachtet, fällt auf, dass die x-Position des Greifers im Bild die herausfordernde Größe ist. Durch die zufällige Initalisierung der Gewichte kann in dem bestehdnen Setting nicht immer die beste Lösung gefunden werden. Die Robustheit der Lösung bei nidriegeren (bis circa 0.5) Schwellenwerten erlauben es aber dennoch die Lösung für weitere Versuche einzusetzen.
+	    \begin{figure}[h]
+		\centering
+		\begin{subfigure}[c]{0.32\textwidth}			
+			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/IoU_05_MT_Grapple.png}
+			\caption{Schwellenwert 0.5}
+			\label{img:BoxPlot_05_MT-Ansatz}	
+		\end{subfigure}
+		\centering
+		\begin{subfigure}[c]{0.32\textwidth}			
+			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/IoU_08_MT_Grapple.png}
+			\caption{Schwellenwert 0.8}
+			\label{img:BoxPlot_08_MT-Ansatz}	
+		\end{subfigure}
+		\begin{subfigure}[c]{0.32\textwidth}			
+			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/Recall_IoU.png}
+			\caption{Recall-IoU-Curve}
+			\label{img:RecalllIoUt_MT}	
+		\end{subfigure}
+		\caption{Ergebnis MT-Greifererkennung}
+		\label{img:ErgebnisRegressionMT}
+	\end{figure}
+
 	
-	\todo{Grapple-MT Ergebnisse einfügen}
-	In Abbildung  xyz
+	\begin{figure}[h]
+		\centering
+		\begin{subfigure}[c]{0.49\textwidth}			
+			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/emb_y.png}
+			\caption{Embedding mit y-Position des Greifers}
+			\label{img:Emb_y_MT}	
+		\end{subfigure}
+		\begin{subfigure}[c]{0.49\textwidth}			
+			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/emb_x.png}
+			\caption{Einbettung mit x-Position des Greifers}
+			\label{img:Emb_x_MT}	
+		\end{subfigure}
+		\begin{subfigure}[c]{0.6\textwidth}			
+		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/emb_res.png}
+		\caption{Einbettung mit Vorhersage}
+		\label{img:Emb_MT_Vorhersage}	
+	\end{subfigure}
+		\caption{Einbettung MT}
+		\label{img:EmbeddingMT}
+	\end{figure}
 	
-	In der Repräsentation werden die Merkmale des Greifers deutlich abgebildet. .....Vergleicht man die Rekonstruktionen des ersten Ansatzes mit denen des TFAE lässt sich eine Fokussierung auf den Greifer erkennen. Besonders in Bild xyz zu sehen.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/OriginalPicturesandReconstruction.png}
+		\caption{Rekonstruktion - AE - MT}
+		\label{img:RekonstruktionMTAE}
+	\end{figure}  
+	
 	
 	
 	
