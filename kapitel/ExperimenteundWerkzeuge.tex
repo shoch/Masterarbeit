@@ -197,7 +197,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 			\label{img:Ergebnis_Transfer}
 		\end{figure}
 		
-	\section{AutoML und 'Greifer beladen?'-Klassifikation}
+	\section{AutoML und 'Greifer beladen?'}
 	\label{sec:Transfer_autoMl}
 	Die starke Anpassung an die Klassifikationsaufgabe im vorangegangenen Versuch motiviert einen Blick auf die Hyperparameter zur Gewichtung der Verlustfunktion zu werfen. Ziel dieses Versuches ist es, herauszufinden welchen Einfluss die Hyperparameter auf das Ergebnis hat. Es gibt sehr viele Möglichkeiten für die Gewichtung der Verlustfunktion. Um den manuellen Aufwand für weitere Anwendungen gering zu halten, wird ein neues Modul erstellt, welches auf \ac{automl} zur Hyperparameteroptimierung zurückgreift.
 	\subsection{Werkzeug: AutoTaskTransferOnAutoencoder}
@@ -258,7 +258,7 @@ In den nachfolgenden Abschnitten wird zur Verdeutlichung der Ansätze zusätzlic
 	\end{figure}
 	
 	
-	\section{Datenmenge und 'Greifer beladen?'-Klassifikation}
+	\section{Datenmenge und 'Greifer beladen?'}
 	\label{sec:TransferDatenmenge}
 	In den bisherigen Experimenten wurde die Grundsätzliche Funktionalität der Ansätze untersucht. Besonderes  Kosten-Einsparungspotential besteht bei einem Einsatz von geringeren Datenmengen. In diesem Versuch wird untersucht wie sich die Lösung bei unterschiedlichen Datenmengen verhält. Es wird untersucht, wie sich die Leistung der Ansätze bei 200, 2000 und 9749 annotierten Daten verhält. Als Gewichtungsfaktor der Verlustfunktion werden die Hyperparameter von Versuch [2, 0, 2] \ref{appendix:AutoML} 2 genutzt. 
 	
