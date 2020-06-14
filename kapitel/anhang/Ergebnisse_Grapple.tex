@@ -1,31 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-@sebihoch 
-shoch
-/
-Masterarbeit
-2
-0
-0
-Code
-Issues 0
-Pull requests 0 Actions
-Projects 0
-Wiki
-Security 0
-Insights
-Masterarbeit/kapitel/anhang/Ergebnisse_Grapple.tex
-@sebihoch sebihoch res mt
-cfb0770 2 days ago
-@sebihoch@shoch
-150 lines (130 sloc)  4.67 KB
-
 \chapter{Greifererkennung}
 \label{appendix:Greifererkennung}
 
@@ -51,10 +23,13 @@ cfb0770 2 days ago
 	\centering
 	\begin{tabularx}{\textwidth}{lll}
 		\textbf{Nr.}  & \textbf{IoU t=0.5} & \textbf{IoU t=0.8}  	 \\ \hline 
-		1 & 0.9832 & 0.6830 \\
-		2 & 0.9877 & 0.6752 \\
-		3 & 0.9955 & 0.8370 \\
-	
+		1 & 0.8638 & 0.2254 \\
+		2 & 0.9899 & 0.7555 \\
+		3 & 0.8571  & 0.2131 \\
+		4 & 0.9966 & 0.8258 \\
+		5 & 0.9944 & 0.8258  \\
+		6 & 0.8816 & 0.2901 \\
+		7 & 0.9866 & 0.6662 \\	
 	\end{tabularx}
 	\caption{Einzelwerte Boxplot IoU MT-Greifer}
 	\label{table:EinzelwerteBoxplotIoUMTGreifer}
@@ -113,5 +88,63 @@ cfb0770 2 days ago
 	\label{img:Einbettungen1-3}
 \end{figure}
 
-
-
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/4_Embedding_y.png}
+		\caption{V4 y-Position}
+		\label{img:Einbettung4_y}	
+	\end{subfigure}
+	\centering
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/4_Embedding_x.png}
+		\caption{V4 x-Position}
+		\label{img:Einbettung4_x}		
+	\end{subfigure}
+	
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/5_Embedding_y.png}
+		\caption{V5 y-Position}
+		\label{img:Einbettung5_y}	
+	\end{subfigure}
+	\centering
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/5_Embedding_x.png}
+		\caption{V5 x-Position}
+		\label{img:Einbettung5_x}		
+	\end{subfigure}
+	
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/6_Embedding_y.png}
+		\caption{V6 y-Position}
+		\label{img:Einbettung6_y}	
+	\end{subfigure}
+	\centering
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/6_Embedding_x.png}
+		\caption{V6 x-Position}
+		\label{img:Einbettung6_x}		
+	\end{subfigure}
+	
+	\caption{Einbettungen MT-Greifererkennung V4-6}
+	\label{img:Einbettungen4-6}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/7_Embedding_y.png}
+		\caption{V7 y-Position}
+		\label{img:Einbettung7_y}	
+	\end{subfigure}
+	\centering
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/7_Embedding_x.png}
+		\caption{V7 x-Position}
+		\label{img:Einbettung7_x}		
+	\end{subfigure}
+	
+	\caption{Einbettungen MT-Greifererkennung V7}
+	\label{img:EinbettungenV7}
+\end{figure}
