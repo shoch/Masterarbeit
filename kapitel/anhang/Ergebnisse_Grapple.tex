@@ -1,38 +1,117 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+
+@sebihoch 
+shoch
+/
+Masterarbeit
+2
+0
+0
+Code
+Issues 0
+Pull requests 0 Actions
+Projects 0
+Wiki
+Security 0
+Insights
+Masterarbeit/kapitel/anhang/Ergebnisse_Grapple.tex
+@sebihoch sebihoch res mt
+cfb0770 2 days ago
+@sebihoch@shoch
+150 lines (130 sloc)  4.67 KB
+
 \chapter{Greifererkennung}
 \label{appendix:Greifererkennung}
 
-	\section{Greifererkennung auf Autoencoder}
-	\label{appendix:GreifererkennungAufAutoencoder}
-	
-		\begin{table}[ht]
-		\centering
-		\begin{tabularx}{\textwidth}{lll}
-			\textbf{Versuch}  & \textbf{IoU t=0.5} & \textbf{IoU t=0.8}  	 \\ \hline 
-			1 & 0.3565 & 0.0127 \\
-			2 & 0.3735 & 0.0227 \\
-			3 & 0.3821 & 0.0383 \\ 
-		\end{tabularx}
-		\caption{Einzelwerte Boxplot IoU Greifererkennung auf Autoencoder}
-		\label{table:EinzelwerteBoxplotIoUGreifererkennungaufAutoencoder}
-	\end{table}
+\section{Greifererkennung auf Autoencoder}
+\label{appendix:GreifererkennungAufAutoencoder}
 
-	\section{Mutli-Task Greifererkennung}
-	\label{appendix:MutliTaskGreifererkennung}
-	
-	\begin{table}[ht]
+\begin{table}[ht]
 	\centering
 	\begin{tabularx}{\textwidth}{lll}
-		 \textbf{Nr.}  & \textbf{IoU t=0.5} & \textbf{IoU t=0.8}  	 \\ \hline 
-		1 & 0.8638 & 0.2254 \\
-		2 & 0.9899 & 0.7555 \\
-		3 & 0.8571  & 0.2131 \\
-		4 & 0.9966 & 0.8258 \\
-		5 & 0.9944 & 0.8258  \\
-		6 & 0.8816 & 0.2901 \\
-		7 & 0.9866 & 0.6662 \\
+		\textbf{Versuch}  & \textbf{IoU t=0.5} & \textbf{IoU t=0.8}  	 \\ \hline 
+		1 & 0.3565 & 0.0127 \\
+		2 & 0.3735 & 0.0227 \\
+		3 & 0.3821 & 0.0383 \\ 
+	\end{tabularx}
+	\caption{Einzelwerte Boxplot IoU Greifererkennung auf Autoencoder}
+	\label{table:EinzelwerteBoxplotIoUGreifererkennungaufAutoencoder}
+\end{table}
+
+\section{Mutli-Task Greifererkennung}
+\label{appendix:MutliTaskGreifererkennung}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabularx}{\textwidth}{lll}
+		\textbf{Nr.}  & \textbf{IoU t=0.5} & \textbf{IoU t=0.8}  	 \\ \hline 
+		1 & 0.9832 & 0.6830 \\
+		2 & 0.9877 & 0.6752 \\
+		3 & 0.9955 & 0.8370 \\
 	
 	\end{tabularx}
 	\caption{Einzelwerte Boxplot IoU MT-Greifer}
 	\label{table:EinzelwerteBoxplotIoUMTGreifer}
 \end{table}
+
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.24\textwidth,center]{bilder/Hauptteil/20_horizontal_OriginalPicturesAndReconstruction.png}
+	\caption{Orginal -  AE - MT}
+	\label{img:AppendixReconstruction}	
+\end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/1_Embedding_y.png}
+		\caption{V1 y-Position}
+		\label{img:Einbettung1_y}	
+	\end{subfigure}
+	\centering
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/1_Embedding_x.png}
+		\caption{V1 x-Position}
+		\label{img:Einbettung1_x}		
+	\end{subfigure}
+	
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/2_Embedding_y.png}
+		\caption{V2 y-Position}
+		\label{img:Einbettung2_y}	
+	\end{subfigure}
+	\centering
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/2_Embedding_x.png}
+		\caption{V2 x-Position}
+		\label{img:Einbettung2_x}		
+	\end{subfigure}
+	
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/3_Embedding_y.png}
+		\caption{V3 y-Position}
+		\label{img:Einbettung3_y}	
+	\end{subfigure}
+	\centering
+	\begin{subfigure}[c]{0.49\textwidth}			
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/3_Embedding_x.png}
+		\caption{V3 x-Position}
+		\label{img:Einbettung3_x}		
+	\end{subfigure}
+	
+	\caption{Einbettungen MT-Greifererkennung V1-3}
+	\label{img:Einbettungen1-3}
+\end{figure}
+
+
 
