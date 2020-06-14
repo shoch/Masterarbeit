@@ -98,22 +98,22 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\label{subsec:Optimierungstechniken}
 	In diesem Unterkapitel werden gängige Optimierungsmethoden des \ac{automl} dargestellt. Die Auflistung ist nicht vollständig, deckt aber die im praktischen Teil der Arbeit zur Verfügung stehenden Methoden ab.  
 	
-	\subsubsection{Rastersuche}
+	\paragraph{Rastersuche}
 	Die Rastersuche \cite{Michelucci.2018} ist eine modellunabhängige Optimierunsstrategie. Es werden Parameterkombinationen definiert und anschließend Modelle, ausgehend von den Kombinationen, erstellt und evaluiert. Diese Technik hat einige Schwächen, so müssen Parameterkombinationen definiert werden, jedes Modell muss trainiert werden und falls die optimale Konfiguration nicht enthalten ist, wird sie nie gefunden. 
 	
-	\subsubsection{Zufallssuche}
+	\paragraph{Zufallssuche}
 	Die Zufallssuche ähnelt der Rastersuche. Sie unterscheidet sich dahingehend, dass die Parameterkombinationen nicht mehr definiert werden müssen. Es werden zufällige Stichprobenkonfigurationen aus dem (definierten) Parameterraum gezogen und evaluiert. 
 	In \cite{BergstraJamesandYoshuaBengio..2012} wurde gezeigt, dass insbesondere bei unterschiedlicher Wichtigkeit der Hyperparameter, bessere Ergebnisse erzielt werden. 
 
-	\subsubsection{Bayesian optimization}
+	\paragraph{Bayesian optimization}
 	Bayesian optimization ist ein Ansatz der zur Optimierung von Zielfunktionen dient, die eine lange Zeit (Minuten oder Stunden) zur Auswertung benötigen. Im Gegensatz zur Rastersuche oder Zufallssuche ist der Ansatz modellabhängig. Der Ansatz ist iterativ und baut auf zwei Komponenten auf. Ein probabilistisches Ersatzmodell und eine Erfassungsfunktion, die zur Bewertung, welcher Punkt als nächstes bewertet werden soll, herangezogen wird. Das Ersatzmodell wird in jeder Iteration an alle Beobachtungen angepasst. Im Gegensatz zur Blackboxfunktion, ist die Auswertung der Erfassungsfunktion billig und kann somit zur Optimierung herangezogen werden.
 	\cite{Frazier.201807}
 			
-	\subsubsection{Hyperband}	
+	\paragraph{Hyperband}	
 	Hyperband \cite{Li.2017} erweitert \acl{sh} \cite{Jamieson.2015}. \acl{sh} kurz \ac{sh} weist einer Reihe von Hyperparameter-Konfigurationen eine einheitliche Menge an Ressourcen zu, berechnet die Leistung von allen Konfigurationen und entfernt die schlechtere Hälfte. Die Konfigurationen werden dabei zufällig gezogen. Das Ganze wird wiederholt, bis eine Konfiguration übrig bleibt. In jedem Durchlauf wird der übriggebliebenen Hälfte exponentiell mehr Ressourcen zugewiesen. \ac{sh} benötigt als Eingangsparameter die Ressourcen und die Anzahl an Konfigurationen. Dabei ist es schwierig, zu entscheiden, ob wenige Konfigurationen mit mehr Ressourcen oder viele Konfigurationen mit weniger Ressourcen durchgeführt werden sollen.
 	Hyberband erweitert \ac{sh}, um dieses Problem zu adressieren. Hyperband führt eine Rastersuche für die beiden Parameter durch. Es werden also mehrere \ac{sh}-Durchläufe mit diversen Konfigurationen durchgeführt. Die Anzahl an Konfigurationen wird dabei immer weiter reduziert. Abgeschlossen wird eine Ausführung mit einer Zufallssuche.
 	
-	\subsubsection{BOHB}
+	\paragraph{BOHB}
 	BOHB \cite{StefanFalkner.2018} ist ein Ansatz, der Bayesian optimization und Hyperband kombiniert. Dabei wird Bayesian optimization zur Auswahl von Konfigurationen herangezogen und Hyperband bestimmt wieviele Konfigurationen, mit welchem Budget ausgeführt werden sollen. Anschließend werden die Konfigurationen mittels Successive Halving ausgeführt. Unter https://github.com/automl/HpBandSter kann eine Implementierung des Werkzeuges gefunden werden. Diese Framework wurde für den praktischen Teil der Arbeit genutzt.
 			
 	\section{Bibliotheken und Werkzeuge}
@@ -145,7 +145,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\paragraph{hyperparameter\_mixin.py}  Hyperparameter\_mixin wird zum standardisierten Verwalten von Hyperparametern für AutoML-Klassen genutzt. Auf die Hyperparameter kann anschließend einheitlich zugegriffen werden. Abbildung \ref{img:KlassendiagrammHyperparametermixin} zeigt das zugehörige UML-Klassendiagramm mit den Methoden zum Hinzufügen, Löschen und Laden der Hyperparameter. Da die Methoden öffentlich sind, können über jede erbende Klasse die Hyperparameter eigenständig verwaltet werden.	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.5\textwidth, center]{bilder/Klassendiagramme/Hyperparametermixin.png}
+		\includegraphics[width=0.6\textwidth, center]{bilder/Klassendiagramme/Hyperparametermixin.png}
 		\caption[Klassendiagramm Hyperparametermixin]{Klassendiagramm Hyperparametermixin}
 		\label{img:KlassendiagrammHyperparametermixin}
 	\end{figure}  
