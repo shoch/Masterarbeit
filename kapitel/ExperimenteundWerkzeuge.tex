@@ -128,9 +128,9 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 	\end{lstlisting}
 
 	\subsection{Experiment}
-	Mit dem \ac{tfae} wird für die Aufgabe 'Greifererkennung' im Median für den Schwellenwert 0.5 eine Leistung von 98.66\% erreichr, für den Schwellenwert von 0.8 eine Leistung von 66.62\%. In Abbildung \ref{img:ErgebnisRegressionMT} sind die Ergebnisse im Detail dargestellt. In Anhang \ref{appendix:MutliTaskGreifererkennung}	ist eine detailierte Einzelaufstellung der Ergebnisse zu finden. Diese Leistung ist deutlich besser, als die erzielte Leistung mit dem Ansatz 'Greifererkennung auf Repräsentation' \ref{sec:GreifererkennungAufAutoencoder}. Bei Betrachtung der Repräsentation in Abbildung \ref{img:EmbeddingMT} ist eine deutliche Anpassung an den Greifer zu erkennen. Sowohl die Farbkodierung für die y-Position als auch die x-Position des Greifers im Bild ist sehr deutlich zu erkennen. Zusätlich lässt sich eine Trennung der einzelnen Datenpunkte in das Merkaml Greifer ist offen oder Geschlossen erkennen. Es zieht sich eine sichtbare Trennung der Datenpunkte durch die Einbettung. Bei Betrachtung der Rekosntruktionen, insbesondere im direkten Vergleich zu den Rekonstruktionen des Autoencoders zeigt sich eine stärkere Ausprägung des Merkmales Greifer. In Abbildung \ref{img:RekonstruktionMTAE} sind drei Bilder mit ihren jeweiligen Rekosntruktionen dargestellt. Im Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine größere Auswahl an Rekonstruktionen dargestellt.  
+	Mit dem \ac{tfae} wird für die Aufgabe 'Greifererkennung' im Median für den Schwellenwert 0.5 eine Leistung von 98,77\% erreicht, für den Schwellenwert von 0.8 eine Leistung von 68.30\%. In Abbildung \ref{img:ErgebnisRegressionMT} sind die Ergebnisse im Detail dargestellt. In Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine detaillierte Einzelaufstellung der Ergebnisse zu finden. Diese Leistung ist deutlich besser, als die erzielte Leistung mit dem Ansatz 'Greifererkennung auf Repräsentation' \ref{sec:GreifererkennungAufAutoencoder}. Bei Betrachtung der Repräsentation in Abbildung \ref{img:EmbeddingMT} ist eine deutliche Anpassung an den Greifer zu erkennen. Sowohl die Farbkodierung für die y-Position als auch die x-Position des Greifers im Bild ist sehr deutlich zu erkennen. Zusätzlich lässt sich eine Trennung der einzelnen Datenpunkte in das Merkmal Greifer ist offen oder geschlossen erkennen. Es zieht sich eine sichtbare Trennung der Datenpunkte durch die Einbettung. Bei Betrachtung der Rekonstruktionen, insbesondere im direkten Vergleich zu den Rekonstruktionen des Autoencoders zeigt sich eine stärkere Ausprägung des Merkmales Greifer. In Abbildung \ref{img:RekonstruktionMTAE} sind drei Bilder mit ihren jeweiligen Rekonstruktionen dargestellt. Im Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine größere Auswahl an Rekonstruktionen dargestellt.  
 	
-	Die Ergebnisse der sieben Versuche weißen insbesondere bei größeren Schwellenwerten eine starke Schwankung auf. In Abbildung \ref{img:Emb_MT_Vorhersage} sind in der Einbettung die Fehlvorhersagen lila eingefärbt. Die meisten Fehler sind bei geschlossenem Greifer entstanden. Werden die Einbettungen aller Versuche (\ref{appendix:MutliTaskGreifererkennung}) betrachtet, fällt auf, dass die x-Position des Greifers im Bild die herausfordernde Größe ist. Durch die zufällige Initalisierung der Gewichte kann in dem bestehdnen Setting nicht immer die beste Lösung gefunden werden. Die Robustheit der Lösung bei nidriegeren (bis circa 0.5) Schwellenwerten erlauben es aber dennoch die Lösung für weitere Versuche einzusetzen.
+	In Abbildung \ref{img:Emb_MT_Vorhersage} sind in der Einbettung die Fehlvorhersagen lila eingefärbt. Die meisten Fehler sind bei geschlossenem Greifer entstanden. Werden die Einbettungen aller Versuche (\ref{appendix:MutliTaskGreifererkennung}) betrachtet, fällt auf, dass die x-Position des Greifers im Bild die herausfordernde Größe ist.
 	    \begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.32\textwidth}			
@@ -181,9 +181,6 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 		\caption{Rekonstruktion - AE - MT}
 		\label{img:RekonstruktionMTAE}
 	\end{figure}  
-	
-	
-	
 	
 	\section{Transferlernen und 'Greifer beladen?'-Klassifikation}
 	\label{sec:TransferLearningGrappleLoaded}
