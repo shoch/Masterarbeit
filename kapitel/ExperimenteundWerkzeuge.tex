@@ -60,11 +60,11 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 	
 	\section{Aufgabenfokussierung und Greifererkennung}
 	\label{sec:MultiTaskGreifererkennung}
-	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde die fehlende Fokussierung des Autoencoders auf den Greifer als Schwäche ausgemacht. Als neuer Ansatz wird untersucht, ob ein gleichzeitiges Lernen der Datenrepräsentation und das finden des Rahmens um den Greifer, den Autoencoder fokussiert und gleichzeitig gute Ergebnisse für die Regression gefunden werden können. Konkret wird ein \ac{mtl} \ac{simo} Ansatz untersucht.  
+	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde die fehlende Fokussierung des Autoencoders auf den Greifer als Schwäche ausgemacht. Als neuer Ansatz wird untersucht, ob ein gleichzeitiges Lernen der Datenrepräsentation und das finden des Rahmens um den Greifer, den Autoencoder fokussiert und gleichzeitig gute Ergebnisse für die Regression gefunden werden können. Konkret wird ein \ac{mtl}-\ac{simo} Ansatz untersucht.  
 	
 	\subsection{Werkzeug: TaskFocusingOnAutoencoder}
 	\label{subsec:SecondCriterionAutoenocder}
-	Zur Umsetzung des Ansatzes wurde ein Modul in Python erstellt. Da eine Aufgabe des Multi-Task-Ansatzes ein Autoencoder ist, wurde als Basis die Klasse ConvolutionalAutoencoder des Moduls autoencoder.py genutzt. Es wurde ein neues Modul erstellt, welches zusätzlich zu der Rekonstruktion des Autoencoders einen weiteren Ausgang bereitstellt. Der weitere Ausgang kann, wie jeder Ausgang für eine Binärklassifikation, für eine Multiklassifikation, für eine Regression oder jede andere beliebige Aufgabe genutzt werden. In Abbildung \ref{img:SchemaTFAE} ist der schematische Aufbau des Ansatzes abgebildet. Die Schichten des weiteren Kriteriums werden an die Code-Schicht des Autoencoders angehängt. Es können beliebig viele Schichten genutzt werden. Die Verlustfunktion des neuronalen Netzwerkes besteht aus der Summe der einzelnen Verlustfunktionen und einer Gewichtung. Sie lautet im Detail: 
+	Zur Umsetzung des Ansatzes wurde ein Modul in Python erstellt. Da eine Aufgabe des Multi-Task-Lernen-Ansatzes ein Autoencoder ist, wurde als Basis die Klasse ConvolutionalAutoencoder des Moduls autoencoder.py genutzt. Es wurde ein neues Modul erstellt, welches zusätzlich zu der Rekonstruktion des Autoencoders einen weiteren Ausgang bereitstellt. Der weitere Ausgang kann, wie jeder Ausgang für eine Binärklassifikation, für eine Multiklassifikation, für eine Regression oder jede andere beliebige Aufgabe genutzt werden. In Abbildung \ref{img:SchemaTFAE} ist der schematische Aufbau des Ansatzes abgebildet. Die Schichten des weiteren Kriteriums werden an die Code-Schicht des Autoencoders angehängt. Es können beliebig viele Schichten genutzt werden. Die Verlustfunktion des neuronalen Netzwerkes besteht aus der Summe der einzelnen Verlustfunktionen und einer Gewichtung. Sie lautet im Detail: 
 	\begin{align}
 	loss = weight1 * loss\_autoencoder + weight2 * loss\_task2
 	\end{align}
@@ -129,8 +129,6 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 
 	\subsection{Experiment}
 	Mit dem \ac{tfae} wird für die Aufgabe 'Greifererkennung' im Median für den Schwellenwert 0.5 eine Leistung von 98,77\% erreicht, für den Schwellenwert von 0.8 eine Leistung von 68.30\%. In Abbildung \ref{img:ErgebnisRegressionMT} sind die Ergebnisse im Detail dargestellt. In Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine detaillierte Einzelaufstellung der Ergebnisse zu finden. Diese Leistung ist deutlich besser, als die erzielte Leistung mit dem Ansatz 'Greifererkennung auf Repräsentation' \ref{sec:GreifererkennungAufAutoencoder}. Bei Betrachtung der Repräsentation in Abbildung \ref{img:EmbeddingMT} ist eine deutliche Anpassung an den Greifer zu erkennen. Sowohl die Farbkodierung für die y-Position als auch die x-Position des Greifers im Bild ist sehr deutlich zu erkennen. Zusätzlich lässt sich eine Trennung der einzelnen Datenpunkte in das Merkmal Greifer ist offen oder geschlossen erkennen. Es zieht sich eine sichtbare Trennung der Datenpunkte durch die Einbettung. Bei Betrachtung der Rekonstruktionen, insbesondere im direkten Vergleich zu den Rekonstruktionen des Autoencoders zeigt sich eine stärkere Ausprägung des Merkmales Greifer. In Abbildung \ref{img:RekonstruktionMTAE} sind drei Bilder mit ihren jeweiligen Rekonstruktionen dargestellt. Im Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine größere Auswahl an Rekonstruktionen dargestellt.  
-	
-	In Abbildung \ref{img:Emb_MT_Vorhersage} sind in der Einbettung die Fehlvorhersagen lila eingefärbt. Die meisten Fehler sind bei geschlossenem Greifer entstanden. Werden die Einbettungen aller Versuche (\ref{appendix:MutliTaskGreifererkennung}) betrachtet, fällt auf, dass die x-Position des Greifers im Bild die herausfordernde Größe ist.
 	    \begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.32\textwidth}			
@@ -174,7 +172,8 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 		\caption{Einbettung MT}
 		\label{img:EmbeddingMT}
 	\end{figure}
-	
+
+	In Abbildung \ref{img:Emb_MT_Vorhersage} sind in der Einbettung die Fehlvorhersagen lila eingefärbt. Die meisten Fehler sind bei geschlossenem Greifer entstanden. Werden die Einbettungen aller Versuche (\ref{appendix:MutliTaskGreifererkennung}) betrachtet, fällt auf, dass die x-Position des Greifers im Bild die herausfordernde Größe ist.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/OriginalPicturesandReconstruction.png}
@@ -182,7 +181,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 		\label{img:RekonstruktionMTAE}
 	\end{figure}  
 	
-	\section{Transferlernen und 'Greifer beladen?'-Klassifikation}
+	\section{Transferlernen und 'Greifer beladen?'}
 	\label{sec:TransferLearningGrappleLoaded}
 	In vorangegangenen Kapitel wurde eine Repräsentation gefunden, welche die Merkmale des Greifer herausbildet. Ausgehend von dieser Repräsentation wird untersucht, ob ein Transfer auf weitere Aufgaben durchgeführt werden kann. Es wird der Ansatz des netzwerkbasierten tiefen Transferlernens genutzt um die Aufgabenstellung 'Greifer beladen?' zu lösen.
 	\subsection{Werkzeug: TaskTransferOnAutoencoder}
@@ -210,13 +209,12 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 	second_criterion_hidden_layer_kwargs = {'activation': 'relu'},
 	second_criterion_output_layer_kwargs = {'activation': 'sigmoid'}, 
 	loss_weights=[1, 0.01],
-	freeze_encoder_layers = 2
-	,freeze_decoder_layers =[0,1])
+	freeze_encoder_layers = 2, freeze_decoder_layers =[0,1])
 	
 	history = tscm.fit(
 	x_train,
 	{"decoder": x_train, "second_criterion": y_train}, 
-	epochs=1,
+	epochs=20,
 	batch_size = 128,
 	validation_data=(x_test,{"decoder": x_test, "second_criterion": y_test}))
 	)
@@ -276,7 +274,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 	,'RandomSearch'
 	,optimization_kwargs = optimization_kwargs)
 	\end{lstlisting}
-	Das Werkzeug unterstützt derzeit die Optimierer, Zufallssuche, Hyperband und BOHB. Der vom Framework bereitgestellte Parameter Budget wird zur Festlegung der Epochen eingesetzt. Um ein Overfitting zu verhindern, wird ein EarlyStopping Kriterium eingesetzt. 
+	Das Werkzeug unterstützt derzeit die Optimierer, Zufallssuche, Hyperband und BOHB. Der vom Framework bereitgestellte Parameter Budget wird zur Festlegung der Epochen eingesetzt. Um die Laufzeit zu begrenzen wird ein EarlyStopping Kriterium eingesetzt. Dieses Kriterium beendet ein Trainingsdurchlauf, wenn nach x-Epochen keine Verbesserung erzielt wird.
 	Besondere Beachtung muss die Evaluationsmetrik zur Bewertung eines Optimierungslaufes finden. Da ein zu optimierender Hyperparameter die Gewichtung der Verlustfunktion ist, muss dies bei dem Einsatz der Evaluationsmetrik berücksichtigt werden. Die Evaluationsmetrik kann bei dem Erstellen der Klasse frei gewählt werden.
 	
 	\subsection{Experiment}
