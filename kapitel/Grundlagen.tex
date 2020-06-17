@@ -25,7 +25,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	Im traditionellen maschinellem Lernen wird pro Aufgabe und Datenset ein isoliertes Modell erstellt. Das Transferlernen wiederum hat das Ziel, Wissen zu teilen. Die Isolation der Modelle soll dabei aufgehoben werden. Dabei erfolgt eine Aufteilung in Quell- und Zieldomäne.
 	
 		\subsection{Tiefes Transferlernen}
-		Geprägt durch die Entwicklung hin zu tiefen neuronalen Netzwerken wurden Methoden zum Tiefen Transferlernen (deep transfer learning) vorgeschlagen. \cite{Tan.2018} ordnet diese in vier Kategorien ein. Für eine Einordnung von klassischen Methoden des Transferlernens eignet sich die Erhebung \cite{FuzhenZhuang.2019}.
+		Geprägt durch die Entwicklung hin zu tiefen neuronalen Netzwerken wurden Methoden zum Tiefen Transferlernen vorgeschlagen. \cite{Tan.2018} ordnet diese in vier Kategorien ein. Für eine Einordnung von klassischen Methoden des Transferlernens eignet sich die Erhebung \cite{FuzhenZhuang.2019}.
 		 
 		\paragraph{Netzwerkbasiert} Der netzwerkbasierte Ansatz verwendet einen Teil des in der Quelldomäne trainierten Netzwerkes in der Zieldomäne wieder. Es werden dabei sowohl die Netzstruktur als auch die Verbindungsparameter übernommen. Die Netzwerke werden dabei in zwei Teile unterteilt. Der erste Teil ist die sprachunabhängige Merkmalstransformation, der zweite Teil ist der sprachabhängige Klassifikator. Dabei kann die sprachunabhängige Merkmalstransformation in der Zieldomäne wiederverwendet werden. Insbesondere in \cite{JasonYosinski.2014}, \cite{Long.2016} und \cite{George.2018} hat sich dieser Ansatz bewährt.     
 		     
@@ -74,7 +74,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		
 		Induktives Transferlernen und \acl{mtl} wird darin unterschieden, dass beim induktiven Transferlernen angenommen wird, dass es eine Hauptaufgabe und eine Nebenaufgabe gibt. Die Nebenaufgabe bietet zusätzliche Informationen, um die Hauptaufgabe zu verbessern, bzw. zu generalisieren. Im \ac{mtl} gibt es keine solche Unterscheidung, die Aufgaben werden gleichberechtigt betrachtet. Induktives Transferlernen kann deshalb als Sonderform des \acl{mtl} gesehen werden. 
 		
-		Die Kombination von \acl{mtl} und tiefem Lernen für die Computervision wurde von \cite{YuchunFang.2017}, \cite{Li.2016}, \cite{RajeevRanjan.2016} und \cite{Zhao.2019} eingesetzt.
+		Die Kombination von \acl{mtl} und Deep Learning für die Computervision wurde von \cite{YuchunFang.2017}, \cite{Li.2016}, \cite{RajeevRanjan.2016} und \cite{Zhao.2019} eingesetzt.
 
 	\section{Automatisiertes maschinelles Lernen}
 	\label{sec:AutoML}
@@ -105,11 +105,10 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\todo{Überabeiten}  
 	 
 	\paragraph{Zufallssuche}
-	Die Zufallssuche ähnelt der Rastersuche. Sie unterscheidet sich dahingehend, dass die Parameterkombinationen nicht mehr definiert werden müssen. Es werden zufällige Stichprobenkonfigurationen aus dem (definierten) Parameterraum gezogen und evaluiert. 
-	In \cite{BergstraJamesandYoshuaBengio..2012} wurde gezeigt, dass insbesondere bei unterschiedlicher Wichtigkeit der Hyperparameter im Gegensatz zur Rastersuche bessere Ergebnisse erzielt werden. 
+	Die Zufallssuche ähnelt der Rastersuche. Sie unterscheidet sich dahingehend, dass die Parameterkombinationen nicht mehr definiert werden müssen. Es werden zufällige Stichprobenkonfigurationen aus dem (definierten) Parameterraum gezogen und evaluiert. In \cite{BergstraJamesandYoshuaBengio..2012} wurde gezeigt, dass insbesondere bei unterschiedlicher Wichtigkeit der Hyperparameter im Gegensatz zur Rastersuche bessere Ergebnisse erzielt werden. 
 
 	\paragraph{Bayesian optimization}
-	Bayesian optimization ist ein Ansatz, der zur Optimierung von Zielfunktionen dient, die eine lange Zeit (Minuten oder Stunden) zur Auswertung benötigen. Im Gegensatz zur Rastersuche oder Zufallssuche ist der Ansatz modellabhängig. Der Ansatz ist iterativ und baut auf zwei Komponenten auf. Ein probabilistisches Ersatzmodell und eine Erfassungsfunktion, die zur Bewertung, welcher Punkt als nächstes bewertet werden soll, herangezogen wird. Das Ersatzmodell wird in jeder Iteration an alle Beobachtungen angepasst. Im Gegensatz zur Blackboxfunktion, ist die Auswertung der Erfassungsfunktion billig und kann somit zur Optimierung herangezogen werden.
+	Bayesian optimization ist ein Ansatz, der zur Optimierung von Zielfunktionen dient, die eine lange Zeit (Minuten oder Stunden) zur Auswertung benötigen. Im Gegensatz zur Rastersuche oder Zufallssuche ist der Ansatz modellabhängig. Der Ansatz ist iterativ und baut auf zwei Komponenten auf. Ein probabilistisches Ersatzmodell und eine Erfassungsfunktion, die zur Bewertung, welcher Punkt als nächstes bewertet werden soll, herangezogen wird. Das Ersatzmodell wird in jeder Iteration an alle Beobachtungen angepasst. Im Gegensatz zu modellunabhängigen Optimierungsmethoden, ist die Auswertung der Erfassungsfunktion billig und kann somit zur Optimierung herangezogen werden.
 	\cite{Frazier.201807}
 	\todo{simpler (zweiter Teil - Absatz)}
 	
