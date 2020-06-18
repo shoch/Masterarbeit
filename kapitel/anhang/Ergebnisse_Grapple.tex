@@ -1,7 +1,7 @@
 \chapter{Greifererkennung}
 \label{appendix:Greifererkennung}
 
-\section{Greifererkennung auf Autoencoder}
+\section{Ergebnisse: Greifererkennung auf Autoencoder}
 \label{appendix:GreifererkennungAufAutoencoder}
 
 \begin{table}[ht]
@@ -16,7 +16,7 @@
 	\label{table:EinzelwerteBoxplotIoUGreifererkennungaufAutoencoder}
 \end{table}
 
-\section{Mutli-Task-Lernen Greifererkennung}
+\section{Ergebnisse: TFAE-Greifererkennung}
 \label{appendix:MutliTaskGreifererkennung}
 
 \begin{table}[ht]
@@ -26,66 +26,61 @@
 		1 & 0.9832 & 0.6830 \\
 		2 & 0.9877 & 0.6752 \\
 		3 & 0.9955 & 0.8370 \\
-
 	\end{tabularx}
-	\caption{Einzelwerte Boxplot IoU MT-Greifer}
+	\caption{Einzelwerte Boxplot IoU TFAE-Greifer}
 	\label{table:EinzelwerteBoxplotIoUMTGreifer}
-\end{table}
-
-
+\end{table}s
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.24\textwidth,center]{bilder/Hauptteil/20_horizontal_OriginalPicturesAndReconstruction.png}
-	\caption{Orginal -  AE - MT}
+	\caption{Orginal -  AE - TFAE}
 	\label{img:AppendixReconstruction}	
 \end{figure}
 
-
 \begin{figure}[h]
 	\centering
-	
 	\begin{subfigure}[c]{0.49\textwidth}			
 		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/1_Embedding_y.png}
-		\caption{V1 y-Position}
+		\caption{V:1 y-Position}
 		\label{img:Einbettung1_y}	
 	\end{subfigure}
 	\centering
 	\begin{subfigure}[c]{0.49\textwidth}			
 		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/1_Embedding_x.png}
-		\caption{V1 x-Position}
+		\caption{V:1 x-Position}
 		\label{img:Einbettung1_x}		
 	\end{subfigure}
 	
 	\begin{subfigure}[c]{0.49\textwidth}			
 		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/2_Embedding_y.png}
-		\caption{V2 y-Position}
+		\caption{V:2 y-Position}
 		\label{img:Einbettung2_y}	
 	\end{subfigure}
 	\centering
 	\begin{subfigure}[c]{0.49\textwidth}			
 		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/2_Embedding_x.png}
-		\caption{V2 x-Position}
+		\caption{V:2 x-Position}
 		\label{img:Einbettung2_x}		
 	\end{subfigure}
 	
 	\begin{subfigure}[c]{0.49\textwidth}			
 		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/3_Embedding_y.png}
-		\caption{V3 y-Position}
+		\caption{V:3 y-Position}
 		\label{img:Einbettung3_y}	
 	\end{subfigure}
 	\centering
 	\begin{subfigure}[c]{0.49\textwidth}			
 		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/EMB_alle/3_Embedding_x.png}
-		\caption{V3 x-Position}
+		\caption{V:3 x-Position}
 		\label{img:Einbettung3_x}		
 	\end{subfigure}
 	
-	\caption{Einbettungen MT-Greifererkennung V1-3}
+	\caption{Einbettungen TFAE-Greifererkennung V:1-3}
 	\label{img:Einbettungen1-3}
 \end{figure}
 
-		\begin{figure}[h]
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.7\textwidth, center]{bilder/Hauptteil/MT_Grapple/Fehler/GrappleWrong.png}
 		\caption{'Rahmen um Greifer' falsch vorhergesagt}
