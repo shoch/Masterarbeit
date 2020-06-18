@@ -43,7 +43,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		Werden mehrere Aufgaben parallel gelernt spricht man von dem \acl{mtl} kurz \ac{mtl}. Der Begriff \ac{mtl} wurde insbesondere von \cite{Caruana.1998} geprägt. Ziel ist es, Wissen durch gleichzeitiges Lernen einiger verwandter Aufgaben weiterzugeben. Es wird davon ausgegangen, dass das Lernen einer Aufgabe das Lernen der anderen Aufgaben verbessert. Im Allgemeinen wird dies durch das Lernen aller Aufgaben gemeinsam erreicht, wobei die korrelierenden Informationen zwischen den einzelnen Aufgaben genutzt werden. Die Aufgaben erzeugen dabei eine niedrigdimensionale Repräsentation, welche dann durch das parallele Lernen besser generalisiert werden. In manchen Fällen hat sich zudem herausgestellt, dass \acl{mtl} zum Lernen von nicht verwandten Aufgaben vorteilhaft ist.
 		Basierend auf den Ein- und Ausgängen wird \ac{mtl} von \cite{Thung.2018} in drei Fälle unterteilt. 
  		
- 		\paragraph{Single-Input Multi-Output} SIMO wird verwendet, um aus einer Eingabe Vorhersagen von verschiedenen Arten von Ausgabezielen zu treffen. Diese Art des \ac{mtl} wird auch \textit{textmulti-class learning} genannt.
+ 		\paragraph{Single-Input Multi-Output} SIMO wird verwendet, um aus einer Eingabe Vorhersagen von verschiedenen Arten von Ausgabezielen zu treffen. Diese Art des \ac{mtl} wird auch \textit{multi-class learning} genannt.
 		
 		\paragraph{Multi-Input Single-Output} MISO bedeutet es werden mehrere Eingaben zum Vorhersagen eines Ausgabezieles genutzt.
 	
@@ -159,7 +159,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\label{img:CircularCrane}
 	\end{figure}		
 
-	\paragraph{Greifererkennung} Bei der Aufgabenstellung Greifererkennung muss in einem Bild die Position eines Rahmen um den Greifer gefunden werden. Abbildung \ref{img:Grapple} zeigt ein Bild eines Rahmens um den Greifer. Es handelt sich um eine klassische Objekterkennungs-Aufgabe.
+	\paragraph{Greifererkennung} Bei der Aufgabenstellung muss in einem Bild die Position eines Rahmen um den Greifer gefunden werden. Abbildung \ref{img:Grapple} zeigt ein Bild eines Rahmens um den Greifer. Es handelt sich um eine klassische Objekterkennungs-Aufgabe.
 	\begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
@@ -183,7 +183,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 	\section{Datenverständnis}
 	\label{sec:DataUnderstanding}
 	Mittels Kamera an der Kabine können neue unbeschriftete Bilder aufgenommen und bei PSIORI abgelegt werden. Durch den Aufbau des Rundkrans und der Kameraposition, befindet sich der Greifer immer im Bild. Der Hintergrund der Bilder ändert sich stark. Die geografische Lage des Rundkrans schränkt die möglichen Wetterlagen ein. Es fällt kein Schnee und es gibt wenige Regentage. In Abbildung  \ref{img:Bildqualität} sind Ausprägungen der Bildqualität dargestellt. Abgesehen von Bildern in guter Qualität gibt es helle Bilder, dunkle Bilder und Bilder mit Reflexionen. Die Bilder sind 1024 auf 648 Pixel groß und in Farbe. Die einzelnen Pixel können dabei Werte zwischen 0 und 255 annehmen. 
-	Entsprechend der beiden Aufgabenstellungen Greifererkennung und 'Greifer beladen' werden Daten mit einer passenden Beschriftung bereitgestellt.
+	Entsprechend der beiden Aufgabenstellungen 'Greifererkennung' und 'Greifer beladen' werden Daten mit einer passenden Beschriftung bereitgestellt.
 	
 	\begin{figure}[h]
 		\centering
@@ -228,13 +228,13 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		\label{table:DatenaufteilungTrainTestValidation}
 	\end{table}
 	
-	Für das Laden der Daten wurde ein Modul \textit{'data\_loader.py'}erstellt. Dieses Modul enthält die drei Klassen \textit{DataLoader}, \textit{GrappleDataLoader} und \textit{LogsDataLoader}. \textit{DataLoader} ist eine abstrakte Klasse, die Methoden zum Laden der Trainings-, Test- und Validationsdaten definiert. 
+	Für das Laden der Daten wurde ein Modul \textit{data\_loader.py}erstellt. Dieses Modul enthält die drei Klassen \textit{DataLoader}, \textit{GrappleDataLoader} und \textit{LogsDataLoader}. \textit{DataLoader} ist eine abstrakte Klasse, die Methoden zum Laden der Trainings-, Test- und Validationsdaten definiert. 
 	Sie liefern die Bilder basierend auf einem Parameter bis zur maximalen Anzahl als Numpyarray zurück. Die Klassen \textit{GrappleDataLoader} und \textit{LogsDataLoader} implementieren für den jeweiligen Datensatz die konkreten Methoden zum Laden der Daten.
 	
-	Mittels des Moduls \textit{data\_preparation.py} und der Klasse Preprocessing werden die Bilder auf die passende Größe verkleinert oder vergrößert und auf den Wertebereich zwischen 0 und 1 normalisiert.
+	Mittels des Moduls \textit{data\_preparation.py} und der Klasse \textit{Preprocessing} werden die Bilder auf die passende Größe verkleinert oder vergrößert und auf den Wertebereich zwischen 0 und 1 normalisiert.
 	
 	\paragraph{Zweite Iteration} 
-	In der zweiten Iteration wurde ein neues Modul namens \\ \textit{data\_generator\_provider.py} erstellt. Da Bilder als Numpyarray direkt in den Speicher geladen werden, können nicht beliebig viele Bilder genutzt werden. Dieses Problem wird von den Keras ImageDataGeneratoren \cite{Chollet.2015} adressiert. Sie erlauben es Bilder stapelweise bereitzustellen. Zusätzlich können die ImageDataGeneratoren die Bilder direkt in der benötigten Größe bereitgestellt werden. Das Modul implementiert jeweils für den Baumstammdatensatz und den Greiferdatensatz eine Klasse zum Bereitstellen von Imagedatageneratoren.
+	In der zweiten Iteration wurde ein neues Modul namens \\ \textit{data\_generator\_provider.py} erstellt. Da Bilder als Numpyarray direkt in den Speicher geladen werden, können nicht beliebig viele Bilder genutzt werden. Dieses Problem wird von den Keras \textit{ImageDataGeneratoren} \cite{Chollet.2015} adressiert. Sie erlauben es Bilder stapelweise bereitzustellen. Zusätzlich können die \textit{ImageDataGeneratoren} die Bilder direkt in der benötigten Größe bereitgestellt werden. Das Modul implementiert jeweils für den Baumstammdatensatz und den Greiferdatensatz eine Klasse zum Bereitstellen von \textit{ImageDataGeneratoren}.
 	
 	Da die Modelle \ac{simo}-Modelle sind, erfolgt zusätzlich noch eine Aufbereitung der Bereitstellung der Daten. Standardmäßig stellen die Generatoren Stapel mit Einträgen der Form $X ,Y$  bereit. Wobei X die Eingangsdaten sind und Y die Zielgröße definiert. Zum Beispiel kann X ein Bild sein und Y die zugehörige Klasse. Die Multi-Task-Learning-Module benötigen Generatoren, die Einträge der Stapel der Form $X, [X, Y]$ erzeugen. Die Zielgröße hat sich zu einer Liste mit zwei Größen verändert. Die erste Zielgröße entspricht den Eingangsdaten, sie werden für den Decoder-Ausgang genutzt. Die zweite Zielgröße wird für den zweiten Ausgang genutzt. Sie entspricht der Zielgröße eines normalen \textit{ImageDataGenerator}. Das Ganze wird mit Hilfe der Klasse \textit{tensorflow.keras.utils.Sequence} erreicht. Ihr wird im Konstruktor ein \textit{ImageDataGenerator} übergeben. Bei der Bereitstellung eines Elementes wird der Rückgabewert des Generators angepasst. Die entscheidenden Codezeilen sind in Listing \ref{lst:AufbereritungGeneratorergebnis} dargestellt. 
 	\begin{lstlisting}[language=python,caption=Aufbereitung Generatorergebnis in Python, label=lst:AufbereritungGeneratorergebnis]
@@ -242,7 +242,7 @@ Im folgenden Kapitel werden die Grundlagen der Arbeit, insbesondere im Hinblick 
 		return res[0], [res[0], res[1]]
 	\end{lstlisting}
 	
-	Für das Vortrainieren werden Generatoren bereitgestellt, welche Stapel mit Einträgen der Form $X ,X$ erzeugen. Hierbei wird auf Standardfunktionalität der Klasse ImageDatagenerator zurückgegriffen.
+	Für das Vortrainieren werden Generatoren bereitgestellt, welche Stapel mit Einträgen der Form $X ,X$ erzeugen. Hierbei wird auf Standardfunktionalität der Klasse \textit{ImageDataGeneratoren} zurückgegriffen.
 	
 	Die \textit{ImageDataGeneratoren} bieten Standardfunktionalität zur Bildverstärkung. Alle Generatoren normalisieren die Werte der Bilder zwischen 0 und 1. Die Generatoren für die Trainingsdaten führen noch zufällige Veränderungen der Helligkeit und Kanalverschiebungen durch. Bei den Baumstammdaten werden die Bilder zusätzlich horizontal umgedreht. 
 
