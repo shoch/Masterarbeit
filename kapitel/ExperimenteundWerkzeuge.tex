@@ -125,7 +125,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 	\end{lstlisting}
 
 	\subsection{Experiment}
-	Mit dem \textit{\ac{tfae}} wird für die Aufgabe \textit{Greifererkennung} im Median für den Schwellenwert 0.5 eine Leistung von 98,77\% erreicht, für den Schwellenwert von 0.8 eine Leistung von 68.30\%. In Abbildung \ref{img:ErgebnisRegressionMT} sind die Ergebnisse im Detail dargestellt. In Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine detaillierte Einzelaufstellung der Ergebnisse zu finden. Diese Leistung ist deutlich besser, als die erzielte Leistung mit dem Ansatz Greifererkennung auf Repräsentation \ref{sec:GreifererkennungAufAutoencoder}. Bei Betrachtung der Repräsentation in Abbildung \ref{img:EmbeddingMT} ist eine deutliche Anpassung an den Greifer zu erkennen. Sowohl die Farbkodierung für die y-Position als die x-Position des Greifers im Bild ist sehr deutlich zu erkennen. Ist der Greifer nahe am Ausleger und auch noch offen sind die Einfärbung eines Datenpunktes in beiden Einbettungen gelb markiert. Zusätzlich lässt sich eine Trennung der einzelnen Datenpunkte in das Merkmal Greifer beladen oder nicht beladen erkennen. Es zieht sich eine sichtbare Trennung der Datenpunkte durch die Einbettung. Bei Betrachtung der Rekonstruktionen, insbesondere im direkten Vergleich zu den Rekonstruktionen des Autoencoders zeigt sich eine stärkere Ausprägung des Merkmales Greifer. In Abbildung \ref{img:RekonstruktionMTAE} sind drei Bilder mit ihren jeweiligen Rekonstruktionen dargestellt. Im Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine größere Auswahl an Rekonstruktionen dargestellt.  
+	Mit dem \textit{\ac{tfae}} wird für die Aufgabe \textit{Greifererkennung} im Median für den Schwellenwert 0.5 eine Leistung von 98,77\% erreicht, für den Schwellenwert von 0.8 eine Leistung von 68.30\%. In Abbildung \ref{img:ErgebnisRegressionMT} sind die Ergebnisse im Detail dargestellt. In Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine detaillierte Einzelaufstellung der Ergebnisse zu finden. Diese Leistung ist deutlich besser, als die erzielte Leistung mit dem Ansatz 'Greifererkennung auf Repräsentation' \ref{sec:GreifererkennungAufAutoencoder}. Bei Betrachtung der Repräsentation in Abbildung \ref{img:EmbeddingMT} ist eine deutliche Anpassung an den Greifer zu erkennen. Sowohl die Farbkodierung für die y-Position als die x-Position des Greifers im Bild ist sehr deutlich zu erkennen. Ist der Greifer nahe am Ausleger und auch noch offen sind die Einfärbung eines Datenpunktes in beiden Einbettungen gelb markiert. Zusätzlich lässt sich eine Trennung der einzelnen Datenpunkte in das Merkmal Greifer beladen oder nicht beladen erkennen. Es zieht sich eine sichtbare Trennung der Datenpunkte durch die Einbettung. Bei Betrachtung der Rekonstruktionen, insbesondere im direkten Vergleich zu den Rekonstruktionen des Autoencoders zeigt sich eine stärkere Ausprägung des Merkmales Greifer. In Abbildung \ref{img:RekonstruktionMTAE} sind drei Bilder mit ihren jeweiligen Rekonstruktionen dargestellt. Im Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine größere Auswahl an Rekonstruktionen dargestellt.  
 	    \begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.32\textwidth}			
@@ -168,14 +168,13 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 		\label{img:EmbeddingMT}
 	\end{figure}
 
-	In Abbildung \ref{img:Emb_MT_Vorhersage} sind in der Einbettung die Fehlvorhersagen lila eingefärbt. Die meisten Fehler sind bei geschlossenem Greifer entstanden. Werden die Einbettungen aller Versuche (\ref{appendix:MutliTaskGreifererkennung}) betrachtet, fällt auf, dass die x-Position des Greifers im Bild die herausfordernde Größe ist.
+	In Abbildung \ref{img:Emb_MT_Vorhersage} sind in der Einbettung die Fehlvorhersagen lila eingefärbt. Die meisten Fehler sind bei geschlossenem Greifer entstanden. Werden die Einbettungen aller Versuche (\ref{appendix:MutliTaskGreifererkennung}) betrachtet, fällt auf, dass bei geschlossenem Greifers die meisten Fehler aufteten.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/OriginalPicturesandReconstruction.png}
 		\caption{Rekonstruktion - AE - MT}
 		\label{img:RekonstruktionMTAE}
-	\end{figure}  
-	
+	\end{figure}  	
 	Zur Untersuchung der möglichen Fehlerursachen wurden die Vorhersagen der Rahmen gegen die Annotationen in Streudiagrammen \ref{img:FehlerursacheMTLGrapple} aufgetragen. In Abbildung \ref{img:Rahmenflaeche} ist die Rahmenfläche, in Abbildung \ref{img:Rahmenhoehe} ist die Rahmenhöhe und in Abbildung \ref{img:Rahmenbreite} ist die Rahmenbreite dargestellt. In allen drei Abbildungen entsprechen die orangen markierten Datenpunkte den falsch vorhergesagten und die blau markierten Datenpunkte den korrekt vorhergesagten Rahmen. Wenn eine Vorhersagen genau der Annotation entspricht, befindet sich der Datenpunkt genau auf der Diagonalen. Umso weiter entfernt der Wert von der Diagonalen Linie ist umso größer ist der Fehler. Ist die Vorhersage kleiner als die Annotation befindet sich der Datenpunkt unterhalb der Diagonalen ansonsten oberhalb. Es ist erkennbar, dass kleinere Rahmen schlechter als große Rahmen vorhergesagten werden. Dies lässt sich dadurch erklären, dass bei kleineren Rahmen ein kleinerer absoluter Fehlerwert zulässig ist. Ansonsten lässt sich erkennen, das die Rahmen öfters zu klein als zu groß sind. Durch einen Blick in die Einbettungen, siehe Abbildung \ref{img:EmbeddingMT} ist zu erkennen, dass insbesondere bei geschlossenem Greifer und bei einer Greiferposition nahe des Auslegers Fehler auftreten. Da es circa 20 Bilder mit dem Merkmal 'Greiferposition nahe des Auslegers' gibt, kann dieser Fehler vermutlich mit einer Erhöhung der Datenmenge mit dem Merkmal behoben werden. 
 	\begin{figure}[h]
 		\centering
@@ -221,7 +220,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 		\label{img:KlassendiagrammTransferSecondCriterionAutoenocder}
 	\end{figure}  
 
-	Listing \ref{lst:BspTransferSecondCriterionAutoenocder} zeigt beispielhaft die Anwendung dieses Werkzeuges. Im Vergleich zu dem \textit{\ac{tfae}} ist die Anwendung schon deutlich einfacher. Es gibt weniger Hyperparameter zum Modifizieren. Da das Modell auf einem trainierten \textit{\ac{tfae}} basiert, ist kein $pretrain(..)$ mehr notwenig. Die Methode $fit(..)$ / $fit\_generator(..)$ wird auf dieselbe Weise wie in Keras angewendet.		
+	Listing \ref{lst:BspTransferSecondCriterionAutoenocder} zeigt beispielhaft die Anwendung dieses Werkzeuges. Im Vergleich zu dem \textit{\ac{tfae}} ist die Anwendung schon deutlich einfacher. Es gibt weniger Hyperparameter zum Modifizieren. Da das Modell auf einem trainierten \textit{\ac{tfae}} basiert, ist kein $pretrain(..)$ mehr notwendig. Die Methode $fit(..)$ / $fit\_generator(..)$ wird auf dieselbe Weise wie in Keras angewendet.		
 	\begin{lstlisting}[language=python,caption=Beispiel TransferSecondCriterionAutoenocder in Python, label=lst:BspTransferSecondCriterionAutoenocder]
 	tscm = TransferLearningConvolutionalSecondCriterionAutoencoder(csc_autoencoder,
 	second_criterion_topology=second_criterion_topology,
@@ -326,20 +325,17 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 		\label{img:EmbeddingAutoMLTransfer}
 	\end{figure}
 	
-	
 	\section{Datenmenge und 'Greifer beladen?'}
 	\label{sec:TransferDatenmenge}
-	In den bisherigen Experimenten wurde die grundsätzliche Funktionalität der Ansätze untersucht. Besonderes  Kosten-Einsparungspotential besteht bei einem Einsatz von geringeren Datenmengen. In diesem Versuch wird untersucht, wie sich die Lösung bei unterschiedlichen Datenmengen verhält. Es wird untersucht, wie sich die Leistung der Ansätze bei 200, 2000 und 9749 annotierten Daten verhält. \todo{warum die Zahlen} Als Gewichtungsfaktor der Verlustfunktion werden die Hyperparameter von Versuch [2, 0, 2] \ref{appendix:AutoML} 2 genutzt. 
+	In den bisherigen Experimenten wurde die grundsätzliche Funktionalität der Ansätze untersucht. Besonderes  Kosten-Einsparungspotential besteht bei einem Einsatz von geringeren Datenmengen. In diesem Versuch wird untersucht, wie sich die Lösung bei unterschiedlichen Datenmengen verhält. Es wird untersucht, wie sich die Leistung der Ansätze bei 200, 2000 und 9749 annotierten Daten verhält. Der Wert 9749 entspricht allen Bildern, bei 200 Bildern wird erwartet das klassische Ansätze versagen. Der Wert 2000 wurde gewählt, um das verhalten bei wenigen aber ausreichend Daten zu untersuchen. Als Gewichtungsfaktor der Verlustfunktion werden die Hyperparameter von Versuch [2, 0, 2] \ref{appendix:AutoML} 2 genutzt. 
 	
 	In Abbildung \ref{img:VergleichDatenmenge} sind die Ergebnisse des Versuchs für die Aufgabe ist der Greifer beladen dargestellt. Auf der X-Achse sind die Datenmengen, auf der y-Achse die \textit{Accuracy} dargestellt. Der Versuch wurde einmal als \ac{ttae}-Ansatz hier blau und einmal als \ac{tfae}-Ansatz (lila) durchgeführt. Bei allen drei Datenmengen erreicht der \ac{ttae}-Ansatz deutlich bessere (22\%,15\%,5\%) Ergebnisse. Insbesondere bei niedrigen Datenmengen erzielt der \ac{ttae}-Ansatz gute Ergebnisse. Bei 2000 Bildern ist die \textit{Accuracy} nur 2\% schlechter als die Basislinie. Die Einzelergebnisse sind in Abbildung \ref{img:DatenmengenLeistung} dargestellt.   
-	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Transfer_Logs_Datenmenge//Acc_compare_Logs_data.png}
 		\caption{Vergleich-Ansätze Datenmenge}
 		\label{img:VergleichDatenmenge}
-	\end{figure}  
-	
+	\end{figure}  	
 	\begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
@@ -351,8 +347,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug Visualizer (siehe Kapi
 			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Transfer_Logs_Datenmenge/Acc_MT_Logs_data.png}
 			\caption{TFAE Accuracy Datenmenge}
 			\label{img:TF_ACC_DATA}	
-		\end{subfigure}
-	
+		\end{subfigure}	
 		\caption{Datenmengen Leistung}
 		\label{img:DatenmengenLeistung}
 	\end{figure}
