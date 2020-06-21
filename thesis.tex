@@ -10,7 +10,7 @@
 
 \begin{document}
 \frontmatter
-
+\pagenumbering{Roman}
 % Römische Ziffern für die "Front-Matter"
 \setcounter{page}{0}
 \changefont{ptm}{m}{n}  % Times New Roman für den Fließtext
@@ -51,9 +51,9 @@
 \singlespacing
 
 % Römische Ziffern für die "Back-Matter", fortlaufend mit "Front-Matter"
-\pagenumbering{roman}
-%\setcounter{page}{\value{frontmatterpage}}
-\setcounter{page}{0}
+\pagenumbering{Roman}
+\setcounter{page}{\value{frontmatterpage}}
+%\setcounter{page}{0}
 % Abkürzungsverzeichnis
 \addchap{\hsmaabbreviations}
 \input{kapitel/abkuerzungen}
