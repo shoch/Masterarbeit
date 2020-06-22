@@ -265,8 +265,10 @@ TSWLatexianTemp*
 ### LaTeX Patch ###
 # glossaries
 *.glstex
+
 thesis.pdf
 thesis.pdf
 kapitel/.DS_Store
 kapitel/.DS_Store
+*.DS_Store
 thesis.pdf
