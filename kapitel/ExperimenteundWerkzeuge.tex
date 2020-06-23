@@ -50,7 +50,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/OriginalPicturesAndReconstruction.png}
-		\caption{Rekonstruktion Autoencoder}
+		\caption{Original vs Rekonstruktion des Autoencoders}
 		\label{img:RekonstruktionAE}
 	\end{figure}  
 	
@@ -173,7 +173,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/OriginalPicturesandReconstruction.png}
-		\caption{Rekonstruktion - AE - FFAE}
+		\caption{Original vs Rekonstruktion-Autoencoder - Rekonstruktion-TFAE}
 		\label{img:RekonstruktionMTAE}
 	\end{figure}  	
 	Zur Untersuchung der möglichen Fehlerursachen wurden die Vorhersagen der Rahmen gegen die Annotationen in Streudiagrammen \ref{img:FehlerursacheMTLGrapple} aufgetragen. In Abbildung \ref{img:Rahmenflaeche} ist die Rahmenfläche, in Abbildung \ref{img:Rahmenhoehe} ist die Rahmenhöhe und in Abbildung \ref{img:Rahmenbreite} ist die Rahmenbreite dargestellt. In allen drei Abbildungen entsprechen die orangen markierten Datenpunkte den falsch vorhergesagten und die blau markierten Datenpunkte den korrekt vorhergesagten Rahmen. Wenn eine Vorhersagen genau der Annotation entspricht, befindet sich der Datenpunkt genau auf der Diagonalen. Um so weiter entfernt der Wert von der Diagonalen Linie ist um so größer ist der Fehler. Ist die Vorhersage kleiner als die Annotation befindet sich der Datenpunkt unterhalb der Diagonalen, ansonsten oberhalb. Es ist erkennbar, dass kleinere Rahmen schlechter als große Rahmen vorhergesagten werden. Dies lässt sich dadurch erklären, dass bei kleineren Rahmen ein kleinerer absoluter Fehlerwert zulässig ist. Ansonsten lässt sich erkennen, das die Rahmen öfters zu klein als zu groß sind. Durch einen Blick in die Einbettungen, siehe Abbildung \ref{img:EmbeddingMT}, ist zu erkennen, dass insbesondere bei geschlossenem Greifer und bei einer Greiferposition nahe des Auslegers Fehler auftreten. Da es circa 20 Bilder mit dem Merkmal 'Greiferposition nahe des Auslegers' gibt, kann dieser Fehler vermutlich mit einer Erhöhung der Datenmenge mit dem Merkmal behoben werden. 
