@@ -13,13 +13,13 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
     	\centering
     	\begin{subfigure}[c]{0.29\textwidth}			
     		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_05_AE_Grapple.png}
-    		\caption{Kastengrafik: Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.5}
+    		\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.5}
     		\label{img:BoxPlot_RegressionAufAutoencoder05}	
     	\end{subfigure}
     	\centering
     \begin{subfigure}[c]{0.29\textwidth}			
     	\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_08_AE_Grapple.png}
-    	\caption{Kastengrafik: Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8}
+    	\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8}
     	\label{img:BoxPlot_RegressionAufAutoencoder08}	
     \end{subfigure}
     	\begin{subfigure}[c]{0.29\textwidth}			
@@ -35,12 +35,12 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/Embedding_y.png}
-			\caption{Embedding mit y-Position des Greifers - hell nach dunkel entspricht Greiferposition von hoch nach tief}
+			\caption{Einbettung mit y-Position des Greifers - hell nach dunkel entspricht Greiferposition von hoch nach tief}
 			\label{img:Emb_y_AE}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/Embedding_x.png}
-			\caption{Embedding mit x-Position des Greifers - hell nach dunkel entspricht Greifer von Breitseite zu Schmallseite}
+			\caption{Einbettung mit x-Position des Greifers - hell nach dunkel entspricht Greifer von Breitseite zu Schmalseite}
 			\label{img:Emb_x_AE}	
 		\end{subfigure}
 		\caption{Embedding Autoencoder}
@@ -130,13 +130,13 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 		\centering
 		\begin{subfigure}[c]{0.32\textwidth}			
 			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/IoU_05_MT_Grapple.png}
-			\caption{Schwellenwert 0.5}
+			\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.5}
 			\label{img:BoxPlot_05_MT-Ansatz}	
 		\end{subfigure}
 		\centering
 		\begin{subfigure}[c]{0.32\textwidth}			
 			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/IoU_08_MT_Grapple.png}
-			\caption{Schwellenwert 0.8}
+			\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8}
 			\label{img:BoxPlot_08_MT-Ansatz}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.32\textwidth}			
@@ -144,7 +144,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 			\caption{Recall-IoU-Curve}
 			\label{img:RecalllIoUt_MT}	
 		\end{subfigure}
-		\caption{Ergebnis MT-Greifererkennung}
+		\caption{Ergebnis TFAE-Greifererkennung}
 		\label{img:ErgebnisRegressionMT}
 	\end{figure}
 
@@ -152,12 +152,12 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/emb_y.png}
-			\caption{Embedding mit y-Position des Greifers}
+			\caption{Einbettung mit y-Position des Greifers - hell nach dunkel entspricht Greiferposition von hoch nach tief}
 			\label{img:Emb_y_MT}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/emb_x.png}
-			\caption{Einbettung mit x-Position des Greifers}
+			\caption{Einbettung mit x-Position des Greifers - hell nach dunkel entspricht Greifer von Breitseite zu Schmalseite}
 			\label{img:Emb_x_MT}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.6\textwidth}			
@@ -173,7 +173,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/OriginalPicturesandReconstruction.png}
-		\caption{Rekonstruktion - AE - MT}
+		\caption{Rekonstruktion - AE - FFAE}
 		\label{img:RekonstruktionMTAE}
 	\end{figure}  	
 	Zur Untersuchung der möglichen Fehlerursachen wurden die Vorhersagen der Rahmen gegen die Annotationen in Streudiagrammen \ref{img:FehlerursacheMTLGrapple} aufgetragen. In Abbildung \ref{img:Rahmenflaeche} ist die Rahmenfläche, in Abbildung \ref{img:Rahmenhoehe} ist die Rahmenhöhe und in Abbildung \ref{img:Rahmenbreite} ist die Rahmenbreite dargestellt. In allen drei Abbildungen entsprechen die orangen markierten Datenpunkte den falsch vorhergesagten und die blau markierten Datenpunkte den korrekt vorhergesagten Rahmen. Wenn eine Vorhersagen genau der Annotation entspricht, befindet sich der Datenpunkt genau auf der Diagonalen. Um so weiter entfernt der Wert von der Diagonalen Linie ist um so größer ist der Fehler. Ist die Vorhersage kleiner als die Annotation befindet sich der Datenpunkt unterhalb der Diagonalen, ansonsten oberhalb. Es ist erkennbar, dass kleinere Rahmen schlechter als große Rahmen vorhergesagten werden. Dies lässt sich dadurch erklären, dass bei kleineren Rahmen ein kleinerer absoluter Fehlerwert zulässig ist. Ansonsten lässt sich erkennen, das die Rahmen öfters zu klein als zu groß sind. Durch einen Blick in die Einbettungen, siehe Abbildung \ref{img:EmbeddingMT}, ist zu erkennen, dass insbesondere bei geschlossenem Greifer und bei einer Greiferposition nahe des Auslegers Fehler auftreten. Da es circa 20 Bilder mit dem Merkmal 'Greiferposition nahe des Auslegers' gibt, kann dieser Fehler vermutlich mit einer Erhöhung der Datenmenge mit dem Merkmal behoben werden. 
@@ -251,7 +251,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	\centering
 	\begin{subfigure}[c]{0.49\textwidth}			
 		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Transfer_Logs/Acc_Transfer_Logs.png}
-		\caption{Accuracy}
+		\caption{Accuracy bei drei Durchläufen}
 		\label{img:AccuracyTransferLogs}	
 	\end{subfigure}
 	\begin{subfigure}[c]{0.49\textwidth}			
@@ -259,7 +259,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 		\caption{Einbettung mit Vorhersage}
 		\label{img:Einbettung_Logs_Vorhersage}	
 	\end{subfigure}
-	\caption{Ergebnis Transfer}
+	\caption{Ergebnis Transfer nach 'Greifer beladen?'}
 	\label{img:Ergebnis_Transfer}
 \end{figure}
 
@@ -323,7 +323,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 			\caption{Einbettung 3}
 			\label{img:AutoMLEinbettungV3}	
 		\end{subfigure}
-		\caption{Einbettungen AutoML-Transfer}
+		\caption{Einbettungen AutoTTAE mit Vorhersage}
 		\label{img:EmbeddingAutoMLTransfer}
 	\end{figure}
 	
@@ -334,20 +334,20 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	In Abbildung \ref{img:VergleichDatenmenge} sind die Ergebnisse des Versuchs für die Aufgabe ist der Greifer beladen dargestellt. Auf der X-Achse sind die Datenmengen, auf der y-Achse die \textit{Accuracy} dargestellt. Der Versuch wurde einmal als \ac{ttae}-Ansatz hier blau und einmal als \ac{tfae}-Ansatz (lila) durchgeführt. Bei allen drei Datenmengen erreicht der \ac{ttae}-Ansatz deutlich bessere ($\Delta=22\%,15\%,5\%$) Ergebnisse. Insbesondere bei niedrigen Datenmengen erzielt der \ac{ttae}-Ansatz gute Ergebnisse. Bei 2000 Bildern ist die \textit{Accuracy} nur 2\% schlechter als die Basislinie. Die Einzelergebnisse sind in Abbildung \ref{img:DatenmengenLeistung} dargestellt.   
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Transfer_Logs_Datenmenge//Acc_compare_Logs_data.png}
-		\caption{Vergleich-Ansätze Datenmenge}
+		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Transfer_Logs_Datenmenge/Acc_compare_Logs_data.png}
+		\caption{Vergleich der Ansätze über verschiedene Datenmengen}
 		\label{img:VergleichDatenmenge}
 	\end{figure}  	
 	\begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Transfer_Logs_Datenmenge/Acc_Transfer_Logs_data.png}
-			\caption{TTAE Accuracy Datenmenge}
+			\caption{TTAE-Ansatz: Accuracy bei drei Durchläufen und verschiedener Datenmenge}
 			\label{img:TT_ACC_DATA}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Transfer_Logs_Datenmenge/Acc_MT_Logs_data.png}
-			\caption{TFAE Accuracy Datenmenge}
+			\caption{TFAE-Ansatz: Accuracy bei drei Durchläufen und verschiedener Datenmenge}
 			\label{img:TF_ACC_DATA}	
 		\end{subfigure}	
 		\caption{Datenmengen Leistung}
