@@ -291,9 +291,9 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	
 	\subsection{Experiment}
 	\label{subsec:AutoMLExperiment}
-	In diesem Versuch wird dieselbe Ausgangslage wie im vorangegangenen Versuch genutzt. Der Unterschied besteht darin, dass der Hyperparameter 'Gewichtung der Verlustfunktion' automatisch gesucht wird. Zur Bewertung eines Optimierungslaufs wird der ungewichtete Wert der Verlustfunktion des trainierten Modells herangezogen. Die detaillierten Ergebnisse von drei Optimierungsdurchläufen, sind in Anhang \ref{appendix:AutoML} zu finden. In Abbildung \ref{img:AutoMlGewichtungAcc} ist der \textit{Loss} gegen die Gewichte dargestellt. Die Gewichtung der Verlustfunktion scheint einen starken Einfluss auf das Ergebnis zu haben. Die Gewichtung des Autoencoder-Teils der Verlustfunktion tendiert zu dem Wert 1.8. Für das weitere Kriterium oder das Verhältnis der beiden Parameter lässt sich keine Tendenz ablesen.  \\
+	In diesem Versuch wird dieselbe Ausgangslage wie im vorangegangenen Versuch genutzt. Der Unterschied besteht darin, dass der Hyperparameter 'Gewichtung der Verlustfunktion' automatisch gesucht wird. Zur Bewertung eines Optimierungslaufs wird der ungewichtete Wert der Verlustfunktion des trainierten Modells herangezogen. Die detaillierten Ergebnisse von drei Optimierungsdurchläufen, sind in Anhang \ref{appendix:AutoML} zu finden. In Abbildung \ref{img:AutoMlGewichtungLoss} ist der \textit{Loss} gegen die Gewichte dargestellt. Die Gewichtung der Verlustfunktion scheint einen starken Einfluss auf das Ergebnis zu haben. Die Gewichtung des Autoencoder-Teils der Verlustfunktion tendiert zu dem Wert 1.8. Für das weitere Kriterium oder das Verhältnis der beiden Parameter lässt sich keine Tendenz ablesen. \\
 	In den finalen Ergebnissen für die Aufgabe 'Greifer beladen?' erreichen alle drei Versuch mindestens eine \textit{Accuracy} von 98\%, bei verschiedenen Gewichtungen. In Abbildung \ref{img:EmbeddingAutoMLTransfer} sind die Einbettungen, des jeweils besten Durchlaufs der drei Optimierungsdurchläufe abgebildet. Die einzelnen Datenpunkte sind entsprechend ihrer Klasse eingefärbt. In zwei Fällen ist eine deutliche Anpassung an die Klassifizierungsaufgabe erkennbar. In Durchlauf eins \ref{img:AutoMLEinbettungV1} ist die Anpassung deutlich geringer als in den anderen beiden Durchläufen.\\
-	Im Vergleich zu der Einbettung in Experiment \ref{sec:TransferLearningGrappleLoaded} ist ein allen drei Fällen eine bessere Generalisierung der Einbettung erkennbar. Im Vergleich zur Einbettung in Experiment 	\ref{sec:MultiTaskGreifererkennung} erwartungsgemäß eine schwächere. Die stark voneinander abweichenden Ergebnisse deuten darauf hin, dass das optimale Ergebnis noch nicht erzielt wurde. Im Vergleich zu der nicht Optimierten Lösung lässt sich eine Verbesserung erkennen. In weiterführenden Arbeiten empfiehlt es sich den Einfluss der Hyperparameter genauer zu untersuchen.
+	Im Vergleich zu der Einbettung in Experiment \ref{sec:TransferLearningGrappleLoaded} ist ein allen drei Fällen eine bessere Generalisierung der Einbettung erkennbar. Im Vergleich zur Einbettung in Experiment \ref{sec:MultiTaskGreifererkennung} erwartungsgemäß eine schwächere. Die stark voneinander abweichenden Ergebnisse deuten darauf hin, dass das optimale Ergebnis noch nicht erzielt wurde. Im Vergleich zu der nicht Optimierten Lösung lässt sich eine Verbesserung erkennen. In weiterführenden Arbeiten empfiehlt es sich den Einfluss der Hyperparameter genauer zu untersuchen.
 	\begin{figure}[h]
 	\centering
 		\begin{subfigure}[c]{0.31\textwidth}		
@@ -307,9 +307,9 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 		\begin{subfigure}[c]{0.31\textwidth}		
 		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Step4_Data/Auto_Loss_Gewichtung_Ae.png}
 		%\caption{Loss vs Gewichtungen Autoencoder}
-		\end{subfigure}
-	\label{img:AutoMlGewichtungAcc}
+		\end{subfigure}	
 	\caption{ungewichteter Loss vs Gewichte}
+	\label{img:AutoMlGewichtungLoss}
 	\end{figure} 	
 	\begin{figure}[h]
 		\centering
@@ -339,7 +339,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	In Abbildung \ref{img:VergleichDatenmenge} sind die Ergebnisse des Versuchs für die Aufgabe ist der Greifer beladen dargestellt. Auf der X-Achse sind die Datenmengen, auf der y-Achse die \textit{Accuracy} dargestellt. Der Versuch wurde einmal als \ac{ttae}-Ansatz, hier blau und einmal als \ac{tfae}-Ansatz (lila) durchgeführt. Bei allen drei Datenmengen erreicht der \ac{ttae}-Ansatz deutlich bessere ($\Delta=22\%,15\%,5\%$) Ergebnisse. Insbesondere bei niedrigen Datenmengen erzielt der \ac{ttae}-Ansatz gute Ergebnisse. Bei 2000 Bildern ist die \textit{Accuracy} nur 2\% schlechter als die Basislinie. Die Einzelergebnisse sind in Abbildung \ref{img:DatenmengenLeistung} dargestellt.   
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Transfer_Logs_Datenmenge/Acc_compare_Logs_data.png}
+		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Transfer_Logs_Datenmenge/Acc_compare_Logs_data.png}
 		\caption{Vergleich der Ansätze über verschiedene Datenmengen}
 		\label{img:VergleichDatenmenge}
 	\end{figure}  	
