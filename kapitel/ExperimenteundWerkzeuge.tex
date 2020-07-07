@@ -291,22 +291,41 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	
 	\subsection{Experiment}
 	\label{subsec:AutoMLExperiment}
-	In diesem Versuch wird dieselbe Ausgangslage wie im vorangegangenen Versuch genutzt. Der Unterschied besteht darin, dass der Hyperparameter 'Gewichtung der Verlustfunktion' automatisch gesucht wird. Zur Bewertung eines Optimierungsdurchlaufs wird der Wert $1 - Accuracy$ des finalen Modells herangezogen. Die Ergebnisse von drei Optimierungsdurchläufen, mit jeweils drei Iterationen sind in Anhang \ref{appendix:AutoML} zu finden. In den finalen Ergebnissen für die Aufgabe 'Greifer beladen?' erreichen alle drei Versuch mindestens eine \textit{Accuracy} von 98\%, bei verschiedenen Gewichtungen.  Wirft man einen Blick auf die Durchläufe mit vollem Budget von 15, ist in Versuch [2,0,1] Listing \ref{lst:AutoML2c} zu sehen, dass die \textit{Accuracy} deutlich auf 79\% abfällt. In Abbildung \ref{img:EmbeddingAutoMLTransfer} sind die Einbettungen der drei Optimierungsdurchläufe abgebildet. Die einzelnen Datenpunkte sind entsprechend ihrer Klasse eingefärbt. Es ist in allen drei Fällen eine Anpassung an die Klassifizierungsaufgabe erkennbar. In Durchlauf drei \ref{img:AutoMLEinbettungV3} ist die Anpassung deutlich geringer als in den anderen beiden Durchläufen. Der Versuch [2,0,1] und die Einbettung drei liefern deutliche Hinweise dafür, dass die Gewichtung der beiden Teile der Verlustfunktion einen starken Einfluss auf die Modellqualität haben. 
+	In diesem Versuch wird dieselbe Ausgangslage wie im vorangegangenen Versuch genutzt. Der Unterschied besteht darin, dass der Hyperparameter 'Gewichtung der Verlustfunktion' automatisch gesucht wird. Zur Bewertung eines Optimierungslaufs wird der ungewichtete Wert der Verlustfunktion des trainierten Modells herangezogen. Die detaillierten Ergebnisse von drei Optimierungsdurchläufen, sind in Anhang \ref{appendix:AutoML} zu finden. In Abbildung \ref{img:AutoMlGewichtungAcc} ist der \textit{Loss} gegen das Verhältnis der Gewichtung der fokussierenden Aufgabe zur Gewichtung des Autoencoders aufgetragen.  
+	
+	 In den finalen Ergebnissen für die Aufgabe 'Greifer beladen?' erreichen alle drei Versuch mindestens eine \textit{Accuracy} von 98\%, bei verschiedenen Gewichtungen. In Abbildung \ref{img:EmbeddingAutoMLTransfer} sind die Einbettungen, des jeweils besten Durchlaufs der drei Optimierungsdurchläufe abgebildet. Die einzelnen Datenpunkte sind entsprechend ihrer Klasse eingefärbt. Es ist in allen drei Fällen eine Anpassung an die Klassifizierungsaufgabe erkennbar. In Durchlauf eins \ref{img:AutoMLEinbettungV1} ist die Anpassung deutlich geringer als in den anderen beiden Durchläufen.
+	
+	\begin{figure}[h]
+	\centering
+		\begin{subfigure}[c]{0.31\textwidth}		
+		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Step4_Data/Auto_Loss_Gewichtung.png}
+		%\caption{Loss vs Verhältnis der Gewichtungen der zwei Teile der Verlustfunktion}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.31\textwidth}		
+		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Step4_Data/Auto_Loss_Gewichtung_SC.png}
+		%\caption{Loss vs Gewichtung zweite Aufgabe}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.31\textwidth}		
+		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Step4_Data/Auto_Loss_Gewichtung_Ae.png}
+		%\caption{Loss vs Gewichtungen Autoencoder}
+	\end{subfigure}
+	\label{img:AutoMlGewichtungAcc}
+	\end{figure} 
 	
 	\begin{figure}[h]
 		\centering
 		\begin{subfigure}[c]{0.32\textwidth}			
-			\includegraphics[width=1\textwidth,center]{src/AutoML/1/Embedding.png}
+			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Step4_Data/Embedding_auto_1.png}
 			\caption{Einbettung 1}
 			\label{img:AutoMLEinbettungV1}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.32\textwidth}			
-			\includegraphics[width=1\textwidth, center]{src/AutoML/2/Embedding.png}
+			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Step4_Data/Embedding_Auto_2.png}
 			\caption{Einbettung 2}
 			\label{img:AutoMLEinbettungV2}	
 		\end{subfigure}
 		\begin{subfigure}[c]{0.32\textwidth}			
-			\includegraphics[width=1\textwidth, center]{src/AutoML/3/Embedding.png}
+			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Step4_Data/Embedding_Auto_3.png}
 			\caption{Einbettung 3}
 			\label{img:AutoMLEinbettungV3}	
 		\end{subfigure}
@@ -316,7 +335,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	
 	\section{Datenmenge und 'Greifer beladen?'}
 	\label{sec:TransferDatenmenge}
-	In den bisherigen Experimenten wurde die grundsätzliche Funktionalität der Ansätze untersucht. Besonderes  Kosten-Einsparungspotential besteht bei einem Einsatz von geringeren Datenmengen. In diesem Versuch wird untersucht, wie sich die Lösung bei unterschiedlichen Datenmengen verhält. Es wird untersucht, wie sich die Leistung der Ansätze bei 200, 2000 und 9749 annotierten Daten verhält. Der Wert 9749 entspricht allen Bildern, bei 200 Bildern wird erwartet das klassische Ansätze versagen. Der Wert 2000 wurde gewählt, um das verhalten bei wenigen aber ausreichend Daten zu untersuchen. Als Gewichtungsfaktor der Verlustfunktion werden die Hyperparameter von Versuch [2, 0, 2] \ref{appendix:AutoML} 2 genutzt. 
+	In den bisherigen Experimenten wurde die grundsätzliche Funktionalität der Ansätze untersucht. Besonderes  Kosten-Einsparungspotential besteht bei einem Einsatz von geringeren Datenmengen. In diesem Versuch wird untersucht, wie sich die Lösung bei unterschiedlichen Datenmengen verhält. Es wird untersucht, wie sich die Leistung der Ansätze bei 200, 2000 und 9749 annotierten Daten verhält. Der Wert 9749 entspricht allen Bildern, bei 200 Bildern wird erwartet das klassische Ansätze versagen. Der Wert 2000 wurde gewählt, um das verhalten bei wenigen aber ausreichend Daten zu untersuchen.
 	
 	In Abbildung \ref{img:VergleichDatenmenge} sind die Ergebnisse des Versuchs für die Aufgabe ist der Greifer beladen dargestellt. Auf der X-Achse sind die Datenmengen, auf der y-Achse die \textit{Accuracy} dargestellt. Der Versuch wurde einmal als \ac{ttae}-Ansatz, hier blau und einmal als \ac{tfae}-Ansatz (lila) durchgeführt. Bei allen drei Datenmengen erreicht der \ac{ttae}-Ansatz deutlich bessere ($\Delta=22\%,15\%,5\%$) Ergebnisse. Insbesondere bei niedrigen Datenmengen erzielt der \ac{ttae}-Ansatz gute Ergebnisse. Bei 2000 Bildern ist die \textit{Accuracy} nur 2\% schlechter als die Basislinie. Die Einzelergebnisse sind in Abbildung \ref{img:DatenmengenLeistung} dargestellt.   
 	\begin{figure}[h]

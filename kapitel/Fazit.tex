@@ -26,15 +26,12 @@ Die Arbeit schließt mit einer Zusammenfassung der Inhalte ab, auf welche eine k
  	In Abbildung \ref{img:TTGrappleIoU} sind die Ergebnisse der Aufgabe 'Rahmen um Greifer' dargestellt. Bei einem Schwellenwert von 0.5 wird eine Leistung von 96\% erreicht und bei einem Schwellenwert 0.8 eine Leistung von 55\%. Bei genauerer Betrachtung der Vorhersagen fällt auf, dass der Greifer gefunden wird, die genauen Abmessungen aber nicht korrekt sind. Dieses Verhalten ist auch in Abbildung \ref{img:TTGrappleLabelVsPred} zu sehen. In dieser Art von Abbildungen werden die Vorhersagen gegen die Beschriftungen aufgetragen. Bei einer perfekten Vorhersage befinden sich alle Datenpunkte auf der Diagonale. Sowohl in der Darstellung der Rahmenhöhe als auch der Rahmenbreite ist zu sehen, dass die Vorhersage zur Beschriftung passt, aber sich noch verbessern kann. In Abbildung \ref{img:TTGrappleEinbettungVorhersage} sind die für den Schwellenwert 0.8 falsch vorhergesagten Datenpunkte in der Einbettung lila eingefärbt. Die falschen Vorhersagen verteilen sich über alle Datenpunkte. Mit Blick auf die Einfärbung der x und y Position des Greifers \ref{img:TTGrappleEmb}, zeigt sich in den Einbettungen die Position des Greifers im Bild. Widerspiegeln zu den Vorhersageergebnissen ist in der Einbettung die genaue Ausprägung des Greifers schwach repräsentiert.
  	\begin{figure}[h]
  		\centering
- 		\begin{subfigure}[c]{0.32\textwidth}			
- 			\includegraphics[width=1\textwidth]{bilder/FazitUndAusblick/Grapple_TTAE_Res/IoU_TTAE_05.png}
- 			\subcaption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.5}			
+ 
+ 		\begin{subfigure}[c]{0.49\textwidth}			
+ 			\includegraphics[width=1\textwidth]{bilder/FazitUndAusblick/Grapple_TTAE_Res/IoU_TTAE_0805.png}
+ 			\subcaption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8 und 0.5}			
  		\end{subfigure}
- 		\begin{subfigure}[c]{0.32\textwidth}			
- 			\includegraphics[width=1\textwidth]{bilder/FazitUndAusblick/Grapple_TTAE_Res/IoU_TTAE_08.png}
- 			\subcaption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8}			
- 		\end{subfigure}
- 		\begin{subfigure}[c]{0.32\textwidth}			
+ 		\begin{subfigure}[c]{0.49\textwidth}			
  			\includegraphics[width=1\textwidth]{bilder/FazitUndAusblick/Grapple_TTAE_Res/Recall_IoU_TTAE.png}
  			\subcaption{IoU-Recall-Curve}			
  		\end{subfigure}
