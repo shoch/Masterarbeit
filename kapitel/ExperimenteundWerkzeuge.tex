@@ -9,26 +9,21 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	\section{Greifererkennung auf Repräsentation}
 	\label{sec:GreifererkennungAufAutoencoder}
 	Ausgehend von einer mit Autoencodern erstellten Repräsentation wird versucht, den Greifer zu finden. Hierzu wird die gefundene Repräsentation als Eingangswert für ein neuronales Netzwerk genutzt. Das Netzwerk führt in der Ausgangsschicht eine Regression durch. In Abbildung \ref{img:ErgebnissRegressionAufAE} ist das Ergebnis abgebildet. Bei einem Schwellenwert von 0.8 wird eine Punktzahl nahe 0 erreicht. In der Recall-IoU-Kurve ist ein stetiger Abfall der Punktzahl zu sehen. Dieses mangelnde Ergebnis zeigt, dass der gewählte Ansatz nicht zielführend zur Lösung des Problems ist. Eine Ursache für die mangelnde Leistung kann die fehlende Fokussierung der Einbettung sein. In Abbildung \ref{img:EmbeddingAE_V} ist die Einbettung des zugrundeliegenden Autoencoders abgebildet. In den beiden Abbildungen werden die Datenpunkte farblich markiert. Dabei wird die y-Position des Greifers im Bild in der einen und die x-Position des Greifers im Bild in der anderen Abbildung zur Zuordnung genutzt. Die Datenpunkte verteilen sich im Raum, bilden aber keine Merkmale des Greifers ab. In Abbildung \ref{img:RekonstruktionAE} sind Bilder mit ihren Rekonstruktionen abgebildet. Es ist deutlich zu erkennen, dass der sich stark verändernde Hintergrund eine Herausforderung ist. In erster Linie wurden die Lichtverhältnisse gelernt. Der Greifer ist in den Rekonstruktionen nahezu nicht zu erkennen.
-    \begin{figure}[h]
-    	\centering
-    	\begin{subfigure}[c]{0.29\textwidth}			
-    		\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_05_AE_Grapple.png}
-    		\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.5}
-    		\label{img:BoxPlot_RegressionAufAutoencoder05}	
-    	\end{subfigure}
-    	\centering
-    \begin{subfigure}[c]{0.29\textwidth}			
-    	\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_08_AE_Grapple.png}
-    	\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8}
-    	\label{img:BoxPlot_RegressionAufAutoencoder08}	
-    \end{subfigure}
-    	\begin{subfigure}[c]{0.29\textwidth}			
-    		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
+
+      \begin{figure}[h]
+     \centering
+     \begin{subfigure}[c]{0.49\textwidth}			
+     	\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU_AE_Grapple.png}
+     	\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8 und 0.5}
+     	\label{img:BoxPlot_RegressionAufAutoencoder0805}	
+     \end{subfigure}
+     	\begin{subfigure}[c]{0.49\textwidth}			
+     		\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/Autoencoder_Grappel_Detection/IoU.png}
     		\caption{Recall-IoU-Curve}
     		\label{img:RecalllIoUt_RegressionAufAutoencoder}	
     	\end{subfigure}
     	\caption{Ergebnis Regression auf Autoencoder}
-        \label{img:ErgebnissRegressionAufAE}
+         \label{img:ErgebnissRegressionAufAE}
     \end{figure}
 
 	  \begin{figure}[h]
@@ -56,7 +51,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	
 	\section{Aufgabenfokussierung und Greifererkennung}
 	\label{sec:MultiTaskGreifererkennung}
-	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde die fehlende Fokussierung des Autoencoders auf den Greifer als Schwäche ausgemacht. Als neuer Ansatz wird untersucht, ob ein gleichzeitiges Lernen der Datenrepräsentation und das Finden des Rahmens um den Greifer den Autoencoder fokussiert und gleichzeitig gute Ergebnisse für die Regression gefunden werden können. Dies enstpricht der Methodik des \ac{mtl} in der Ausprägung \ac{simo}.
+	Im Ansatz \ref{sec:GreifererkennungAufAutoencoder} wurde die fehlende Fokussierung des Autoencoders auf den Greifer als Schwäche ausgemacht. Als neuer Ansatz wird untersucht, ob ein gleichzeitiges Lernen der Datenrepräsentation und das Finden des Rahmens um den Greifer den Autoencoder fokussiert und gleichzeitig gute Ergebnisse für die Regression gefunden werden können. Dies entspricht der Methodik des \ac{mtl} in der Ausprägung \ac{simo}.
 	
 	\subsection{Werkzeug: TaskFocusingOnAutoencoder}
 	\label{subsec:SecondCriterionAutoenocder}
@@ -126,18 +121,12 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 	Mit dem \textit{\ac{tfae}} wird für die Aufgabe \textit{Greifererkennung} im Median für den Schwellenwert 0.5 eine Leistung von 98,77\% erreicht, für den Schwellenwert von 0.8 eine Leistung von 68.30\%. In Abbildung \ref{img:ErgebnisRegressionMT} sind die Ergebnisse im Detail dargestellt. In Anhang \ref{appendix:MutliTaskGreifererkennung} ist eine detaillierte Einzelaufstellung der Ergebnisse zu finden. Diese Leistung ist deutlich besser, als die erzielte Leistung mit dem Ansatz 'Greifererkennung auf Repräsentation' (Kapitel \ref{sec:GreifererkennungAufAutoencoder}). Bei Betrachtung der Repräsentation in Abbildung \ref{img:EmbeddingMT} ist eine deutliche Anpassung an den Greifer zu erkennen. Sowohl die Farbkodierung für die y-Position als auch die x-Position des Greifers im Bild ist sehr deutlich zu erkennen. Ist der Greifer nahe am Ausleger und auch noch offen, sind die Einfärbung eines Datenpunktes in beiden Einbettungen gelb markiert. Zusätzlich lässt sich eine Trennung der einzelnen Datenpunkte in das Merkmal Greifer beladen oder nicht beladen erkennen. Es zieht sich eine sichtbare Trennung der Datenpunkte durch die Einbettung. Bei Betrachtung der Rekonstruktionen, insbesondere im direkten Vergleich zu den Rekonstruktionen des Autoencoders, zeigt sich eine stärkere Ausprägung des Merkmales Greifer. In Abbildung \ref{img:RekonstruktionMTAE} sind drei Bilder mit ihren jeweiligen Rekonstruktionen dargestellt. Im Anhang \ref{appendix:MutliTaskGreifererkennung} in Abbildung \ref{img:AppendixReconstruction} ist eine größere Auswahl an Rekonstruktionen dargestellt.  
 	\begin{figure}[h]
 		\centering
-		\begin{subfigure}[c]{0.32\textwidth}			
-			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/IoU_05_MT_Grapple.png}
-			\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.5}
-			\label{img:BoxPlot_05_MT-Ansatz}	
+		\begin{subfigure}[c]{0.49\textwidth}			
+			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/IoU_MT_Grapple.png}
+			\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8 und 0.5}
+			\label{img:BoxPlot_0805_MT-Ansatz}	
 		\end{subfigure}
-		\centering
-		\begin{subfigure}[c]{0.32\textwidth}			
-			\includegraphics[width=1\textwidth,center]{bilder/Hauptteil/MT_Grapple/IoU_08_MT_Grapple.png}
-			\caption{Ergebnisse bei drei Durchläufen und einem Schwellenwert von 0.8}
-			\label{img:BoxPlot_08_MT-Ansatz}	
-		\end{subfigure}
-		\begin{subfigure}[c]{0.32\textwidth}			
+		\begin{subfigure}[c]{0.49\textwidth}			
 			\includegraphics[width=1\textwidth, center]{bilder/Hauptteil/MT_Grapple/Recall_IoU.png}
 			\caption{Recall-IoU-Curve}
 			\label{img:RecalllIoUt_MT}	

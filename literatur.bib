@@ -8,109 +8,31 @@
 }
 
 
-@article{LeCun.2015,
-	abstract = {Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction. These methods have dramatically improved the state-of-the-art in speech recognition, visual object recognition, object detection and many other domains such as drug discovery and genomics. Deep learning discovers intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters that are used to compute the representation in each layer from the representation in the previous layer. Deep convolutional nets have brought about breakthroughs in processing images, video, speech and audio, whereas recurrent nets have shone light on sequential data such as text and speech.},
-	author = {LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey},
-	year = {2015},
-	title = {Deep learning},
-	pages = {436--444},
-	volume = {521},
-	number = {7553},
-	issn = {1476-4687},
-	journal = {Nature},
-	doi = {10.1038/nature14539}
+@misc{Oliphant.2006,
+	author = {Oliphant, Travis},
+	editor = {{Trelgol Publishing USA}},
+	year = {2006},
+	title = {NumPy: A guide to NumPy},
+	url = {http://www.numpy.org/}
 }
 
 
-@incollection{LeCun.1999,
-	abstract = {Finding an appropriate set of features is an essential problem in the design of shape recognition systems. This paper attempts to show that for recognizing simple objects with high shape variability such as handwritten characters, it is possible, and even advantageous, to feed the system directly with minimally processed images and to rely on learning to extract the right set of features. Convolutional Neural Networks are shown to be particularly well suited to this task. We also show that these networks can be used to recognize multiple objects without requiring explicit segmentation of the objects from their surrounding. The second part of the paper presents the Graph Transformer Network model which extends the applicability of gradient-based learning to systems that use graphs to represents features, objects, and their combinations.},
-	author = {LeCun, Yann and Haffner, Patrick and Bottou, L{\'e}on and Bengio, Yoshua},
-	title = {Object Recognition with Gradient-Based Learning},
-	pages = {319--345},
-	publisher = {{Springer Berlin Heidelberg}},
-	isbn = {978-3-540-46805-9},
-	booktitle = {Shape, Contour and Grouping in Computer Vision},
-	year = {1999},
-	address = {Berlin, Heidelberg},
-	doi = {10.1007/3-540-46805-6{\textunderscore }19}
+@misc{Nvidia.2020,
+	author = {Nvidia},
+	year = {2020},
+	title = {Tesla K80},
+	url = {https://www.nvidia.com/de-de/data-center/tesla-k80/},
+	urldate = {2020-02-19}
 }
 
 
-@article{Li.2017,
-	author = {Li, Lisha and Jamieson, Kevin and DeSalvo, Giulia and Rostamizadeh, Afshin and Talwalkar, Ameet},
-	year = {2017},
-	title = {HYPERBAND: BANDIT-BASED CONFIGURATION EVALUATION FOR HYPERPARAMETER OPTIMIZATION},
-	url = {https://openreview.net/pdf?id=ry18Ww5ee},
-	journal = {ICLR},
-	file = {87b0f05b-e99a-4e70-9283-1c799362149e:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\87b0f05b-e99a-4e70-9283-1c799362149e.pdf:pdf}
-}
-
-
-@article{Li.2016,
-	author = {Li, Xi and Zhao, Liming and Wei, Lina and Yang, Ming-Hsuan and Wu, Fei and Zhuang, Yueting and Ling, Haibin and Wang, Jingdong},
-	year = {2016},
-	title = {DeepSaliency: Multi-Task Deep Neural Network Model for Salient Object Detection},
-	pages = {3919--3930},
-	volume = {25},
-	number = {8},
-	issn = {1941-0042},
-	journal = {IEEE Transactions on Image Processing},
-	doi = {10.1109/tip.2016.2579306}
-}
-
-
-@misc{Lindauer.2019,
-	abstract = {Hyperparameter optimization and neural architecture search can become prohibitively expensive for regular black-box Bayesian optimization because the training and evaluation of a single model can easily take several hours. To overcome this, we introduce a comprehensive tool suite for effective multi-fidelity Bayesian optimization and the analysis of its runs. The suite, written in Python, provides a simple way to specify complex design spaces, a robust and efficient combination of Bayesian optimization and HyperBand, and a comprehensive analysis of the optimization process and its outcomes.},
-	author = {Lindauer, Marius and Eggensperger, Katharina and Feurer, Matthias and Biedenkapp, Andr{\'e} and Marben, Joshua and M{\"u}ller, Philipp and Hutter, Frank},
-	date = {2019},
-	title = {BOAH: A Tool Suite for Multi-Fidelity Bayesian Optimization {\&} Analysis  of Hyperparameters},
-	url = {https://arxiv.org/pdf/1908.06756},
-	file = {https://arxiv.org/pdf/1908.06756v1.pdf}
-}
-
-
-@misc{Liu.2015,
-	abstract = {We present a method for detecting objects in images using a single deep neural network. Our approach, named SSD, discretizes the output space of bounding boxes into a set of default boxes over different aspect ratios and scales per feature map location. At prediction time, the network generates scores for the presence of each object category in each default box and produces adjustments to the box to better match the object shape. Additionally, the network combines predictions from multiple feature maps with different resolutions to naturally handle objects of various sizes. Our SSD model is simple relative to methods that require object proposals because it completely eliminates proposal generation and subsequent pixel or feature resampling stage and encapsulates all computation in a single network. This makes SSD easy to train and straightforward to integrate into systems that require a detection component. Experimental results on the PASCAL VOC, MS COCO, and ILSVRC datasets confirm that SSD has comparable accuracy to methods that utilize an additional object proposal step and is much faster, while providing a unified framework for both training and inference. Compared to other single stage methods, SSD has much better accuracy, even with a smaller input image size. For {\$}300$\backslash$times 300{\$} input, SSD achieves 72.1{\%} mAP on VOC2007 test at 58 FPS on a Nvidia Titan X and for {\$}500$\backslash$times 500{\$} input, SSD achieves 75.1{\%} mAP, outperforming a comparable state of the art Faster R-CNN model. Code is available at https://github.com/weiliu89/caffe/tree/ssd .},
-	author = {Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.},
-	date = {2016},
-	title = {SSD: Single Shot MultiBox Detector},
-	url = {https://arxiv.org/pdf/1512.02325},
-	doi = {10.1007/978-3-319-46448-0{\textunderscore }2},
-	file = {https://arxiv.org/pdf/1512.02325v5.pdf}
-}
-
-
-@incollection{Long.2016,
-	author = {Long, Mingsheng and Zhu, Han and Wang, Jianmin and Jordan, Michael I.},
-	title = {Unsupervised Domain Adaptation with Residual Transfer Networks},
-	url = {http://papers.nips.cc/paper/6110-unsupervised-domain-adaptation-with-residual-transfer-networks.pdf},
-	pages = {136--144},
-	publisher = {{Curran Associates, Inc}},
-	editor = {{D. D. Lee} and {M. Sugiyama} and {U. V. Luxburg} and {I. Guyon} and {R. Garnett}},
-	booktitle = {Advances in Neural Information Processing Systems 29},
-	year = {2016}
-}
-
-
-@misc{MartinAbadi.2015,
-	author = {{Martin Abadi} and {Ashish Agarwal} and {Paul Barham} and {Eugene Brevdo} and {Zhifeng Chen} and {Craig Citro} and Corrado, Greg S and {Andy Davis} and {Jeffrey Dean} and {Matthieu Devin} and {Sanjay Ghemawat} and {Ian Goodfellow} and {Andrew Harp} and {Geoffrey Irving} and {Michael Isard} and Jia, Yangqing and {Rafal Jozefowicz} and {Lukasz Kaiser} and {Manjunath Kudlur} and {Josh Levenberg} and {Dandelion Man{\'e}} and {Rajat Monga} and {Sherry Moore} and {Derek Murray} and {Chris Olah} and {Mike Schuster} and {Jonathon Shlens} and {Benoit Steiner} and {Ilya Sutskever} and {Kunal Talwar} and {Paul Tucker} and {Vincent Vanhoucke} and {Vijay Vasudevan} and {Fernanda Vi{\'e}gas} and {Oriol Vinyals} and {Pete Warden} and {Martin Wattenberg} and {Martin Wicke} and {Yuan Yu} and {Xiaoqiang Zheng}},
-	year = {2015},
-	title = {TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems},
-	url = {https://www.tensorflow.org/}
-}
-
-
-@inproceedings{Masci.2011,
-	abstract = {We present a novel convolutional auto-encoder (CAE) for unsupervised feature learning. A stack of CAEs forms a convolutional neural network (CNN). Each CAE is trained using conventional on-line gradient descent without additional regularization terms. A max-pooling layer is essential to learn biologically plausible features consistent with those found by previous approaches. Initializing a CNN with filters of a trained CAE stack yields superior performance on a digit (MNIST) and an object recognition (CIFAR10) benchmark.},
-	author = {Masci, Jonathan and Meier, Ueli and Cire{\c{s}}an, Dan and Schmidhuber, J{\"u}rgen},
-	title = {Stacked Convolutional Auto-Encoders for Hierarchical Feature Extraction},
-	pages = {52--59},
-	publisher = {{Springer Berlin Heidelberg}},
-	isbn = {978-3-642-21735-7},
-	editor = {Honkela, Timo and Duch, W{\l}odzis{\l}aw and Girolami, Mark and Kaski, Samuel},
-	booktitle = {Artificial Neural Networks and Machine Learning -- ICANN 2011},
-	year = {2011},
-	address = {Berlin, Heidelberg}
+@misc{MicrosoftCorporation.2020,
+	author = {{Microsoft Corporation}},
+	year = {2020},
+	title = {Microsoft Azure},
+	url = {https://azure.microsoft.com/de-de/},
+	urldate = {2020-03-19},
+	publisher = {{Microsoft Corporation}}
 }
 
 
@@ -128,31 +50,25 @@
 }
 
 
-@misc{MicrosoftCorporation.2020,
-	author = {{Microsoft Corporation}},
-	year = {2020},
-	title = {Microsoft Azure},
-	url = {https://azure.microsoft.com/de-de/},
-	urldate = {2020-03-19},
-	publisher = {{Microsoft Corporation}}
+@inproceedings{Masci.2011,
+	abstract = {We present a novel convolutional auto-encoder (CAE) for unsupervised feature learning. A stack of CAEs forms a convolutional neural network (CNN). Each CAE is trained using conventional on-line gradient descent without additional regularization terms. A max-pooling layer is essential to learn biologically plausible features consistent with those found by previous approaches. Initializing a CNN with filters of a trained CAE stack yields superior performance on a digit (MNIST) and an object recognition (CIFAR10) benchmark.},
+	author = {Masci, Jonathan and Meier, Ueli and Cire{\c{s}}an, Dan and Schmidhuber, J{\"u}rgen},
+	title = {Stacked Convolutional Auto-Encoders for Hierarchical Feature Extraction},
+	pages = {52--59},
+	publisher = {{Springer Berlin Heidelberg}},
+	isbn = {978-3-642-21735-7},
+	editor = {Honkela, Timo and Duch, W{\l}odzis{\l}aw and Girolami, Mark and Kaski, Samuel},
+	booktitle = {Artificial Neural Networks and Machine Learning -- ICANN 2011},
+	year = {2011},
+	address = {Berlin, Heidelberg}
 }
 
 
-@misc{Nvidia.2020,
-	author = {Nvidia},
-	year = {2020},
-	title = {Tesla K80},
-	url = {https://www.nvidia.com/de-de/data-center/tesla-k80/},
-	urldate = {2020-02-19}
-}
-
-
-@misc{Oliphant.2006,
-	author = {Oliphant, Travis},
-	editor = {{Trelgol Publishing USA}},
-	year = {2006},
-	title = {NumPy: A guide to NumPy},
-	url = {http://www.numpy.org/}
+@misc{MartinAbadi.2015,
+	author = {{Martin Abadi} and {Ashish Agarwal} and {Paul Barham} and {Eugene Brevdo} and {Zhifeng Chen} and {Craig Citro} and Corrado, Greg S and {Andy Davis} and {Jeffrey Dean} and {Matthieu Devin} and {Sanjay Ghemawat} and {Ian Goodfellow} and {Andrew Harp} and {Geoffrey Irving} and {Michael Isard} and Jia, Yangqing and {Rafal Jozefowicz} and {Lukasz Kaiser} and {Manjunath Kudlur} and {Josh Levenberg} and {Dandelion Man{\'e}} and {Rajat Monga} and {Sherry Moore} and {Derek Murray} and {Chris Olah} and {Mike Schuster} and {Jonathon Shlens} and {Benoit Steiner} and {Ilya Sutskever} and {Kunal Talwar} and {Paul Tucker} and {Vincent Vanhoucke} and {Vijay Vasudevan} and {Fernanda Vi{\'e}gas} and {Oriol Vinyals} and {Pete Warden} and {Martin Wattenberg} and {Martin Wicke} and {Yuan Yu} and {Xiaoqiang Zheng}},
+	year = {2015},
+	title = {TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems},
+	url = {https://www.tensorflow.org/}
 }
 
 
@@ -164,6 +80,99 @@
 	volume = {22},
 	number = {10},
 	journal = {IEEE Transactions on Knowledge and Data Engineering}
+}
+
+
+@incollection{Long.2016,
+	author = {Long, Mingsheng and Zhu, Han and Wang, Jianmin and Jordan, Michael I.},
+	title = {Unsupervised Domain Adaptation with Residual Transfer Networks},
+	url = {http://papers.nips.cc/paper/6110-unsupervised-domain-adaptation-with-residual-transfer-networks.pdf},
+	pages = {136--144},
+	publisher = {{Curran Associates, Inc}},
+	editor = {{D. D. Lee} and {M. Sugiyama} and {U. V. Luxburg} and {I. Guyon} and {R. Garnett}},
+	booktitle = {Advances in Neural Information Processing Systems 29},
+	year = {2016}
+}
+
+
+@misc{Lindauer.2019,
+	abstract = {Hyperparameter optimization and neural architecture search can become prohibitively expensive for regular black-box Bayesian optimization because the training and evaluation of a single model can easily take several hours. To overcome this, we introduce a comprehensive tool suite for effective multi-fidelity Bayesian optimization and the analysis of its runs. The suite, written in Python, provides a simple way to specify complex design spaces, a robust and efficient combination of Bayesian optimization and HyperBand, and a comprehensive analysis of the optimization process and its outcomes.},
+	author = {Lindauer, Marius and Eggensperger, Katharina and Feurer, Matthias and Biedenkapp, Andr{\'e} and Marben, Joshua and M{\"u}ller, Philipp and Hutter, Frank},
+	date = {2019},
+	title = {BOAH: A Tool Suite for Multi-Fidelity Bayesian Optimization {\&} Analysis  of Hyperparameters},
+	url = {https://arxiv.org/pdf/1908.06756},
+	file = {https://arxiv.org/pdf/1908.06756v1.pdf}
+}
+
+
+@article{Li.2016,
+	author = {Li, Xi and Zhao, Liming and Wei, Lina and Yang, Ming-Hsuan and Wu, Fei and Zhuang, Yueting and Ling, Haibin and Wang, Jingdong},
+	year = {2016},
+	title = {DeepSaliency: Multi-Task Deep Neural Network Model for Salient Object Detection},
+	pages = {3919--3930},
+	volume = {25},
+	number = {8},
+	issn = {1941-0042},
+	journal = {IEEE Transactions on Image Processing},
+	doi = {10.1109/tip.2016.2579306}
+}
+
+
+@article{Li.2017,
+	author = {Li, Lisha and Jamieson, Kevin and DeSalvo, Giulia and Rostamizadeh, Afshin and Talwalkar, Ameet},
+	year = {2017},
+	title = {HYPERBAND: BANDIT-BASED CONFIGURATION EVALUATION FOR HYPERPARAMETER OPTIMIZATION},
+	url = {https://openreview.net/pdf?id=ry18Ww5ee},
+	journal = {ICLR},
+	file = {87b0f05b-e99a-4e70-9283-1c799362149e:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\87b0f05b-e99a-4e70-9283-1c799362149e.pdf:pdf}
+}
+
+
+@incollection{LeCun.1999,
+	abstract = {Finding an appropriate set of features is an essential problem in the design of shape recognition systems. This paper attempts to show that for recognizing simple objects with high shape variability such as handwritten characters, it is possible, and even advantageous, to feed the system directly with minimally processed images and to rely on learning to extract the right set of features. Convolutional Neural Networks are shown to be particularly well suited to this task. We also show that these networks can be used to recognize multiple objects without requiring explicit segmentation of the objects from their surrounding. The second part of the paper presents the Graph Transformer Network model which extends the applicability of gradient-based learning to systems that use graphs to represents features, objects, and their combinations.},
+	author = {LeCun, Yann and Haffner, Patrick and Bottou, L{\'e}on and Bengio, Yoshua},
+	title = {Object Recognition with Gradient-Based Learning},
+	pages = {319--345},
+	publisher = {{Springer Berlin Heidelberg}},
+	isbn = {978-3-540-46805-9},
+	booktitle = {Shape, Contour and Grouping in Computer Vision},
+	year = {1999},
+	address = {Berlin, Heidelberg},
+	doi = {10.1007/3-540-46805-6{\textunderscore }19}
+}
+
+
+@article{LeCun.2015,
+	abstract = {Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction. These methods have dramatically improved the state-of-the-art in speech recognition, visual object recognition, object detection and many other domains such as drug discovery and genomics. Deep learning discovers intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters that are used to compute the representation in each layer from the representation in the previous layer. Deep convolutional nets have brought about breakthroughs in processing images, video, speech and audio, whereas recurrent nets have shone light on sequential data such as text and speech.},
+	author = {LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey},
+	year = {2015},
+	title = {Deep learning},
+	pages = {436--444},
+	volume = {521},
+	number = {7553},
+	issn = {1476-4687},
+	journal = {Nature},
+	doi = {10.1038/nature14539}
+}
+
+
+@article{Lange.2010,
+	abstract = {This paper discusses the effectiveness of deep auto-encoding neural nets in visual reinforcement learning (RL) tasks. We describe a new algorithm and give results on succesfully learning policies directly on synthesized and real images without a predefined image processing. Furthermore, we present a thorough evaluation of the learned feature spaces. 1},
+	author = {Lange, Sascha and Riedmiller, Martin},
+	year = {2010},
+	title = {Deep Learning of Visual Control Policies},
+	journal = {European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN)}
+}
+
+
+@misc{Liu.2015,
+	abstract = {We present a method for detecting objects in images using a single deep neural network. Our approach, named SSD, discretizes the output space of bounding boxes into a set of default boxes over different aspect ratios and scales per feature map location. At prediction time, the network generates scores for the presence of each object category in each default box and produces adjustments to the box to better match the object shape. Additionally, the network combines predictions from multiple feature maps with different resolutions to naturally handle objects of various sizes. Our SSD model is simple relative to methods that require object proposals because it completely eliminates proposal generation and subsequent pixel or feature resampling stage and encapsulates all computation in a single network. This makes SSD easy to train and straightforward to integrate into systems that require a detection component. Experimental results on the PASCAL VOC, MS COCO, and ILSVRC datasets confirm that SSD has comparable accuracy to methods that utilize an additional object proposal step and is much faster, while providing a unified framework for both training and inference. Compared to other single stage methods, SSD has much better accuracy, even with a smaller input image size. For {\$}300$\backslash$times 300{\$} input, SSD achieves 72.1{\%} mAP on VOC2007 test at 58 FPS on a Nvidia Titan X and for {\$}500$\backslash$times 500{\$} input, SSD achieves 75.1{\%} mAP, outperforming a comparable state of the art Faster R-CNN model. Code is available at https://github.com/weiliu89/caffe/tree/ssd .},
+	author = {Liu, Wei and Anguelov, Dragomir and Erhan, Dumitru and Szegedy, Christian and Reed, Scott and Fu, Cheng-Yang and Berg, Alexander C.},
+	date = {2016},
+	title = {SSD: Single Shot MultiBox Detector},
+	url = {https://arxiv.org/pdf/1512.02325},
+	doi = {10.1007/978-3-319-46448-0{\textunderscore }2},
+	file = {https://arxiv.org/pdf/1512.02325v5.pdf}
 }
 
 
@@ -196,109 +205,23 @@
 }
 
 
-@misc{PSIORIGmbH.2019b,
-	author = {{PSIORI GmbH}},
-	date = {2019},
-	title = {psipy documentation},
-	url = {https://psipy.azurewebsites.net/source/psipy.html},
-	urldate = {2020-01-03},
-	editor = {{PSIORI GmbH}}
+@inproceedings{Vincent.2008,
+	author = {Vincent, Pascal and Larochelle, Hugo and Bengio, Y. and Manzagol, Pierre-Antoine},
+	title = {Extracting and composing robust features with denoising autoencoders},
+	pages = {1096--1103},
+	year = {2008},
+	doi = {10.1145/1390156.1390294}
 }
 
 
-@misc{PSIORIGmbH.2020,
-	author = {{PSIORI GmbH}},
-	year = {2020},
-	title = {PSIORI},
-	url = {https://www.psiori.com/de},
-	urldate = {2020-02-19}
-}
-
-
-@misc{PythonSoftwareFoundation.2020,
-	author = {{Python Software Foundation}},
-	year = {2020},
-	title = {The Python Language Reference},
-	url = {https://docs.python.org/3.7/reference/},
-	urldate = {2020-02-19}
-}
-
-
-@misc{RajeevRanjan.2016,
-	author = {{Rajeev Ranjan} and {Vishal M. Patel} and {Rama Chellappa}},
-	year = {2016},
-	title = {HyperFace: A Deep Multi-task Learning Framework for Face Detection, Landmark Localization, Pose Estimation, and Gender Recognition},
-	url = {https://arxiv.org/abs/1603.01249}
-}
-
-
-@inproceedings{Rifai.2011,
-	author = {Rifai, Salah and Vincent, Pascal and Muller, Xavier and Glorot, Xavier and Bengio, Yoshua},
-	title = {Contractive Auto-Encoders: Explicit Invariance during Feature Extraction},
-	pages = {833--840},
-	publisher = {Omnipress},
-	isbn = {9781450306195},
-	series = {ICML'11},
-	booktitle = {Proceedings of the 28th International Conference on International Conference on Machine Learning},
-	year = {2011},
-	address = {Madison, WI, USA}
-}
-
-
-@article{Shearer.2000,
-	author = {Shearer, Colin},
-	year = {2000},
-	title = {The CRISP-DM Model: The New Blueprint for Data Mining},
-	keywords = {imported},
-	volume = {5},
-	number = {4},
-	journal = {Journal of Data Warehousing}
-}
-
-
-@article{StefanFalkner.2018,
-	abstract = {Proceedings of the International Conference on Machine Learning 2018},
-	author = {{Stefan Falkner} and {Aaron Klein} and {Frank Hutter}},
-	year = {2018},
-	title = {BOHB: Robust and Efficient Hyperparameter Optimization at Scale},
-	url = {https://openreview.net/pdf?id=ry18Ww5ee},
-	keywords = {ICML;Machine Learning},
-	journal = {arXiv:1807.01774},
-	file = {cd1ed838-bbf8-42eb-ba7a-6e19e3f75b61:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\cd1ed838-bbf8-42eb-ba7a-6e19e3f75b61.pdf:pdf}
-}
-
-
-@inproceedings{Tan.2018,
-	abstract = {As a new classification platform, deep learning has recently received increasing attention from researchers and has been successfully applied to many domains. In some domains, like bioinformatics and robotics, it is very difficult to construct a large-scale well-annotated dataset due to the expense of data acquisition and costly annotation, which limits its development. Transfer learning relaxes the hypothesis that the training data must be independent and identically distributed (i.i.d.) with the test data, which motivates us to use transfer learning to solve the problem of insufficient training data. This survey focuses on reviewing the current researches of transfer learning by using deep neural network and its applications. We defined deep transfer learning, category and review the recent research works based on the techniques used in deep transfer learning.},
-	author = {Tan, Chuanqi and Sun, Fuchun and Kong, Tao and Zhang, Wenchang and Yang, Chao and Liu, Chunfang},
-	title = {A Survey on Deep Transfer Learning},
-	pages = {270--279},
-	publisher = {{Springer International Publishing}},
-	isbn = {978-3-030-01424-7},
-	editor = {K{\r{u}}rkov{\'a}, V{\v{e}}ra and Manolopoulos, Yannis and Hammer, Barbara and Iliadis, Lazaros and Maglogiannis, Ilias},
-	booktitle = {Artificial Neural Networks and Machine Learning -- ICANN 2018},
-	year = {2018},
-	address = {Cham}
-}
-
-
-@book{Thrun.1998,
-	year = {1998},
-	title = {Learning to Learn},
-	address = {Boston, MA},
-	publisher = {{Springer US}},
-	isbn = {978-1-4615-5529-2},
-	editor = {Thrun, Sebastian and Pratt, Lorien}
-}
-
-
-@article{Thung.2018,
-	author = {Thung, Kimhan and Wee, Chong-Yaw},
-	year = {2018},
-	title = {A brief review on multi-task learning},
-	volume = {77},
-	journal = {Multimedia Tools and Applications},
-	doi = {10.1007/s11042-018-6463-x}
+@incollection{Vanschoren.2019,
+	author = {Vanschoren, Joaquin},
+	title = {Meta-Learning: 2},
+	pages = {39--68},
+	publisher = {Springer},
+	editor = {Hutter, Frank and Kotthoff, Lars and Vanschoren, Joaquin},
+	booktitle = {Automatic Machine Learning: Methods, Systems, Challenges},
+	year = {2019}
 }
 
 
@@ -316,23 +239,37 @@
 }
 
 
-@incollection{Vanschoren.2019,
-	author = {Vanschoren, Joaquin},
-	title = {Meta-Learning: 2},
-	pages = {39--68},
-	publisher = {Springer},
-	editor = {Hutter, Frank and Kotthoff, Lars and Vanschoren, Joaquin},
-	booktitle = {Automatic Machine Learning: Methods, Systems, Challenges},
-	year = {2019}
+@article{Thung.2018,
+	author = {Thung, Kimhan and Wee, Chong-Yaw},
+	year = {2018},
+	title = {A brief review on multi-task learning},
+	volume = {77},
+	journal = {Multimedia Tools and Applications},
+	doi = {10.1007/s11042-018-6463-x}
 }
 
 
-@inproceedings{Vincent.2008,
-	author = {Vincent, Pascal and Larochelle, Hugo and Bengio, Y. and Manzagol, Pierre-Antoine},
-	title = {Extracting and composing robust features with denoising autoencoders},
-	pages = {1096--1103},
-	year = {2008},
-	doi = {10.1145/1390156.1390294}
+@book{Thrun.1998,
+	year = {1998},
+	title = {Learning to Learn},
+	address = {Boston, MA},
+	publisher = {{Springer US}},
+	isbn = {978-1-4615-5529-2},
+	editor = {Thrun, Sebastian and Pratt, Lorien}
+}
+
+
+@inproceedings{Tan.2018,
+	abstract = {As a new classification platform, deep learning has recently received increasing attention from researchers and has been successfully applied to many domains. In some domains, like bioinformatics and robotics, it is very difficult to construct a large-scale well-annotated dataset due to the expense of data acquisition and costly annotation, which limits its development. Transfer learning relaxes the hypothesis that the training data must be independent and identically distributed (i.i.d.) with the test data, which motivates us to use transfer learning to solve the problem of insufficient training data. This survey focuses on reviewing the current researches of transfer learning by using deep neural network and its applications. We defined deep transfer learning, category and review the recent research works based on the techniques used in deep transfer learning.},
+	author = {Tan, Chuanqi and Sun, Fuchun and Kong, Tao and Zhang, Wenchang and Yang, Chao and Liu, Chunfang},
+	title = {A Survey on Deep Transfer Learning},
+	pages = {270--279},
+	publisher = {{Springer International Publishing}},
+	isbn = {978-3-030-01424-7},
+	editor = {K{\r{u}}rkov{\'a}, V{\v{e}}ra and Manolopoulos, Yannis and Hammer, Barbara and Iliadis, Lazaros and Maglogiannis, Ilias},
+	booktitle = {Artificial Neural Networks and Machine Learning -- ICANN 2018},
+	year = {2018},
+	address = {Cham}
 }
 
 
@@ -341,6 +278,98 @@
 	title = {jupyter},
 	url = {https://jupyter.org/},
 	publisher = {{Project Jupyter}}
+}
+
+
+@article{StefanFalkner.2018,
+	abstract = {Proceedings of the International Conference on Machine Learning 2018},
+	author = {{Stefan Falkner} and {Aaron Klein} and {Frank Hutter}},
+	year = {2018},
+	title = {BOHB: Robust and Efficient Hyperparameter Optimization at Scale},
+	url = {https://openreview.net/pdf?id=ry18Ww5ee},
+	keywords = {ICML;Machine Learning},
+	journal = {arXiv:1807.01774},
+	file = {cd1ed838-bbf8-42eb-ba7a-6e19e3f75b61:C\:\\Users\\Sebastian Hoch\\AppData\\Local\\Swiss Academic Software\\Citavi 6\\ProjectCache\\vjc0l4we8e5bbkdwgyjeli4ig2saj4xtpo6i8yq6d\\Citavi Attachments\\cd1ed838-bbf8-42eb-ba7a-6e19e3f75b61.pdf:pdf}
+}
+
+
+@inproceedings{Sascha.2010,
+	author = {Sascha, Lange and Riedmiller, Martin},
+	title = {Deep auto-encoder neural networks in reinforcement learning},
+	pages = {1--8},
+	isbn = {2161-4407},
+	booktitle = {The 2010 International Joint Conference on Neural Networks (IJCNN)},
+	year = {2010}
+}
+
+
+@inproceedings{Rifai.2011,
+	author = {Rifai, Salah and Vincent, Pascal and Muller, Xavier and Glorot, Xavier and Bengio, Yoshua},
+	title = {Contractive Auto-Encoders: Explicit Invariance during Feature Extraction},
+	pages = {833--840},
+	publisher = {Omnipress},
+	isbn = {9781450306195},
+	series = {ICML'11},
+	booktitle = {Proceedings of the 28th International Conference on International Conference on Machine Learning},
+	year = {2011},
+	address = {Madison, WI, USA}
+}
+
+
+@misc{RajeevRanjan.2016,
+	author = {{Rajeev Ranjan} and {Vishal M. Patel} and {Rama Chellappa}},
+	year = {2016},
+	title = {HyperFace: A Deep Multi-task Learning Framework for Face Detection, Landmark Localization, Pose Estimation, and Gender Recognition},
+	url = {https://arxiv.org/abs/1603.01249}
+}
+
+
+@misc{PythonSoftwareFoundation.2020,
+	author = {{Python Software Foundation}},
+	year = {2020},
+	title = {The Python Language Reference},
+	url = {https://docs.python.org/3.7/reference/},
+	urldate = {2020-02-19}
+}
+
+
+@misc{PSIORIGmbH.2020,
+	author = {{PSIORI GmbH}},
+	year = {2020},
+	title = {PSIORI},
+	url = {https://www.psiori.com/de},
+	urldate = {2020-02-19}
+}
+
+
+@misc{PSIORIGmbH.2019b,
+	author = {{PSIORI GmbH}},
+	date = {2019},
+	title = {psipy documentation},
+	url = {https://psipy.azurewebsites.net/source/psipy.html},
+	urldate = {2020-01-03},
+	editor = {{PSIORI GmbH}}
+}
+
+
+@article{Shearer.2000,
+	author = {Shearer, Colin},
+	year = {2000},
+	title = {The CRISP-DM Model: The New Blueprint for Data Mining},
+	keywords = {imported},
+	volume = {5},
+	number = {4},
+	journal = {Journal of Data Warehousing}
+}
+
+
+@inproceedings{YuchunFang.2017,
+	author = {{Yuchun Fang} and {Zhengyan Ma} and {Zhaoxiang Zhang} and {Xu-Yao Zhang} and {Xiang Bai}},
+	title = {Dynamic Multi-Task Learning with Convolutional Neural Network},
+	pages = {1668--1674},
+	booktitle = {Proceedings of the Twenty-Sixth International Joint Conference on  Artificial Intelligence, IJCAI-17},
+	year = {2017},
+	doi = {10.24963/ijcai.2017/231}
 }
 
 
@@ -354,16 +383,6 @@
 }
 
 
-@misc{Kolben.2020,
-	author = {Kolben, Leah and Ettun, Yochay},
-	year = {2020},
-	title = {cnvrg.io},
-	url = {https://cnvrg.io/},
-	urldate = {2020-02-19},
-	publisher = {cnvrg.io}
-}
-
-
 @inproceedings{Kohavi.1995,
 	author = {Kohavi, Ron and John, George H.},
 	title = {Automatic Parameter Selection by Minimizing Estimated Error},
@@ -374,73 +393,31 @@
 }
 
 
-@proceedings{.1995,
-	year = {1995},
-	title = {In Proceedings of the Twelfth International Conference on Machine Learning},
-	publisher = {{Morgan Kaufmann}}
+@misc{Chollet.2015,
+	author = {Chollet and Fran{\c{c}}ois and others},
+	year = {2015},
+	title = {Keras},
+	url = {https://keras.io/}
 }
 
 
-@book{.1999,
-	year = {1999},
-	title = {Shape, Contour and Grouping in Computer Vision},
-	address = {Berlin, Heidelberg},
-	publisher = {{Springer Berlin Heidelberg}},
-	isbn = {978-3-540-46805-9}
+@book{Chapelle.2010,
+	author = {Chapelle, Olivier and Schlkopf, Bernhard and Zien, Alexander},
+	year = {2010},
+	title = {Semi-Supervised Learning},
+	edition = {1st},
+	publisher = {{The MIT Press}},
+	isbn = {0262514125}
 }
 
 
-@proceedings{.2007,
-	year = {2007}
-}
-
-
-@proceedings{.2008,
-	year = {2008}
-}
-
-
-@proceedings{.2011,
-	year = {2011},
-	title = {Proceedings of the 28th International Conference on International Conference on Machine Learning},
-	address = {Madison, WI, USA},
-	publisher = {Omnipress},
-	isbn = {9781450306195},
-	series = {ICML'11}
-}
-
-
-@proceedings{.2017,
-	year = {2017},
-	title = {Proceedings of the Twenty-Sixth International Joint Conference on  Artificial Intelligence, IJCAI-17}
-}
-
-
-@book{.2018,
+@proceedings{Chaki.2018,
 	year = {2018},
-	title = {Applied Deep Learning: A Case-Based Approach to Understanding Deep Neural Networks},
-	address = {Berkeley, CA},
-	publisher = {Apress},
-	isbn = {978-1-4842-3790-8}
-}
-
-
-@inproceedings{Bengio.2007,
-	author = {Bengio, Y. and Lamblin, Pascal and Popovici, D. and Larochelle, Hugo and Montreal, U.},
-	title = {Greedy layer-wise training of deep networks},
-	volume = {19},
-	year = {2007}
-}
-
-
-@article{BergstraJamesandYoshuaBengio..2012,
-	author = {{Bergstra, James, and Yoshua Bengio.}},
-	year = {2012},
-	title = {Random search for hyper-parameter optimization.},
-	url = {http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf},
-	pages = {281--305},
-	journal = {Journal of Machine Learning Research 13},
-	file = {Random_Search_bergstra12a.pdf}
+	title = {Proceedings of International Conference on Computational Intelligence and Data Engineering},
+	address = {Singapore},
+	publisher = {{Springer Singapore}},
+	isbn = {978-981-10-6319-0},
+	editor = {Chaki, Nabendu and Cortesi, Agostino and Devarakonda, Nagaraju}
 }
 
 
@@ -459,31 +436,22 @@
 }
 
 
-@proceedings{Chaki.2018,
-	year = {2018},
-	title = {Proceedings of International Conference on Computational Intelligence and Data Engineering},
-	address = {Singapore},
-	publisher = {{Springer Singapore}},
-	isbn = {978-981-10-6319-0},
-	editor = {Chaki, Nabendu and Cortesi, Agostino and Devarakonda, Nagaraju}
+@article{BergstraJamesandYoshuaBengio..2012,
+	author = {{Bergstra, James, and Yoshua Bengio.}},
+	year = {2012},
+	title = {Random search for hyper-parameter optimization.},
+	url = {http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf},
+	pages = {281--305},
+	journal = {Journal of Machine Learning Research 13},
+	file = {Random_Search_bergstra12a.pdf}
 }
 
 
-@book{Chapelle.2010,
-	author = {Chapelle, Olivier and Schlkopf, Bernhard and Zien, Alexander},
-	year = {2010},
-	title = {Semi-Supervised Learning},
-	edition = {1st},
-	publisher = {{The MIT Press}},
-	isbn = {0262514125}
-}
-
-
-@misc{Chollet.2015,
-	author = {Chollet and Fran{\c{c}}ois and others},
-	year = {2015},
-	title = {Keras},
-	url = {https://keras.io/}
+@inproceedings{Bengio.2007,
+	author = {Bengio, Y. and Lamblin, Pascal and Popovici, D. and Larochelle, Hugo and Montreal, U.},
+	title = {Greedy layer-wise training of deep networks},
+	volume = {19},
+	year = {2007}
 }
 
 
@@ -492,6 +460,74 @@
 	year = {2014},
 	title = {Going Deeper with Convolutions},
 	url = {https://arxiv.org/abs/1409.4842}
+}
+
+
+@book{.2018,
+	year = {2018},
+	title = {Applied Deep Learning: A Case-Based Approach to Understanding Deep Neural Networks},
+	address = {Berkeley, CA},
+	publisher = {Apress},
+	isbn = {978-1-4842-3790-8}
+}
+
+
+@proceedings{.2011,
+	year = {2011},
+	title = {Proceedings of the 28th International Conference on International Conference on Machine Learning},
+	address = {Madison, WI, USA},
+	publisher = {Omnipress},
+	isbn = {9781450306195},
+	series = {ICML'11}
+}
+
+
+@proceedings{.2010,
+	year = {2010},
+	title = {The 2010 International Joint Conference on Neural Networks (IJCNN)},
+	isbn = {2161-4407}
+}
+
+
+@proceedings{.2008,
+	year = {2008}
+}
+
+
+@proceedings{.2007,
+	year = {2007}
+}
+
+
+@book{.1999,
+	year = {1999},
+	title = {Shape, Contour and Grouping in Computer Vision},
+	address = {Berlin, Heidelberg},
+	publisher = {{Springer Berlin Heidelberg}},
+	isbn = {978-3-540-46805-9}
+}
+
+
+@proceedings{.1995,
+	year = {1995},
+	title = {In Proceedings of the Twelfth International Conference on Machine Learning},
+	publisher = {{Morgan Kaufmann}}
+}
+
+
+@proceedings{.2017,
+	year = {2017},
+	title = {Proceedings of the Twenty-Sixth International Joint Conference on  Artificial Intelligence, IJCAI-17}
+}
+
+
+@misc{Kolben.2020,
+	author = {Kolben, Leah and Ettun, Yochay},
+	year = {2020},
+	title = {cnvrg.io},
+	url = {https://cnvrg.io/},
+	urldate = {2020-02-19},
+	publisher = {cnvrg.io}
 }
 
 
@@ -504,14 +540,6 @@
 	file = {EMNIST_1702.05373v2.pdf},
 	file = {http://arxiv.org/abs/1702.05373v2},
 	file = {https://arxiv.org/pdf/1702.05373v2.pdf}
-}
-
-
-@book{D.D.Lee.2016,
-	year = {2016},
-	title = {Advances in Neural Information Processing Systems 29},
-	publisher = {{Curran Associates, Inc}},
-	editor = {{D. D. Lee} and {M. Sugiyama} and {U. V. Luxburg} and {I. Guyon} and {R. Garnett}}
 }
 
 
@@ -582,13 +610,11 @@
 }
 
 
-@inproceedings{YuchunFang.2017,
-	author = {{Yuchun Fang} and {Zhengyan Ma} and {Zhaoxiang Zhang} and {Xu-Yao Zhang} and {Xiang Bai}},
-	title = {Dynamic Multi-Task Learning with Convolutional Neural Network},
-	pages = {1668--1674},
-	booktitle = {Proceedings of the Twenty-Sixth International Joint Conference on  Artificial Intelligence, IJCAI-17},
-	year = {2017},
-	doi = {10.24963/ijcai.2017/231}
+@book{D.D.Lee.2016,
+	year = {2016},
+	title = {Advances in Neural Information Processing Systems 29},
+	publisher = {{Curran Associates, Inc}},
+	editor = {{D. D. Lee} and {M. Sugiyama} and {U. V. Luxburg} and {I. Guyon} and {R. Garnett}}
 }
 
 
