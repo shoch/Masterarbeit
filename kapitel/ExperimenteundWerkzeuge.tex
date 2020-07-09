@@ -200,7 +200,7 @@ Zur Visualisierung der Einbettungen wird auf das Werkzeug PSIORI-Visualizer (sie
 		\label{img:SchemaTTAE}
 	\end{figure}
 
-	Zur einfachen Anwendung des Ansatzes wurde ein Python-Modul mit der Klasse \textit{\acl{ttae}} ,kurz \textit{\ac{ttae}}, erstellt. Abbildung \ref{img:KlassendiagrammTransferSecondCriterionAutoenocder} zeigt das zugehörige Klassendiagramm. Als Basis wird ein \textit{\ac{tfae}} als Konstruktorargument übergeben. Die Parameter für den Autoencoder werden aus diesem Modell kopiert. Zusätzlich müssen noch die Einstellungen für die zweite Aufgabe übergeben werden. Aus diesen beiden Teilen wird das neue Modell erstellt. Die Parameter \textit{freeze\_encoder\_layers} und \textit{freeze\_decoder\_layers} ermöglichen es, die Merkmalstransformation unverändert zu lassen. Es wird darüber gesteuert, welche Schichten nicht neu trainiert werden können. 
+	Zur einfachen Anwendung des Ansatzes wurde ein Python-Modul mit der Klasse \textit{\acl{ttae}}, kurz \textit{\ac{ttae}}, erstellt. Abbildung \ref{img:KlassendiagrammTransferSecondCriterionAutoenocder} zeigt das zugehörige Klassendiagramm. Als Basis wird ein \textit{\ac{tfae}} als Konstruktorargument übergeben. Die Parameter für den Autoencoder werden aus diesem Modell kopiert. Zusätzlich müssen noch die Einstellungen für die zweite Aufgabe übergeben werden. Aus diesen beiden Teilen wird das neue Modell erstellt. Die Parameter \textit{freeze\_encoder\_layers} und \textit{freeze\_decoder\_layers} ermöglichen es, die Merkmalstransformation unverändert zu lassen. Es wird darüber gesteuert, welche Schichten nicht neu trainiert werden können. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth, center]{bilder/Klassendiagramme/TTAE.png}
